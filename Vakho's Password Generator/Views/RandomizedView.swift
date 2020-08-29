@@ -47,13 +47,13 @@ extension RandomizedView {
                     CheckBoxView(
                         isOn: .init(
                             get: {
-                                self.settings.randomized.characters.contains(characters)
+                                self.settings.randomized.characters.map { $0.characters }.contains(characters)
                             },
                             set: { isOn in
-                                switch isOn {
-                                case false: self.settings.randomized.characters.remove(characters)
-                                case true: self.settings.randomized.characters.insert(characters)
-                                }
+//                                switch isOn { // ???
+//                                case false: self.settings.randomized.characters.remove(<#T##member: PasswordSettings.PasswordSettingsRandomized.Characters##PasswordSettings.PasswordSettingsRandomized.Characters#>)
+//                                case true: self.settings.randomized.characters.insert(characters)
+//                                }
                             }
                         ),
 

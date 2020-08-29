@@ -29,6 +29,8 @@
 		870DFD6924FA76A600FFA87F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD6824FA76A600FFA87F /* Colors.swift */; };
 		873415F124FA843E00B6DB46 /* CloserRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873415F024FA843E00B6DB46 /* CloserRange.swift */; };
 		873415F324FA921A00B6DB46 /* RandomizedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873415F224FA921A00B6DB46 /* RandomizedView.swift */; };
+		873415F524FAA7AF00B6DB46 /* RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873415F424FAA7AF00B6DB46 /* RandomGenerator.swift */; };
+		873415F724FAAB5C00B6DB46 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873415F624FAAB5C00B6DB46 /* Set.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		870DFD6824FA76A600FFA87F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		873415F024FA843E00B6DB46 /* CloserRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloserRange.swift; sourceTree = "<group>"; };
 		873415F224FA921A00B6DB46 /* RandomizedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomizedView.swift; sourceTree = "<group>"; };
+		873415F424FAA7AF00B6DB46 /* RandomGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RandomGenerator.swift; path = "Vakho's Password Generator/RandomGenerator.swift"; sourceTree = SOURCE_ROOT; };
+		873415F624FAAB5C00B6DB46 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,7 @@
 				870DFD5F24FA68D400FFA87F /* Windows */,
 				870DFD3E24FA5A1000FFA87F /* Views */,
 				870DFD5324FA5B4500FFA87F /* View Models */,
+				873415F424FAA7AF00B6DB46 /* RandomGenerator.swift */,
 				870DFD3C24FA5A1000FFA87F /* Models */,
 				870DFD4F24FA5A5B00FFA87F /* Resources */,
 				870DFD2E24FA59D600FFA87F /* Preview Content */,
@@ -155,7 +160,7 @@
 				870DFD2C24FA59D600FFA87F /* Assets.xcassets */,
 				870DFD5124FA5A6C00FFA87F /* Texts.swift */,
 				870DFD6824FA76A600FFA87F /* Colors.swift */,
-				873415F024FA843E00B6DB46 /* CloserRange.swift */,
+				873415F824FAAB6A00B6DB46 /* Extensions */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -187,6 +192,15 @@
 				870DFD4324FA5A1000FFA87F /* MainLayout.swift */,
 			);
 			path = Windows;
+			sourceTree = "<group>";
+		};
+		873415F824FAAB6A00B6DB46 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				873415F024FA843E00B6DB46 /* CloserRange.swift */,
+				873415F624FAAB5C00B6DB46 /* Set.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,11 +287,13 @@
 				870DFD4C24FA5A1000FFA87F /* MainView.swift in Sources */,
 				870DFD5224FA5A6C00FFA87F /* Texts.swift in Sources */,
 				870DFD5724FA5CFC00FFA87F /* PasswordType.swift in Sources */,
+				873415F524FAA7AF00B6DB46 /* RandomGenerator.swift in Sources */,
 				870DFD6524FA74A900FFA87F /* Separator.swift in Sources */,
 				870DFD5924FA5D9900FFA87F /* AdditionalSetting.swift in Sources */,
 				870DFD5B24FA5ED300FFA87F /* Readability.swift in Sources */,
 				870DFD6324FA6C7E00FFA87F /* PasswordSettingsVerbal.swift in Sources */,
 				870DFD6724FA756600FFA87F /* SectionView.swift in Sources */,
+				873415F724FAAB5C00B6DB46 /* Set.swift in Sources */,
 				870DFD4B24FA5A1000FFA87F /* MainLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

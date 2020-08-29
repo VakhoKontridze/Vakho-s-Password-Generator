@@ -13,9 +13,16 @@ import Combine
 extension PasswordSettings {
     final class PasswordSettingsRandomized: ObservableObject {
         // MARK: Properties
-        @Published var characters: Set<CharacterSet> = [.lowercase, .uppercase, .digits, .symbols]
+        @Published var characters: Set<Characters> = {
+            let array: [Characters] = [.lowercase, .uppercase, .digits, .symbols]
+                .map { .init(characters: $0, count: RandomGenerator.retrieveStandardWeights(characters: $0, readability: .medium)) }
+            
+            return .init(array)
+        }()
         @Published var readability: Readability = .medium
+        
         @Published var additional: Set<AdditionalSetting> = [.startsWithLetter]
+        
         @Published var excludedCharacters: String = ""
         @Published var separator: Separator = .init()
         
