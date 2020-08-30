@@ -34,6 +34,9 @@
 		879ED84824FB8FAD000C4856 /* LogarithmicSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84724FB8FAD000C4856 /* LogarithmicSliderView.swift */; };
 		879ED84A24FBC1F8000C4856 /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84924FBC1F8000C4856 /* PasswordGenerator.swift */; };
 		879ED84E24FBDDE8000C4856 /* RandomizedLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84D24FBDDE8000C4856 /* RandomizedLayout.swift */; };
+		879ED85124FBE02F000C4856 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED85024FBE02F000C4856 /* ResultsView.swift */; };
+		879ED85324FBE0BC000C4856 /* ResultsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED85224FBE0BC000C4856 /* ResultsLayout.swift */; };
+		879ED85524FBE304000C4856 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED85424FBE304000C4856 /* Collection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +70,9 @@
 		879ED84724FB8FAD000C4856 /* LogarithmicSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogarithmicSliderView.swift; sourceTree = "<group>"; };
 		879ED84924FBC1F8000C4856 /* PasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
 		879ED84D24FBDDE8000C4856 /* RandomizedLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomizedLayout.swift; sourceTree = "<group>"; };
+		879ED85024FBE02F000C4856 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		879ED85224FBE0BC000C4856 /* ResultsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsLayout.swift; sourceTree = "<group>"; };
+		879ED85424FBE304000C4856 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +142,7 @@
 			children = (
 				879ED84B24FBDA5C000C4856 /* Main */,
 				879ED84C24FBDA61000C4856 /* Randomized */,
+				879ED84F24FBE021000C4856 /* Results */,
 				870DFD3F24FA5A1000FFA87F /* Components */,
 			);
 			path = "Windows and Views";
@@ -195,6 +202,7 @@
 				879ED84324FAD9CC000C4856 /* Int.swift */,
 				879ED83F24FAD376000C4856 /* String.swift */,
 				879ED84124FAD37C000C4856 /* Character.swift */,
+				879ED85424FBE304000C4856 /* Collection.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -226,6 +234,15 @@
 				879ED84D24FBDDE8000C4856 /* RandomizedLayout.swift */,
 			);
 			path = Randomized;
+			sourceTree = "<group>";
+		};
+		879ED84F24FBE021000C4856 /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				879ED85024FBE02F000C4856 /* ResultsView.swift */,
+				879ED85224FBE0BC000C4856 /* ResultsLayout.swift */,
+			);
+			path = Results;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,12 +326,15 @@
 				873415F324FA921A00B6DB46 /* RandomizedView.swift in Sources */,
 				870DFD4924FA5A1000FFA87F /* CheckBoxView.swift in Sources */,
 				870DFD4C24FA5A1000FFA87F /* MainView.swift in Sources */,
+				879ED85324FBE0BC000C4856 /* ResultsLayout.swift in Sources */,
 				870DFD5224FA5A6C00FFA87F /* Texts.swift in Sources */,
 				870DFD5724FA5CFC00FFA87F /* PasswordType.swift in Sources */,
 				879ED84224FAD37C000C4856 /* Character.swift in Sources */,
 				879ED84624FAE889000C4856 /* NumberPickerView.swift in Sources */,
+				879ED85124FBE02F000C4856 /* ResultsView.swift in Sources */,
 				879ED84824FB8FAD000C4856 /* LogarithmicSliderView.swift in Sources */,
 				873415F524FAA7AF00B6DB46 /* RandomPasswordGenerator.swift in Sources */,
+				879ED85524FBE304000C4856 /* Collection.swift in Sources */,
 				870DFD6524FA74A900FFA87F /* Separator.swift in Sources */,
 				870DFD5924FA5D9900FFA87F /* AdditionalSetting.swift in Sources */,
 				870DFD5B24FA5ED300FFA87F /* Readability.swift in Sources */,

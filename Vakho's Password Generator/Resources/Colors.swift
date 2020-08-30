@@ -10,4 +10,17 @@ import SwiftUI
 
 extension Color {
     static var formBackground: Color { .init(.windowBackgroundColor) }
+    static var listBackground: Color { .init("ListBackground") }
+}
+
+extension NSColor {
+    static var listBackground: NSColor? { NSColor(named: "ListBackground") }
+}
+
+extension NSTableView {
+    open override func viewDidMoveToWindow() {
+        super.viewDidMoveToWindow()
+        
+        if let listBackground = NSColor.listBackground { backgroundColor = listBackground }
+    }
 }

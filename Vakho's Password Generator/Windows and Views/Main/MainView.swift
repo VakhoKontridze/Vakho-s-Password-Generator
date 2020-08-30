@@ -36,12 +36,10 @@ extension MainView {
             )
             .padding(10)
         
-//            .sheet(isPresented: $passwordsAreBeingGenerated, content: {
-//                VStack(content: {
-//                    Text("???")
-//                })
-//                    .frame(width: MainLayout.window.width - 30, height: MainLayout.window.height - 15)
-//            })
+            .sheet(isPresented: $passwordsAreBeingGenerated, content: {
+                ResultsView()
+                    .environmentObject(self.settings)
+            })
     }
     
     private var basic: some View {
@@ -80,8 +78,8 @@ extension MainView {
             Text("Quantity: ")
                 .frame(width: Layout.header.width, alignment: .leading)
             
-            NumberPickerView(value: settings.qunatity, range: PasswordSettings.qunatityRange, completion: {
-                self.settings.qunatity = $0
+            NumberPickerView(value: settings.quantity, range: PasswordSettings.qunatityRange, completion: {
+                self.settings.quantity = $0
             })
         })
     }
@@ -101,10 +99,7 @@ extension MainView {
     }
     
     private var generate: some View {
-        Button(action: {
-            PasswordGenerator.shared.generate(completion: { print($0) })
-            self.passwordsAreBeingGenerated = true
-        }, label: { Text("Generate") })
+        Button(action: { self.passwordsAreBeingGenerated = true }, label: { Text("Generate") })
             .disabled(settings.characters.allTypes.filter { $0.isIncluded }.isEmpty)
     }
 }
