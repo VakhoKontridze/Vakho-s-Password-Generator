@@ -14,7 +14,7 @@ extension PasswordSettings {
         // MARK: Properties
         var isEnabled: Bool = false
         
-        var characterChunkCount = 4
+        var characterChunkQunatity = 4
         static let range: ClosedRange<Int> = 4...16
         
         static let separator: String = "-"
@@ -27,8 +27,8 @@ extension PasswordSettings {
             // 12   **** **** ****
             guard isEnabled else { return 0 }
             
-            let fullChunks: Int = characterLength / characterChunkCount
-            let halfChunk: Int = (characterLength - fullChunks * characterChunkCount) > 0 ? 1 : 0
+            let fullChunks: Int = characterLength / characterChunkQunatity
+            let halfChunk: Int = (characterLength - fullChunks * characterChunkQunatity) > 0 ? 1 : 0
             
             return fullChunks + halfChunk - 1
         }

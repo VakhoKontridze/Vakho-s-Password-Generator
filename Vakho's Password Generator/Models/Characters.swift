@@ -20,7 +20,7 @@ extension PasswordSettings {
         
         var allTypes: [CharacterType] { [lowercase, uppercase, digits, symbols, ambiguous] }
         
-        var length: Int { allTypes.map { $0.count }.reduce(0, +) }
+        var length: Int { allTypes.map { $0.qunatity }.reduce(0, +) }
         
         static var consecutiveInAlphabet: String = PasswordSettings.CharacterSet.lowercase.characters
         static var consecutiveInNumbers: String = PasswordSettings.CharacterSet.digits.characters
@@ -61,13 +61,13 @@ extension PasswordSettings {
             }
         }
         
-        mutating func updateCount(to count: Int, for type: CharacterSet) {
+        mutating func updateQunatity(to qunatity: Int, for type: CharacterSet) {
             switch type {
-            case .lowercase: lowercase.count = count
-            case .uppercase: uppercase.count = count
-            case .digits: digits.count = count
-            case .symbols: symbols.count = count
-            case .ambiguous: ambiguous.count = count
+            case .lowercase: lowercase.qunatity = qunatity
+            case .uppercase: uppercase.qunatity = qunatity
+            case .digits: digits.qunatity = qunatity
+            case .symbols: symbols.qunatity = qunatity
+            case .ambiguous: ambiguous.qunatity = qunatity
             }
         }
     }
@@ -79,7 +79,7 @@ extension PasswordSettings {
         // MARK: Properties
         let characters: CharacterSet
         var isIncluded: Bool
-        var count: Int = 0
+        var qunatity: Int = 0
 
         // MARK: Initializers
         init(characters: CharacterSet, isIncluded: Bool) {
@@ -130,7 +130,7 @@ extension PasswordSettings {
             }
         }
         
-        func standardWegiths(readability: PasswordSettings.Readability) -> Int {
+        func standardWeight(readability: PasswordSettings.Readability) -> Int {
             switch (readability, self) {
             case (.low, .lowercase): return 50
             case (.low, .uppercase): return 35

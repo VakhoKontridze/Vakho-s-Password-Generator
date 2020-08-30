@@ -26,3 +26,10 @@ extension AppDelegate: NSApplicationDelegate {
         true
     }
 }
+
+// MARK: App Name
+extension AppDelegate {
+    static var appName: String? {
+        Bundle.main.infoDictionary?["CFBundleName"] as? String
+    }
+}

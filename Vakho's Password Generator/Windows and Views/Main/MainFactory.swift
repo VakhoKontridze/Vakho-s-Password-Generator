@@ -30,7 +30,7 @@ extension MainFactory {
 
         // Creates window
         window = .init(
-            contentRect: .init(origin: .zero, size: MainLayout.windowSize),
+            contentRect: .init(origin: .zero, size: MainView.Layout.window),
             styleMask: [.titled, .closable, .miniaturizable, .resizable],
             backing: .buffered,
             defer: false
@@ -42,7 +42,7 @@ extension MainFactory {
         // Customizes title bar
         window.titlebarAppearsTransparent = true
 
-        window.title = "Password Generator"
+        window.title = AppDelegate.appName ?? "Password Generator"
 
         window.standardWindowButton(.miniaturizeButton)?.isHidden = true
         window.standardWindowButton(.miniaturizeButton)?.isEnabled = false

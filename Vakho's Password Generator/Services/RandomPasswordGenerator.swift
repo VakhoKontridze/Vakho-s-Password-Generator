@@ -24,9 +24,9 @@ final class RandomPasswordGenerator {
 // MARK:- Generate
 extension RandomPasswordGenerator {
     func generate(completion: (String) -> Void) -> Void {
-        retrieveCharacterCounts()
+        retrieveCharacterQunatitys()
         
-        while passwordsGenerated != settings.count {
+        while passwordsGenerated != settings.qunatity {
             let generator: RandomSinglePasswordGenerator = .init(
                 length: settings.length,
                 characters: settings.characters,
@@ -41,45 +41,45 @@ extension RandomPasswordGenerator {
     }
 }
 
-// MARK:- Character Counts
+// MARK:- Character Qunatitys
 private extension RandomPasswordGenerator {
-    func retrieveCharacterCounts() {
-        retreiveRawCounts()
-        retreiveCounts()
+    func retrieveCharacterQunatitys() {
+        retreiveRawQunatitys()
+        retreiveQunatitys()
     }
     
-    func retreiveRawCounts() {
+    func retreiveRawQunatitys() {
         for type in settings.characters.allTypes {
-            let rawCount: Int = {
+            let rawQunatity: Int = {
                 guard type.isIncluded else { return 0 }
 
-                let weight: Int = type.characters.standardWegiths(readability: settings.readability)
+                let weight: Int = type.characters.standardWeight(readability: settings.readability)
                 let totalWeight: Int = {
                     settings.characters.allTypes
                         .filter { $0.isIncluded }
-                        .map { $0.characters.standardWegiths(readability: settings.readability) }
+                        .map { $0.characters.standardWeight(readability: settings.readability) }
                         .reduce(0, +)
                 }()
 
                 let ratio: Double = Double(weight) / Double(totalWeight)
-                let count: Double = Double(settings.characterLength) * ratio
+                let qunatity: Double = Double(settings.characterLength) * ratio
 
-                return .init(count.rounded())
+                return .init(qunatity.rounded())
             }()
             
-            settings.characters.updateCount(to: rawCount, for: type.characters)
+            settings.characters.updateQunatity(to: rawQunatity, for: type.characters)
         }
     }
     
-    func retreiveCounts() {
+    func retreiveQunatitys() {
         while settings.characters.length != settings.characterLength {
             var difference: Int = settings.characterLength - settings.characters.length
             var differenceExists: Bool { difference != 0 }
             let increment: Int = difference > 0 ? 1 : -1
             
             for type in settings.characters.allTypes {
-                if differenceExists && type.isIncluded && type.count != 0 {
-                    settings.characters.updateCount(to: type.count + increment, for: type.characters)
+                if differenceExists && type.isIncluded && type.qunatity != 0 {
+                    settings.characters.updateQunatity(to: type.qunatity + increment, for: type.characters)
                     difference -= increment
                 }
             }

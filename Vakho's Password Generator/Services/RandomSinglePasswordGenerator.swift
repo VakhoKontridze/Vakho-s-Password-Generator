@@ -56,8 +56,8 @@ private extension RandomSinglePasswordGenerator {
         password.append(character)
         
         switch characterType {
-        case .lowercase: characters.lowercase.count -= 1
-        case .uppercase: characters.uppercase.count -= 1
+        case .lowercase: characters.lowercase.qunatity -= 1
+        case .uppercase: characters.uppercase.qunatity -= 1
         default: break
         }
     }
@@ -67,7 +67,7 @@ private extension RandomSinglePasswordGenerator {
             var pool: String = ""
             
             for type in characters.allTypes.filter({ $0.isIncluded }) {
-                type.count.times { pool.append(self.retrieveRandomCharacter(from: type.characters)) }
+                type.qunatity.times { pool.append(self.retrieveRandomCharacter(from: type.characters)) }
             }
 
             return String(pool.shuffled())
@@ -75,7 +75,7 @@ private extension RandomSinglePasswordGenerator {
         
         if separator.isEnabled {
             let rawString: JoinedSequence<[[String.Element]]> = Array(password)
-                .chunked(into: separator.characterChunkCount)
+                .chunked(into: separator.characterChunkQunatity)
                 .joined(separator: PasswordSettings.Separator.separator)
             
             password = .init(rawString)

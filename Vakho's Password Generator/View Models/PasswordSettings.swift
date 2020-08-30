@@ -11,8 +11,8 @@ import Combine
 
 // MARK:- Password Settings
 final class PasswordSettings: ObservableObject {
-    @Published var count: Int = 10
-    static let countRange: ClosedRange<Int> = 1...100
+    @Published var qunatity: Int = 10
+    static let qunatityRange: ClosedRange<Int> = 1...100
     
     @Published var characterLength: Int = 16
     var length: Int { characterLength + separator.length(characterLength: characterLength) }

@@ -15,7 +15,7 @@ struct SectionView<Content>: View where Content: View {
     private let content: () -> Content
     
     // MARK: Initializers
-    init(title: String?, @ViewBuilder content: @escaping () -> Content) {
+    init(title: String? = nil, @ViewBuilder content: @escaping () -> Content) {
         self.title = title
         self.content = content
     }

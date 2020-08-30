@@ -18,16 +18,14 @@ struct RandomizedView: View {
 extension RandomizedView {
     var body: some View {
         VStack(spacing: 10, content: {
-            HStack(spacing: 10, content: {
-                self.characters
-                self.additionalSettings
-            })
+            characters
+            additionalSettings
             separator
         })
     }
     
     private var characters: some View {
-        SectionView(title: "Characters", content: {
+        SectionView(content: {
             ForEach(self.settings.characters.allTypes, id: \.self, content: { type in
                 HStack(content: {
                     CheckBoxView(
@@ -54,19 +52,20 @@ extension RandomizedView {
             
             HStack(spacing: 3, content: {
                 Text("Readability: ")
+                    .frame(width: Layout.header.width)
                 
                 Picker(selection: self.$settings.readability, label: EmptyView(), content: {
                     ForEach(PasswordSettings.Readability.allCases, id: \.self, content: { readability in
                         Text(readability.title)
                     })
                 })
-                    .frame(width: 100)
+                    .frame(width: Layout.readabilityPicker.width)
             })
         })
     }
     
     private var additionalSettings: some View {
-        SectionView(title: "Additional", content: {
+        SectionView(content: {
             ForEach(PasswordSettings.AdditionalSetting.allCases, content: { setting in
                 CheckBoxView(
                     isOn: .init(
@@ -100,20 +99,18 @@ extension RandomizedView {
     private var separator: some View {
         SectionView(title: nil, content: {
             HStack(spacing: 3, content: {
-                CheckBoxView(isOn: self.$settings.separator.isEnabled)
+                CheckBoxView(isOn: self.$settings.separator.isEnabled, title: "Add a separator every ")
                 
                 HStack(spacing: 3, content: {
-                    Text("Delimeter password with separator every ")
-                    
-                    NumberTextFieldView(value: self.settings.separator.characterChunkCount, range: PasswordSettings.Separator.range, completion: {
-                        self.settings.separator.characterChunkCount = $0
+                    NumberPickerView(value: self.settings.separator.characterChunkQunatity, range: PasswordSettings.Separator.range, completion: {
+                        self.settings.separator.characterChunkQunatity = $0
                     })
                     
                     Text(" characters")
                 })
                     .disabled(!self.settings.separator.isEnabled)
-                    .foregroundColor(self.settings.separator.isEnabled ? .primary : .secondary)
             })
+                .foregroundColor(self.settings.separator.isEnabled ? .primary : .secondary)
         })
     }
 }
@@ -124,6 +121,6 @@ struct RandomizedView_Previews: PreviewProvider {
         RandomizedView()
             .environmentObject(PasswordSettings())
         
-            .frame(width: MainLayout.viewSize.width)
+            .frame(width: MainView.Layout.view.width)
     }
 }
