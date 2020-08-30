@@ -55,8 +55,8 @@ extension MainView {
     }
     
     private var count: some View {
-        HStack(spacing: 3, content: {
-            NumberTextFieldView(value: $settings.count, range: PasswordSettings.countRange)
+        HStack(spacing: 0, content: {
+            NumberTextFieldView(value: settings.count, range: PasswordSettings.countRange, completion: { self.settings.count = $0 })
             
             Stepper("", value: self.$settings.count, in: PasswordSettings.countRange)
                 .frame(height: 22, alignment: .bottom)  // Stepper is broken otherwise
@@ -80,18 +80,19 @@ extension MainView {
     
     private var length: some View {
         HStack(spacing: 3, content: {
-            LogarithmicSliderView(value: $settings.length, range: PasswordSettings.lengthRange)
+            LogarithmicSliderView(value: $settings.characterLength, range: PasswordSettings.lengthRange)
                 .frame(minWidth: 100, maxWidth: 200)
             
-            NumberTextFieldView(value: $settings.length, range: PasswordSettings.lengthRange)
+            NumberTextFieldView(value: settings.characterLength, range: PasswordSettings.lengthRange, completion: { self.settings.characterLength = $0 })
             
-            Stepper("", value: self.$settings.length, in: PasswordSettings.lengthRange)
+            Stepper("", value: self.$settings.characterLength, in: PasswordSettings.lengthRange)
                 .frame(height: 22, alignment: .bottom)  // Stepper is broken otherwise
         })
     }
     
     private var generate: some View {
-        Button(action: {  }, label: { Text("Generate") })
+        Button(action: { PasswordGenerator.shared.generate(completion: { print($0) }) }, label: { Text("Generate") })
+            .disabled(settings.characters.allTypes.filter { $0.isIncluded }.isEmpty)
     }
 }
 

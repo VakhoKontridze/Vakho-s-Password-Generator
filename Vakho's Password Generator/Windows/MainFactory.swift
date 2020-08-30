@@ -21,7 +21,7 @@ final class MainFactory {
 
 // MARK:- Window
 extension MainFactory {
-    func createWindow() {
+    func createWindow(settings: PasswordSettings) {
         // If window exists, brings to front
         guard window == nil else {
             window.makeKeyAndOrderFront(nil)
@@ -53,7 +53,7 @@ extension MainFactory {
         // Places view
         window.contentView = NSHostingView(rootView:
             MainView()
-                .environmentObject(PasswordSettings())
+                .environmentObject(settings)
         )
     }
 }

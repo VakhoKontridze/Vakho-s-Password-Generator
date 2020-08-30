@@ -7,19 +7,20 @@
 //
 
 import Foundation
-import Combine
 
 // MARK:- Chracters
 extension PasswordSettings {
-    final class Characters: ObservableObject {
+    struct Characters {
         // MARK: Properties
-        @Published var lowercase: CharacterType
-        @Published var uppercase: CharacterType
-        @Published var digits: CharacterType
-        @Published var symbols: CharacterType
-        @Published var ambiguous: CharacterType
+        var lowercase: CharacterType
+        var uppercase: CharacterType
+        var digits: CharacterType
+        var symbols: CharacterType
+        var ambiguous: CharacterType
         
-        var allCases: [CharacterType] { [lowercase, uppercase, digits, symbols, ambiguous] }
+        var allTypes: [CharacterType] { [lowercase, uppercase, digits, symbols, ambiguous] }
+        
+        var length: Int { allTypes.map { $0.count }.reduce(0, +) }
         
         static var consecutiveInAlphabet: String = PasswordSettings.CharacterSet.lowercase.characters
         static var consecutiveInNumbers: String = PasswordSettings.CharacterSet.digits.characters
@@ -40,8 +41,6 @@ extension PasswordSettings {
             "zx", "xc", "cv", "vb", "bn", "nm"
         ]
         
-        var subscriptions: Set<AnyCancellable> = []
-        
         // MARK: Initializers
         init() {
             lowercase = .init(characters: .lowercase, isIncluded: true)
@@ -49,19 +48,38 @@ extension PasswordSettings {
             digits = .init(characters: .digits, isIncluded: true)
             symbols = .init(characters: .symbols, isIncluded: true)
             ambiguous = .init(characters: .ambiguous, isIncluded: false)
-            
-            allCases.forEach { subscriptions.insert($0.objectWillChange.sink(receiveValue: { [weak self] in self?.objectWillChange.send() })) }
+        }
+        
+        // MARK: Methods
+        mutating func setCheck(to isIncluded: Bool, for type: CharacterSet) {
+            switch type {
+            case .lowercase: lowercase.isIncluded = isIncluded
+            case .uppercase: uppercase.isIncluded = isIncluded
+            case .digits: digits.isIncluded = isIncluded
+            case .symbols: symbols.isIncluded = isIncluded
+            case .ambiguous: ambiguous.isIncluded = isIncluded
+            }
+        }
+        
+        mutating func updateCount(to count: Int, for type: CharacterSet) {
+            switch type {
+            case .lowercase: lowercase.count = count
+            case .uppercase: uppercase.count = count
+            case .digits: digits.count = count
+            case .symbols: symbols.count = count
+            case .ambiguous: ambiguous.count = count
+            }
         }
     }
 }
 
 // MARK:- Chracter Type
 extension PasswordSettings {
-    final class CharacterType: NSObject, ObservableObject {
+    struct CharacterType: Hashable {
         // MARK: Properties
         let characters: CharacterSet
-        @Published var isIncluded: Bool
-        @Published var count: Int!
+        var isIncluded: Bool
+        var count: Int = 0
 
         // MARK: Initializers
         init(characters: CharacterSet, isIncluded: Bool) {
@@ -109,6 +127,28 @@ extension PasswordSettings {
             case .digits: return "2"
             case .symbols: return "!"
             case .ambiguous: return "`"
+            }
+        }
+        
+        func standardWegiths(readability: PasswordSettings.Readability) -> Int {
+            switch (readability, self) {
+            case (.low, .lowercase): return 50
+            case (.low, .uppercase): return 35
+            case (.low, .digits): return 15
+            case (.low, .symbols): return 9
+            case (.low, .ambiguous): return 3
+
+            case (.medium, .lowercase): return 75
+            case (.medium, .uppercase): return 25
+            case (.medium, .digits): return 10
+            case (.medium, .symbols): return 6
+            case (.medium, .ambiguous): return 2
+
+            case (.high, .lowercase): return 100
+            case (.high, .uppercase): return 15
+            case (.high, .digits): return 5
+            case (.high, .symbols): return 3
+            case (.high, .ambiguous): return 1
             }
         }
     }

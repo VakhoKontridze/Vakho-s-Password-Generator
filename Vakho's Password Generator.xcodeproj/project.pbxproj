@@ -33,6 +33,7 @@
 		879ED84424FAD9CC000C4856 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84324FAD9CC000C4856 /* Int.swift */; };
 		879ED84624FAE889000C4856 /* NumberTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84524FAE889000C4856 /* NumberTextFieldView.swift */; };
 		879ED84824FB8FAD000C4856 /* LogarithmicSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84724FB8FAD000C4856 /* LogarithmicSliderView.swift */; };
+		879ED84A24FBC1F8000C4856 /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84924FBC1F8000C4856 /* PasswordGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		879ED84324FAD9CC000C4856 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		879ED84524FAE889000C4856 /* NumberTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTextFieldView.swift; sourceTree = "<group>"; };
 		879ED84724FB8FAD000C4856 /* LogarithmicSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogarithmicSliderView.swift; sourceTree = "<group>"; };
+		879ED84924FBC1F8000C4856 /* PasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 		879ED83E24FABC39000C4856 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				879ED84924FBC1F8000C4856 /* PasswordGenerator.swift */,
 				873415F424FAA7AF00B6DB46 /* RandomPasswordGenerator.swift */,
 				873415FB24FAB7D200B6DB46 /* RandomSinglePasswordGenerator.swift */,
 			);
@@ -290,6 +293,7 @@
 				870DFD6124FA6C6E00FFA87F /* PasswordSettings.swift in Sources */,
 				870DFD6924FA76A600FFA87F /* Colors.swift in Sources */,
 				879ED84024FAD376000C4856 /* String.swift in Sources */,
+				879ED84A24FBC1F8000C4856 /* PasswordGenerator.swift in Sources */,
 				870DFD4D24FA5A1000FFA87F /* AppDelegate.swift in Sources */,
 				870DFD4E24FA5A1000FFA87F /* main.swift in Sources */,
 				870DFD4824FA5A1000FFA87F /* Characters.swift in Sources */,

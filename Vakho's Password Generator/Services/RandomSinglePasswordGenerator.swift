@@ -14,6 +14,7 @@ final class RandomSinglePasswordGenerator {
     private let length: Int
     private var characters: PasswordSettings.Characters
     private let additionalSettings: Set<PasswordSettings.AdditionalSetting>
+    private let separator: PasswordSettings.Separator
 
     private var password: String = ""
     
@@ -21,13 +22,16 @@ final class RandomSinglePasswordGenerator {
     init(
         length: Int,
         characters: PasswordSettings.Characters,
-        additionalSettings: Set<PasswordSettings.AdditionalSetting>
+        additionalSettings: Set<PasswordSettings.AdditionalSetting>,
+        separator: PasswordSettings.Separator
     ) {
         self.length = length
         self.characters = characters
         self.additionalSettings = additionalSettings
+        self.separator = separator
     }
 }
+
 
 // MARK:- Generate
 extension RandomSinglePasswordGenerator {
@@ -44,6 +48,8 @@ extension RandomSinglePasswordGenerator {
 private extension RandomSinglePasswordGenerator {
     func retrieveFirstCharacter() {
         guard additionalSettings.contains(.startsWithLetter) else { return }
+        guard characters.lowercase.isIncluded || characters.uppercase.isIncluded else { return }
+        
         guard let characterType: PasswordSettings.CharacterSet = [.lowercase, .uppercase].randomElement() else { return }
         guard let character = characterType.characters(includesSimilar: additionalSettings.contains(.similarCharacters)).randomElement() else { return }
         
@@ -57,16 +63,23 @@ private extension RandomSinglePasswordGenerator {
     }
     
     func retrieveCharacters() -> Bool {
-        let pool: String = {
+        password += {
             var pool: String = ""
             
-            for type in characters.allCases {
+            for type in characters.allTypes.filter({ $0.isIncluded }) {
                 type.count.times { pool.append(self.retrieveRandomCharacter(from: type.characters)) }
             }
 
             return String(pool.shuffled())
         }()
-        password += pool
+        
+        if separator.isEnabled {
+            let rawString: JoinedSequence<[[String.Element]]> = Array(password)
+                .chunked(into: separator.characterChunkCount)
+                .joined(separator: PasswordSettings.Separator.separator)
+            
+            password = .init(rawString)
+        }
         
         guard password.count == length else { return false }
         
@@ -144,5 +157,14 @@ private extension RandomSinglePasswordGenerator {
         }
         
         return nil
+    }
+}
+
+// MARK:- Chunks
+private extension Array {
+    func chunked(into size: Int) -> [[Element]] {
+        stride(from: 0, to: count, by: size).map {
+            Array(self[$0 ..< Swift.min($0 + size, count)])
+        }
     }
 }

@@ -13,5 +13,4 @@ extension PasswordSettings {
     enum PasswordType: Int, CaseIterable {
         case randomized, verbal
     }
-
 }

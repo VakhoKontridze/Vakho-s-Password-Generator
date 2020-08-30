@@ -10,12 +10,16 @@ import Cocoa
 import SwiftUI
 
 // MARK: App Delegate
-/*@NSApplicationMain*/ class AppDelegate: NSObject {}
+/*@NSApplicationMain*/ class AppDelegate: NSObject {
+    private let passwordSettings: PasswordSettings = .init()
+}
 
 // MARK:- App Delegate
 extension AppDelegate: NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        MainFactory.shared.createWindow()
+        PasswordGenerator.shared.settings = passwordSettings
+        
+        MainFactory.shared.createWindow(settings: passwordSettings)
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {

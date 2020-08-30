@@ -49,7 +49,7 @@ extension SectionView {
 }
 
 // MARK:- Preview
-struct FormView_Previews: PreviewProvider {
+struct SectionView_Previews: PreviewProvider {
     static var previews: some View {
         SectionView(title: "Title", content: {
             ForEach(PasswordSettings.CharacterSet.allCases, content: { characters in

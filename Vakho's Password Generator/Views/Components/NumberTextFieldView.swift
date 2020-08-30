@@ -11,15 +11,17 @@ import SwiftUI
 // MARK:- Number Text Field View
 struct NumberTextFieldView: View {
     // MARK: Properties
-    @Binding private var value: Int
+    private let value: Int
+    private let range: ClosedRange<Int>
+    private let completion: ((Int) -> Void)?
+    
     @State private var rawValue: String = ""
     
-    private let range: ClosedRange<Int>
-    
     // MARK: Initializers
-    init(value: Binding<Int>, range: ClosedRange<Int>) {
-        self._value = value
+    init(value: Int, range: ClosedRange<Int>, completion: ((Int) -> Void)? = nil) {
+        self.value = value
         self.range = range
+        self.completion = completion
     }
 }
 
@@ -45,17 +47,19 @@ extension NumberTextFieldView {
                     }
                 }()
                 
-                self.value = value
+                self.completion?(value)
             }
         )
             .frame(width: 40)
+            
             .multilineTextAlignment(.trailing)
+            .font(.system(.footnote, design: .monospaced))
     }
 }
 
 // MARK:- Preview
 struct NumberTextFieldView_Previews: PreviewProvider {
     static var previews: some View {
-        NumberTextFieldView(value: .constant(10), range: 1...100)
+        NumberTextFieldView(value: 10, range: 1...100)
     }
 }

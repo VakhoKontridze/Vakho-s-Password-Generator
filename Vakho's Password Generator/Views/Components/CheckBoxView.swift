@@ -13,10 +13,18 @@ struct CheckBoxView: View {
     // MARK: Properties
     @Binding private var isOn: Bool
     
-    private let title: String
-    private let details: String
+    private let title: String?
+    private let details: String?
     
     // MARK: Initializers
+    init(isOn: Binding<Bool>) {
+        self.init(isOn: isOn, title: nil, details: nil)
+    }
+    
+    init(isOn: Binding<Bool>, title: String) {
+        self.init(isOn: isOn, title: title, details: nil)
+    }
+    
     init(isOn: Binding<Bool>, characters: PasswordSettings.CharacterSet) {
         self.init(isOn: isOn, title: characters.title, details: characters.details)
     }
@@ -25,7 +33,7 @@ struct CheckBoxView: View {
         self.init(isOn: isOn, title: setting.title, details: setting.details)
     }
     
-    private init(isOn: Binding<Bool>, title: String, details: String) {
+    private init(isOn: Binding<Bool>, title: String?, details: String?) {
         self._isOn = isOn
         self.title = title
         self.details = details
@@ -37,11 +45,15 @@ extension CheckBoxView {
     var body: some View {
         Toggle(isOn: $isOn, label: {
             VStack(alignment: .leading, content: {
-                Text(title)
+                if title != nil {
+                    Text(title ?? "")
+                }
 
-                Text(details)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+                if details != nil {
+                    Text(details ?? "")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
             })
                 .padding(.leading, 5)
         })
