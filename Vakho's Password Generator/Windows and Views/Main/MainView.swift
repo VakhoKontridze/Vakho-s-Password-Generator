@@ -20,7 +20,7 @@ extension MainView {
     var body: some View {
         VStack(content: {
             basic
-            RandomizedView()
+            contextualSettings
             generate
         })
             .frame(
@@ -57,16 +57,16 @@ extension MainView {
             Text("Length: ")
                 .frame(width: Layout.header.width, alignment: .leading)
             
-            LogarithmicSliderView(value: $settings.characterLength, range: PasswordSettings.lengthRange)
+            LogarithmicSliderView(value: $settings.length, range: PasswordSettings.lengthRange)
                 .frame(width: Layout.slider.width)
                 .padding(.trailing, 5)
             
-            NumberPickerView(value: settings.characterLength, range: PasswordSettings.lengthRange, completion: {
-                self.settings.characterLength = $0
+            NumberPickerView(value: settings.length, range: PasswordSettings.lengthRange, completion: {
+                self.settings.length = $0
             })
             
             if settings.separator.isEnabled {
-                Text("+ \(settings.separator.length(characterLength: settings.length)) separators")
+                Text("+ \(settings.separator.length(characterLength: settings.lengthWithSeparator)) separators")
                     .padding(.leading, 10)
                     .foregroundColor(.secondary)
             }
@@ -95,6 +95,16 @@ extension MainView {
                 })
             })
                 .frame(width: Layout.typePicker.width)
+        })
+    }
+    
+    private var contextualSettings: some View {
+        Group(content: {
+            if self.settings.type == .randomized {
+                RandomizedView()
+            } else {
+                EmptyView()
+            }
         })
     }
     

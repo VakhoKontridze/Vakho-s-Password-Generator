@@ -31,13 +31,16 @@ extension PasswordGenerator {
             
             switch self.settings.type {
             case .randomized:
-                RandomPasswordGenerator(settings: self.settings).generate(completion: { password in
+                RandomPasswordGenerator(settings: self.settings).generate(completion: { [weak self] password in
                     completion(password)
-                    return self.shouldContinue
+                    return self?.shouldContinue ?? false
                 })
             
             case .verbal:
-                break // ???
+                VerbalPasswordGenerator(settings: self.settings).generate(completion: { [weak self] password in
+                    completion(password)
+                    return self?.shouldContinue ?? false
+                })
             }
         })
     }

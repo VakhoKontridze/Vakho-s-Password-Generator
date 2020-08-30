@@ -40,9 +40,8 @@ struct ResultsView: View {
 extension ResultsView {
     var body: some View {
         VStack(content: {
-            progressAndBackButton
+            header
             passwordsList
-            instructions
         })
             .frame(width: Layout.window.width, height: Layout.window.height)
             .padding(10)
@@ -52,16 +51,26 @@ extension ResultsView {
             .onAppear(perform: fetch)
     }
     
-    private var progressAndBackButton: some View {
+    private var header: some View {
         HStack(content: {
-            Button(action: {
-                self.cancellFetch()
-                self.presentationMode.wrappedValue.dismiss()
-            }, label: { Text("Back") })
+            Group(content: {
+                Button(action: {
+                    self.cancellFetch()
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: { Text("Back") })
+            })
+                .frame(width: Layout.headerCornerItem.width, alignment: .leading)
+            
+            Spacer()
+            
+            Text(clipboardMessageIsShowing ? "Password has been copied to the clipboard" : "Double-tap a password to copy")
+                .font(.footnote)
+                .foregroundColor(.secondary)
             
             Spacer()
             
             Text(progress)
+                .frame(width: Layout.headerCornerItem.width, alignment: .trailing)
                 .font(.system(.caption, design: .monospaced))
                 .foregroundColor(.secondary)
         })
@@ -109,12 +118,6 @@ extension ResultsView {
                 .font(.subheadline)
         })
             .onTapGesture(count: 2, perform: { self.copy(at: i) })
-    }
-    
-    private var instructions: some View {
-        Text(clipboardMessageIsShowing ? "Password has been copied to the clipboard" : "Double-tap a password to copy")
-            .font(.footnote)
-            .foregroundColor(.secondary)
     }
 }
 

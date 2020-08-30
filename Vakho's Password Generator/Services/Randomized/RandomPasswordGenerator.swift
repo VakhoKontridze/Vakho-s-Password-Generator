@@ -8,25 +8,25 @@
 
 import Foundation
 
-// MARK:- Random Generator
+// MARK:- Random Password Generator
 final class RandomPasswordGenerator {
     // MARK: Properties
     private var passwordsLeftToGenerate: Int
     
-    private var characterLength: Int
-    private var length: Int
+    private let length: Int
+    private let lengthWithSeparator: Int
     
     private var characters: PasswordSettings.Characters
-    private var readability: PasswordSettings.Readability
-    private var additionalSettings: Set<PasswordSettings.AdditionalSetting>
-    private var separator: PasswordSettings.Separator
+    private let readability: PasswordSettings.Readability
+    private let additionalSettings: Set<PasswordSettings.AdditionalSetting>
+    private let separator: PasswordSettings.Separator
     
     // MARK: Initializers
     init(settings: PasswordSettings) {
         self.passwordsLeftToGenerate = settings.quantity
         
-        self.characterLength = settings.characterLength
         self.length = settings.length
+        self.lengthWithSeparator = settings.lengthWithSeparator
         
         self.characters = settings.characters
         self.readability = settings.readability
@@ -42,7 +42,7 @@ extension RandomPasswordGenerator {
         
         while passwordsLeftToGenerate > 0 {
             let generator: RandomSinglePasswordGenerator = .init(
-                length: length,
+                length: lengthWithSeparator,
                 characters: characters,
                 additionalSettings: additionalSettings,
                 separator: separator
@@ -78,7 +78,7 @@ private extension RandomPasswordGenerator {
                 }()
 
                 let ratio: Double = Double(weight) / Double(totalWeight)
-                let qunatity: Double = Double(characterLength) * ratio
+                let qunatity: Double = Double(length) * ratio
 
                 return .init(qunatity.rounded())
             }()
@@ -88,8 +88,8 @@ private extension RandomPasswordGenerator {
     }
     
     func retreiveQunatities() {
-        while characters.length != characterLength {
-            var difference: Int = characterLength - characters.length
+        while characters.length != length {
+            var difference: Int = length - characters.length
             var differenceExists: Bool { difference != 0 }
             let increment: Int = difference > 0 ? 1 : -1
             
