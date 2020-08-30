@@ -52,7 +52,7 @@ extension SectionView {
 struct FormView_Previews: PreviewProvider {
     static var previews: some View {
         SectionView(title: "Title", content: {
-            ForEach(PasswordSettings.PasswordSettingsRandomized.CharacterSet.allCases, content: { characters in
+            ForEach(PasswordSettings.CharacterSet.allCases, content: { characters in
                 CheckBoxView(isOn: .constant(true), characters: characters)
             })
         })

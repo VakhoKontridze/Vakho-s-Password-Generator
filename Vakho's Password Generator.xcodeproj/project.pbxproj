@@ -17,20 +17,21 @@
 		870DFD4D24FA5A1000FFA87F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD4624FA5A1000FFA87F /* AppDelegate.swift */; };
 		870DFD4E24FA5A1000FFA87F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD4724FA5A1000FFA87F /* main.swift */; };
 		870DFD5224FA5A6C00FFA87F /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD5124FA5A6C00FFA87F /* Texts.swift */; };
-		870DFD5524FA5B6100FFA87F /* PasswordSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD5424FA5B6100FFA87F /* PasswordSettings.swift */; };
 		870DFD5724FA5CFC00FFA87F /* PasswordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD5624FA5CFC00FFA87F /* PasswordType.swift */; };
 		870DFD5924FA5D9900FFA87F /* AdditionalSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD5824FA5D9900FFA87F /* AdditionalSetting.swift */; };
 		870DFD5B24FA5ED300FFA87F /* Readability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD5A24FA5ED300FFA87F /* Readability.swift */; };
-		870DFD5D24FA605B00FFA87F /* PasswordSettingsRandomized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD5C24FA605B00FFA87F /* PasswordSettingsRandomized.swift */; };
-		870DFD6124FA6C6E00FFA87F /* PasswordSettingsBasic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD6024FA6C6E00FFA87F /* PasswordSettingsBasic.swift */; };
-		870DFD6324FA6C7E00FFA87F /* PasswordSettingsVerbal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD6224FA6C7E00FFA87F /* PasswordSettingsVerbal.swift */; };
+		870DFD6124FA6C6E00FFA87F /* PasswordSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD6024FA6C6E00FFA87F /* PasswordSettings.swift */; };
 		870DFD6524FA74A900FFA87F /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD6424FA74A900FFA87F /* Separator.swift */; };
 		870DFD6724FA756600FFA87F /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD6624FA756600FFA87F /* SectionView.swift */; };
 		870DFD6924FA76A600FFA87F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD6824FA76A600FFA87F /* Colors.swift */; };
 		873415F124FA843E00B6DB46 /* CloserRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873415F024FA843E00B6DB46 /* CloserRange.swift */; };
 		873415F324FA921A00B6DB46 /* RandomizedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873415F224FA921A00B6DB46 /* RandomizedView.swift */; };
-		873415F524FAA7AF00B6DB46 /* RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873415F424FAA7AF00B6DB46 /* RandomGenerator.swift */; };
-		873415F724FAAB5C00B6DB46 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873415F624FAAB5C00B6DB46 /* Set.swift */; };
+		873415F524FAA7AF00B6DB46 /* RandomPasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873415F424FAA7AF00B6DB46 /* RandomPasswordGenerator.swift */; };
+		873415FC24FAB7D200B6DB46 /* RandomSinglePasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873415FB24FAB7D200B6DB46 /* RandomSinglePasswordGenerator.swift */; };
+		879ED84024FAD376000C4856 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED83F24FAD376000C4856 /* String.swift */; };
+		879ED84224FAD37C000C4856 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84124FAD37C000C4856 /* Character.swift */; };
+		879ED84424FAD9CC000C4856 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84324FAD9CC000C4856 /* Int.swift */; };
+		879ED84624FAE889000C4856 /* NumberTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84524FAE889000C4856 /* NumberTextFieldView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,20 +48,21 @@
 		870DFD4624FA5A1000FFA87F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		870DFD4724FA5A1000FFA87F /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		870DFD5124FA5A6C00FFA87F /* Texts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
-		870DFD5424FA5B6100FFA87F /* PasswordSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSettings.swift; sourceTree = "<group>"; };
 		870DFD5624FA5CFC00FFA87F /* PasswordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordType.swift; sourceTree = "<group>"; };
 		870DFD5824FA5D9900FFA87F /* AdditionalSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalSetting.swift; sourceTree = "<group>"; };
 		870DFD5A24FA5ED300FFA87F /* Readability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Readability.swift; sourceTree = "<group>"; };
-		870DFD5C24FA605B00FFA87F /* PasswordSettingsRandomized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSettingsRandomized.swift; sourceTree = "<group>"; };
-		870DFD6024FA6C6E00FFA87F /* PasswordSettingsBasic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSettingsBasic.swift; sourceTree = "<group>"; };
-		870DFD6224FA6C7E00FFA87F /* PasswordSettingsVerbal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSettingsVerbal.swift; sourceTree = "<group>"; };
+		870DFD6024FA6C6E00FFA87F /* PasswordSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSettings.swift; sourceTree = "<group>"; };
 		870DFD6424FA74A900FFA87F /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separator.swift; sourceTree = "<group>"; };
 		870DFD6624FA756600FFA87F /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		870DFD6824FA76A600FFA87F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		873415F024FA843E00B6DB46 /* CloserRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloserRange.swift; sourceTree = "<group>"; };
 		873415F224FA921A00B6DB46 /* RandomizedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomizedView.swift; sourceTree = "<group>"; };
-		873415F424FAA7AF00B6DB46 /* RandomGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RandomGenerator.swift; path = "Vakho's Password Generator/RandomGenerator.swift"; sourceTree = SOURCE_ROOT; };
-		873415F624FAAB5C00B6DB46 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
+		873415F424FAA7AF00B6DB46 /* RandomPasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RandomPasswordGenerator.swift; path = "Vakho's Password Generator/Services/RandomPasswordGenerator.swift"; sourceTree = SOURCE_ROOT; };
+		873415FB24FAB7D200B6DB46 /* RandomSinglePasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomSinglePasswordGenerator.swift; sourceTree = "<group>"; };
+		879ED83F24FAD376000C4856 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		879ED84124FAD37C000C4856 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		879ED84324FAD9CC000C4856 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		879ED84524FAE889000C4856 /* NumberTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTextFieldView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +100,7 @@
 				870DFD5F24FA68D400FFA87F /* Windows */,
 				870DFD3E24FA5A1000FFA87F /* Views */,
 				870DFD5324FA5B4500FFA87F /* View Models */,
-				873415F424FAA7AF00B6DB46 /* RandomGenerator.swift */,
+				879ED83E24FABC39000C4856 /* Services */,
 				870DFD3C24FA5A1000FFA87F /* Models */,
 				870DFD4F24FA5A5B00FFA87F /* Resources */,
 				870DFD2E24FA59D600FFA87F /* Preview Content */,
@@ -141,6 +143,7 @@
 			children = (
 				870DFD6624FA756600FFA87F /* SectionView.swift */,
 				870DFD4024FA5A1000FFA87F /* CheckBoxView.swift */,
+				879ED84524FAE889000C4856 /* NumberTextFieldView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -168,10 +171,7 @@
 		870DFD5324FA5B4500FFA87F /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				870DFD5424FA5B6100FFA87F /* PasswordSettings.swift */,
-				870DFD6024FA6C6E00FFA87F /* PasswordSettingsBasic.swift */,
-				870DFD5C24FA605B00FFA87F /* PasswordSettingsRandomized.swift */,
-				870DFD6224FA6C7E00FFA87F /* PasswordSettingsVerbal.swift */,
+				870DFD6024FA6C6E00FFA87F /* PasswordSettings.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -197,10 +197,21 @@
 		873415F824FAAB6A00B6DB46 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				879ED84324FAD9CC000C4856 /* Int.swift */,
+				879ED83F24FAD376000C4856 /* String.swift */,
+				879ED84124FAD37C000C4856 /* Character.swift */,
 				873415F024FA843E00B6DB46 /* CloserRange.swift */,
-				873415F624FAAB5C00B6DB46 /* Set.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		879ED83E24FABC39000C4856 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				873415F424FAA7AF00B6DB46 /* RandomPasswordGenerator.swift */,
+				873415FB24FAB7D200B6DB46 /* RandomSinglePasswordGenerator.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,27 +284,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				870DFD6124FA6C6E00FFA87F /* PasswordSettingsBasic.swift in Sources */,
+				870DFD6124FA6C6E00FFA87F /* PasswordSettings.swift in Sources */,
 				870DFD6924FA76A600FFA87F /* Colors.swift in Sources */,
+				879ED84024FAD376000C4856 /* String.swift in Sources */,
 				870DFD4D24FA5A1000FFA87F /* AppDelegate.swift in Sources */,
-				870DFD5524FA5B6100FFA87F /* PasswordSettings.swift in Sources */,
 				870DFD4E24FA5A1000FFA87F /* main.swift in Sources */,
 				870DFD4824FA5A1000FFA87F /* Characters.swift in Sources */,
 				870DFD4A24FA5A1000FFA87F /* MainFactory.swift in Sources */,
 				873415F324FA921A00B6DB46 /* RandomizedView.swift in Sources */,
 				870DFD4924FA5A1000FFA87F /* CheckBoxView.swift in Sources */,
 				873415F124FA843E00B6DB46 /* CloserRange.swift in Sources */,
-				870DFD5D24FA605B00FFA87F /* PasswordSettingsRandomized.swift in Sources */,
 				870DFD4C24FA5A1000FFA87F /* MainView.swift in Sources */,
 				870DFD5224FA5A6C00FFA87F /* Texts.swift in Sources */,
 				870DFD5724FA5CFC00FFA87F /* PasswordType.swift in Sources */,
-				873415F524FAA7AF00B6DB46 /* RandomGenerator.swift in Sources */,
+				879ED84224FAD37C000C4856 /* Character.swift in Sources */,
+				879ED84624FAE889000C4856 /* NumberTextFieldView.swift in Sources */,
+				873415F524FAA7AF00B6DB46 /* RandomPasswordGenerator.swift in Sources */,
 				870DFD6524FA74A900FFA87F /* Separator.swift in Sources */,
 				870DFD5924FA5D9900FFA87F /* AdditionalSetting.swift in Sources */,
 				870DFD5B24FA5ED300FFA87F /* Readability.swift in Sources */,
-				870DFD6324FA6C7E00FFA87F /* PasswordSettingsVerbal.swift in Sources */,
+				873415FC24FAB7D200B6DB46 /* RandomSinglePasswordGenerator.swift in Sources */,
+				879ED84424FAD9CC000C4856 /* Int.swift in Sources */,
 				870DFD6724FA756600FFA87F /* SectionView.swift in Sources */,
-				873415F724FAAB5C00B6DB46 /* Set.swift in Sources */,
 				870DFD4B24FA5A1000FFA87F /* MainLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

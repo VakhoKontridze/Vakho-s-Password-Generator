@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK:- Additional Setting
-extension PasswordSettings.PasswordSettingsRandomized {
+extension PasswordSettings {
     enum AdditionalSetting: Int, CaseIterable, Identifiable {
         case startsWithLetter
         case similarCharacters

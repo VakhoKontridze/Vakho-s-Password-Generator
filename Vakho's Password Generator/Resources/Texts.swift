@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK:- Password Type
-extension PasswordType {
+extension PasswordSettings.PasswordType {
     var title: String {
         switch self {
         case .randomized: return "Randomized"
@@ -19,7 +19,7 @@ extension PasswordType {
 }
 
 // MARK:- Characters
-extension PasswordSettings.PasswordSettingsRandomized.CharacterSet {
+extension PasswordSettings.CharacterSet {
     var title: String {
         switch self {
         case .lowercase: return "Lowercase letters"
@@ -42,7 +42,7 @@ extension PasswordSettings.PasswordSettingsRandomized.CharacterSet {
 }
 
 // MARK:- Additional Setting
-extension PasswordSettings.PasswordSettingsRandomized.AdditionalSetting {
+extension PasswordSettings.AdditionalSetting {
     var title: String {
         switch self {
         case .startsWithLetter: return "Starts with a letter"
@@ -63,13 +63,12 @@ extension PasswordSettings.PasswordSettingsRandomized.AdditionalSetting {
 }
 
 // MARK:- Readability
-extension PasswordSettings.PasswordSettingsRandomized.Readability {
+extension PasswordSettings.Readability {
     var title: String {
         switch self {
         case .low: return "Low"
         case .medium: return "Medium"
         case .high: return "High"
-        case .custom: return "Custom"
         }
     }
 }

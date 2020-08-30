@@ -17,11 +17,11 @@ struct CheckBoxView: View {
     private let details: String
     
     // MARK: Initializers
-    init(isOn: Binding<Bool>, characters: PasswordSettings.PasswordSettingsRandomized.CharacterSet) {
+    init(isOn: Binding<Bool>, characters: PasswordSettings.CharacterSet) {
         self.init(isOn: isOn, title: characters.title, details: characters.details)
     }
     
-    init(isOn: Binding<Bool>, setting: PasswordSettings.PasswordSettingsRandomized.AdditionalSetting) {
+    init(isOn: Binding<Bool>, setting: PasswordSettings.AdditionalSetting) {
         self.init(isOn: isOn, title: setting.title, details: setting.details)
     }
     

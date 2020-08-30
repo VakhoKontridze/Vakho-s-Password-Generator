@@ -51,6 +51,9 @@ extension MainFactory {
         window.standardWindowButton(.zoomButton)?.isEnabled = false
         
         // Places view
-        window.contentView = NSHostingView(rootView: MainView())
+        window.contentView = NSHostingView(rootView:
+            MainView()
+                .environmentObject(PasswordSettings())
+        )
     }
 }

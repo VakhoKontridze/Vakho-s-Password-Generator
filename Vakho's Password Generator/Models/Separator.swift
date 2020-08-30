@@ -9,8 +9,11 @@
 import Foundation
 
 // MARK:- Separator
-final class Separator: ObservableObject {
-    @Published var isEnabled: Bool = false
-    @Published var characterChunkCount = 4
-    @Published var separator: String = "-"
+extension PasswordSettings {
+    final class Separator: ObservableObject {
+        @Published var isEnabled: Bool = false
+        @Published var characterChunkCount = 4
+        @Published var separator: String = "-"
+    }
+
 }

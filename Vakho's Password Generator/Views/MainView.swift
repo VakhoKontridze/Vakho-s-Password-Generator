@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK:- Main View
 struct MainView: View {
-    @ObservedObject private var settings: PasswordSettings = .init()
+    @EnvironmentObject private var settings: PasswordSettings
 }
 
 // MARK:- Body
@@ -18,7 +18,8 @@ extension MainView {
     var body: some View {
         VStack(content: {
             basic
-            RandomizedView(settings: settings)
+            RandomizedView()
+            generate
         })
             .frame(
                 minWidth: MainLayout.viewSize.width,
@@ -37,17 +38,17 @@ extension MainView {
     private var basic: some View {
         SectionView(title: nil, content: {
             HStack(content: {
-                self.generate
+                self.generateHeader
                 self.count
                 self.type
-                self.passwordsOfLength
+                self.passwordsOfLengthHeader
                 self.length
             })
         })
             .frame(height: 31 + 2*20)
     }
     
-    private var generate: some View {
+    private var generateHeader: some View {
         Text("Generate")
             .lineLimit(1)
             .layoutPriority(1)
@@ -55,38 +56,25 @@ extension MainView {
     
     private var count: some View {
         HStack(spacing: 0, content: {
-            TextField(
-                String(self.settings.basic.count),
-                
-                text: .init(
-                    get: {
-                        String(self.settings.basic.count)
-                    },
-                    set: { string in
-                        guard let count = Int(string) else { return }
-                        guard PasswordSettings.PasswordSettingsBasic.countRange.contains(count) else { return }
-                        self.settings.basic.count = count
-                    }
-                )
-            )
-                .frame(width: 40)
-                .multilineTextAlignment(.trailing)
+            NumberTextFieldView(value: settings.count, range: PasswordSettings.countRange, completion: { value in
+                self.settings.count = value
+            })
             
-            Stepper("", value: self.$settings.basic.count, in: PasswordSettings.PasswordSettingsBasic.countRange)
+            Stepper("", value: self.$settings.count, in: PasswordSettings.countRange)
                 .frame(height: 22, alignment: .bottom)  // Stepper is broken otherwise
         })
     }
     
     private var type: some View {
-        Picker(selection: self.$settings.basic.type, label: EmptyView(), content: {
-            ForEach(PasswordType.allCases, id: \.self, content: { type in
+        Picker(selection: self.$settings.type, label: EmptyView(), content: {
+            ForEach(PasswordSettings.PasswordType.allCases, id: \.self, content: { type in
                 Text(type.title)
             })
         })
             .frame(width: 120)
     }
     
-    private var passwordsOfLength: some View {
+    private var passwordsOfLengthHeader: some View {
         Text("passwords, of length")
             .lineLimit(1)
             .layoutPriority(1)
@@ -96,48 +84,32 @@ extension MainView {
         HStack(spacing: 0, content: {
             Slider(
                 value: .init(
-                    get: {
-                        return Double(self.settings.basic.length)
-                    },
-                    set: { value in
-                        let value: Int = .init(value)
-                        guard PasswordSettings.PasswordSettingsBasic.lengthRange.contains(value) else { return }
-                        self.settings.basic.length = value
-                    }
+                    get: { Double(self.settings.length) },
+                    set: { value in self.settings.length = .init(value) }
                 ),
                 
-                in: PasswordSettings.PasswordSettingsBasic.lengthRange.asDouble,
-                
-                onEditingChanged: { _ in }
+                in: PasswordSettings.lengthRange.asDouble
             )
                 .frame(minWidth: 100, maxWidth: 200)
             
-            TextField(
-                String(self.settings.basic.length),
-                
-                text: .init(
-                    get: {
-                        String(self.settings.basic.length)
-                    },
-                    set: { string in
-                        guard let length = Int(string) else { return }
-                        guard PasswordSettings.PasswordSettingsBasic.lengthRange.contains(length) else { return }
-                        self.settings.basic.length = length
-                    }
-                )
-            )
-                .frame(width: 40)
-                .multilineTextAlignment(.trailing)
+            NumberTextFieldView(value: settings.length, range: PasswordSettings.lengthRange, completion: { value in
+                self.settings.length = value
+            })
             
-            Stepper("", value: self.$settings.basic.length, in: PasswordSettings.PasswordSettingsBasic.lengthRange)
+            Stepper("", value: self.$settings.length, in: PasswordSettings.lengthRange)
                 .frame(height: 22, alignment: .bottom)  // Stepper is broken otherwise
         })
+    }
+    
+    private var generate: some View {
+        Button(action: {  }, label: { Text("Generate") })
     }
 }
 
 // MARK:- Preview
-struct ContentView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .environmentObject(PasswordSettings())
     }
 }

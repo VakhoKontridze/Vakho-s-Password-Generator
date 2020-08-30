@@ -10,78 +10,64 @@ import SwiftUI
 
 // MARK:- Randomized View
 struct RandomizedView: View {
-    // MARK: Properties
-    @ObservedObject private var settings: PasswordSettings
-    
-    // MARK: Initializers
-    init(settings: PasswordSettings) {
-        self.settings = settings
-    }
+    @EnvironmentObject private var settings: PasswordSettings
 }
 
 
 // MARK:- Body
 extension RandomizedView {
     var body: some View {
-        VStack(content: {
+        HStack(spacing: 10, content: {
             characters
             additional
         })
     }
     
     private var characters: some View {
-        SectionView(title: "Characters and Readability", content: {
-            HStack(spacing: 0, content: {
-                Text("Readability:")
-                
-                Picker(selection: self.$settings.randomized.readability, label: EmptyView(), content: {
-                    ForEach(PasswordSettings.PasswordSettingsRandomized.Readability.allCases, id: \.self, content: { readability in
-                        Text(readability.title)
-                    })
-                })
-                    .frame(width: 120)
-            })
-            
-            ForEach(PasswordSettings.PasswordSettingsRandomized.CharacterSet.allCases, content: { characters in
+        SectionView(title: "Characters", content: {
+            ForEach(self.settings.characters.allCases, id: \.self, content: { type in
                 HStack(content: {
                     CheckBoxView(
                         isOn: .init(
-                            get: {
-                                self.settings.randomized.characters.map { $0.characters }.contains(characters)
-                            },
-                            set: { isOn in
-//                                switch isOn { // ???
-//                                case false: self.settings.randomized.characters.remove(<#T##member: PasswordSettings.PasswordSettingsRandomized.Characters##PasswordSettings.PasswordSettingsRandomized.Characters#>)
-//                                case true: self.settings.randomized.characters.insert(characters)
-//                                }
-                            }
+                            get: { type.isIncluded },
+                            set: { isOn in self.settings.characters.allCases.first(where: { $0.characters == type.characters })?.isIncluded = isOn }
                         ),
-
-                        characters: characters
+                        
+                        characters: type.characters
                     )
-                        .frame(alignment: .leading)
                     
                     Spacer()
-
-                    Slider(value: .constant(50), in: 1...100)
-                        .frame(width: 100)
                 })
+            })
+            
+            Spacer()
+                .frame(height: 20)
+            
+            HStack(content: {
+                Text("Readability:")
+                
+                Picker(selection: self.$settings.readability, label: EmptyView(), content: {
+                    ForEach(PasswordSettings.Readability.allCases, id: \.self, content: { readability in
+                        Text(readability.title)
+                    })
+                })
+                    .frame(width: 100)
             })
         })
     }
     
     private var additional: some View {
         SectionView(title: "Additional", content: {
-            ForEach(PasswordSettings.PasswordSettingsRandomized.AdditionalSetting.allCases, content: { setting in
+            ForEach(PasswordSettings.AdditionalSetting.allCases, content: { setting in
                 CheckBoxView(
                     isOn: .init(
                         get: {
-                            self.settings.randomized.additional.contains(setting)
+                            self.settings.additionalSettings.contains(setting)
                         },
                         set: { isOn in
                             switch isOn {
-                            case false: self.settings.randomized.additional.remove(setting)
-                            case true: self.settings.randomized.additional.insert(setting)
+                            case false: self.settings.additionalSettings.remove(setting)
+                            case true: self.settings.additionalSettings.insert(setting)
                             }
                         }
                     ),
@@ -96,6 +82,7 @@ extension RandomizedView {
 // MARK:- Preview
 struct RandomizedView_Previews: PreviewProvider {
     static var previews: some View {
-        RandomizedView(settings: .init())
+        RandomizedView()
+            .environmentObject(PasswordSettings())
     }
 }

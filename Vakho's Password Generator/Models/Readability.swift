@@ -9,8 +9,8 @@
 import Foundation
 
 // MARK:- Readability
-extension PasswordSettings.PasswordSettingsRandomized {
+extension PasswordSettings {
     enum Readability: CaseIterable {
-        case low, medium, high, custom
+        case low, medium, high
     }
 }

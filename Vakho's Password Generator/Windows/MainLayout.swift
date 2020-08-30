@@ -11,11 +11,9 @@ import Foundation
 // MARK:- Main Layout
 struct MainLayout {
     // MARK: Properties
-    // Size
     static let windowSize: CGSize = .init(width: viewSize.width, height: viewSize.height + titleBar.height)
     static let viewSize: CGSize = .init(width: 720, height: 720)
     
-    // Title bar
     static let titleBar: CGSize = .init(width: -1, height: 22)
 
     // MARK: Initializers

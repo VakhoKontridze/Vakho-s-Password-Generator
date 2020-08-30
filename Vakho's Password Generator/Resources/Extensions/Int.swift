@@ -1,5 +1,5 @@
 //
-//  PasswordSettingsVerbal.swift
+//  Int.swift
 //  Vakho's Password Generator
 //
 //  Created by Vakhtang Kontridze on 8/29/20.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-// MARK:- Password Settings Verbal
-extension PasswordSettings {
-    final class PasswordSettingsVerbal: ObservableObject {
-        
+extension Int {
+    func times(_ task: () -> Void) {
+        guard self > 0 else { return }
+        for _ in 0..<self { task() }
     }
 }
