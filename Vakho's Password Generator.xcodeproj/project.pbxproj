@@ -32,6 +32,7 @@
 		879ED84224FAD37C000C4856 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84124FAD37C000C4856 /* Character.swift */; };
 		879ED84424FAD9CC000C4856 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84324FAD9CC000C4856 /* Int.swift */; };
 		879ED84624FAE889000C4856 /* NumberTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84524FAE889000C4856 /* NumberTextFieldView.swift */; };
+		879ED84824FB8FAD000C4856 /* LogarithmicSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84724FB8FAD000C4856 /* LogarithmicSliderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		879ED84124FAD37C000C4856 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		879ED84324FAD9CC000C4856 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		879ED84524FAE889000C4856 /* NumberTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTextFieldView.swift; sourceTree = "<group>"; };
+		879ED84724FB8FAD000C4856 /* LogarithmicSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogarithmicSliderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				870DFD6624FA756600FFA87F /* SectionView.swift */,
 				870DFD4024FA5A1000FFA87F /* CheckBoxView.swift */,
 				879ED84524FAE889000C4856 /* NumberTextFieldView.swift */,
+				879ED84724FB8FAD000C4856 /* LogarithmicSliderView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				870DFD5724FA5CFC00FFA87F /* PasswordType.swift in Sources */,
 				879ED84224FAD37C000C4856 /* Character.swift in Sources */,
 				879ED84624FAE889000C4856 /* NumberTextFieldView.swift in Sources */,
+				879ED84824FB8FAD000C4856 /* LogarithmicSliderView.swift in Sources */,
 				873415F524FAA7AF00B6DB46 /* RandomPasswordGenerator.swift in Sources */,
 				870DFD6524FA74A900FFA87F /* Separator.swift in Sources */,
 				870DFD5924FA5D9900FFA87F /* AdditionalSetting.swift in Sources */,

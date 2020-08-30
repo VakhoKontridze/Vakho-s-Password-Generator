@@ -55,10 +55,8 @@ extension MainView {
     }
     
     private var count: some View {
-        HStack(spacing: 0, content: {
-            NumberTextFieldView(value: settings.count, range: PasswordSettings.countRange, completion: { value in
-                self.settings.count = value
-            })
+        HStack(spacing: 3, content: {
+            NumberTextFieldView(value: $settings.count, range: PasswordSettings.countRange)
             
             Stepper("", value: self.$settings.count, in: PasswordSettings.countRange)
                 .frame(height: 22, alignment: .bottom)  // Stepper is broken otherwise
@@ -81,20 +79,11 @@ extension MainView {
     }
     
     private var length: some View {
-        HStack(spacing: 0, content: {
-            Slider(
-                value: .init(
-                    get: { Double(self.settings.length) },
-                    set: { value in self.settings.length = .init(value) }
-                ),
-                
-                in: PasswordSettings.lengthRange.asDouble
-            )
+        HStack(spacing: 3, content: {
+            LogarithmicSliderView(value: $settings.length, range: PasswordSettings.lengthRange)
                 .frame(minWidth: 100, maxWidth: 200)
             
-            NumberTextFieldView(value: settings.length, range: PasswordSettings.lengthRange, completion: { value in
-                self.settings.length = value
-            })
+            NumberTextFieldView(value: $settings.length, range: PasswordSettings.lengthRange)
             
             Stepper("", value: self.$settings.length, in: PasswordSettings.lengthRange)
                 .frame(height: 22, alignment: .bottom)  // Stepper is broken otherwise
