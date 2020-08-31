@@ -15,8 +15,11 @@ final class VerbalPasswordGenerator {
     
     private let length: Int
     
-    private let addedWords: [String]
-    private let excludedWords: [String]
+    private let addedWords: Set<String>
+    private let excludedWords: Set<String>
+    
+    private let addedWordsGroped: [Int: [String]]
+    private let excludedWordsGrouped: [Int: [String]]
     
     // MARK: Initializers
     init(settings: PasswordSettings) {
@@ -26,6 +29,9 @@ final class VerbalPasswordGenerator {
         
         self.addedWords = settings.addedWords
         self.excludedWords = settings.excludedWords
+        
+        self.addedWordsGroped = .init(grouping: settings.addedWords, by: { $0.count })
+        self.excludedWordsGrouped = .init(grouping: settings.excludedWords, by: { $0.count })
     }
 }
 
@@ -44,13 +50,30 @@ extension VerbalPasswordGenerator {
     }
     
     private func generate() -> String? {
-        let password: String = retrieveWordLengths()
-            .compactMap { PasswordSettings.Words.retrieveWord(length: $0) }
-            .reduce("", { $0 + $1 })
+        let wordLengths: [Int] = retrieveWordLengths()
         
-        guard password.count == length else { return nil }
+        var password: String = ""
+        
+        for length in wordLengths {
+            guard let word = retrieveWord(length: length) else { return nil }
+            password += word
+        }
         
         return password
+    }
+    
+    private func retrieveWord(length: Int) -> String? {
+        var loopsLeft: Int = 1000
+        
+        while true {
+            guard loopsLeft > 0 else { return nil }
+            loopsLeft -= 1
+            
+            guard let word = PasswordSettings.Words.retrieveWord(length: length, union: addedWords) else { continue }
+            guard !excludedWords.contains(word) else { continue }
+            
+            return word
+        }
     }
 }
 

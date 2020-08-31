@@ -14,6 +14,7 @@ struct ResultsView: View {
     @EnvironmentObject private var settings: PasswordSettings
     
     @State private var passwords: [String] = []
+    
     private var progress: String {
         let ratio: Double = Double(passwords.count) / Double(settings.quantity)
         let percentage: Double = ratio * 100
@@ -29,11 +30,15 @@ struct ResultsView: View {
         willSet {
             guard newValue == true else { return }
 
-            let _: Timer = .scheduledTimer(withTimeInterval: 3, repeats: false, block: { _ in
+            clipboardMessageTimer?.invalidate()
+            clipboardMessageTimer = nil
+            
+            clipboardMessageTimer = .scheduledTimer(withTimeInterval: 3, repeats: false, block: { _ in
                 self.clipboardMessageIsShowing = false
             })
         }
     }
+    @State private var clipboardMessageTimer: Timer?
 }
 
 // MARK:- Body
@@ -89,7 +94,7 @@ extension ResultsView {
             self.number(i)
             self.password(i: i, password: password)
         })
-            .frame(height: 35)
+            .padding(.trailing, 7)
     }
     
     private func number(_ i: Int) -> some View {
@@ -103,7 +108,8 @@ extension ResultsView {
                 .font(.footnote)
                 .foregroundColor(.secondary)
         })
-            .fixedSize()
+            .frame(height: Layout.row.height)
+            .fixedSize(horizontal: true, vertical: false)
     }
     
     private func password(i: Int, password: String) -> some View {
@@ -111,11 +117,19 @@ extension ResultsView {
             Rectangle()
                 .cornerRadius(10)
                 .foregroundColor(.formBackground)
-
-            Text(password)
-                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            VStack(alignment: .leading, spacing: 3, content: {
+                ForEach(Array(password).chunked(into: 55), id: \.self, content: { chunk in
+                    Text(String(chunk))
+                })
+            })
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                 .padding(.horizontal, 20)
+                .padding(.vertical, 10)
+                
                 .font(.subheadline)
+                .multilineTextAlignment(.leading)
+                .truncationMode(.tail)
         })
             .onTapGesture(count: 2, perform: { self.copy(at: i) })
     }
@@ -143,6 +157,7 @@ private extension ResultsView {
         pasteboard.setString(passwords[index], forType: .string)
         
         clipboardMessageIsShowing = true
+        NSSound(named: "Tink")?.play()
     }
 }
 

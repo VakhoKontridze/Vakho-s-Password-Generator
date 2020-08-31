@@ -50,6 +50,7 @@ extension MainView {
                 self.type
             })
         })
+            .fixedSize(horizontal: false, vertical: true)
     }
     
     private var length: some View {
@@ -103,7 +104,7 @@ extension MainView {
             if self.settings.type == .randomized {
                 RandomizedView()
             } else {
-                EmptyView()
+                VerbalView()
             }
         })
     }

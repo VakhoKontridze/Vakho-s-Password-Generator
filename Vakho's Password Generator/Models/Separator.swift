@@ -15,7 +15,7 @@ extension PasswordSettings {
         var isEnabled: Bool = false
         
         var characterChunkQunatity = 4
-        static let range: ClosedRange<Int> = 4...16
+        static let range: ClosedRange<Int> = 4...64
         
         static let separator: String = "-"
         
