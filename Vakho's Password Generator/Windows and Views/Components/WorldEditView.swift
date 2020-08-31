@@ -16,15 +16,21 @@ extension VerbalView {
         private let title: String
         
         @State private var word: String = ""
-        @Binding private var words: Set<String>
+        private var words: Set<String>
         
-        private let completion: ((String) -> Void)?
+        private let addHandler: ((String) -> Void)?
+        private let deleteHandler: ((String) -> Void)?
         
         // MARK: Initializers
-        init(title: String, words: Binding<Set<String>>, completion: ((String) -> Void)? = nil) {
+        init(
+            title: String, words: Set<String>,
+            didAdd addHandler: ((String) -> Void)? = nil, didDelete deleteHandler: ((String) -> Void)? = nil
+        ) {
             self.title = title
-            self._words = words
-            self.completion = completion
+            self.words = words
+            
+            self.addHandler = addHandler
+            self.deleteHandler = deleteHandler
         }
     }
 }
@@ -72,7 +78,7 @@ extension VerbalView.WordEditView {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.subheadline)
                 
-                Button(action: { self.words.remove(word) }, label: { Text("Remove") } )
+                Button(action: { self.deleteHandler?(word) }, label: { Text("Remove") } )
                     .buttonStyle(PlainButtonStyle())
                 
                     .font(.caption)
@@ -90,8 +96,7 @@ private extension VerbalView.WordEditView {
         guard !word.isEmpty else { return }
         guard word.count >= 3 else { return }
         
-        words.insert(word)
-        completion?(word)
+        addHandler?(word)
         
         word = ""
     }
@@ -100,7 +105,7 @@ private extension VerbalView.WordEditView {
 // MARK:- Preview
 struct WordEditView_Previews: PreviewProvider {
     static var previews: some View {
-        VerbalView.WordEditView(title: "Added Words", words: .constant(["Abc", "Def", "Ghi"]))
+        VerbalView.WordEditView(title: "Added Words", words: ["Abc", "Def", "Ghi"])
             .frame(width: MainView.Layout.view.width / 2)
     }
 }

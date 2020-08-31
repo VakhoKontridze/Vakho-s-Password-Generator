@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 // MARK:- Password Generator
 final class PasswordGenerator {
@@ -14,6 +15,7 @@ final class PasswordGenerator {
     static let shared: PasswordGenerator = .init()
     
     var settings: PasswordSettings!
+    var managedObjectContext: NSManagedObjectContext!
     
     var shouldContinue: Bool = false    // Since DispatchQueue doesn't suspend process, manual flag is used
     
@@ -31,16 +33,18 @@ extension PasswordGenerator {
             
             switch self.settings.type {
             case .randomized:
-                RandomPasswordGenerator(settings: self.settings).generate(completion: { [weak self] password in
-                    completion(password)
-                    return self?.shouldContinue ?? false
-                })
+                RandomPasswordGenerator(settings: self.settings)
+                    .generate(completion: { [weak self] password in
+                        completion(password)
+                        return self?.shouldContinue ?? false
+                    })
             
             case .verbal:
-                VerbalPasswordGenerator(settings: self.settings).generate(completion: { [weak self] password in
-                    completion(password)
-                    return self?.shouldContinue ?? false
-                })
+                VerbalPasswordGenerator(settings: self.settings, managedObjectContext: self.managedObjectContext)
+                    .generate(completion: { [weak self] password in
+                        completion(password)
+                        return self?.shouldContinue ?? false
+                    })
             }
         })
     }

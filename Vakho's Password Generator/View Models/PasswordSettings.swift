@@ -28,6 +28,6 @@ final class PasswordSettings: ObservableObject {
     var lengthWithSeparator: Int { length + separator.length(characterLength: length) }
     
     // Verbal
-    @Published var addedWords: Set<String> = []
-    @Published var excludedWords: Set<String> = []
+    //@Published var addedWords: Set<String> = []
+    //@Published var excludedWords: Set<String> = []
 }

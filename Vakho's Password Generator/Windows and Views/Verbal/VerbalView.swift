@@ -11,37 +11,39 @@ import SwiftUI
 // MARK:- Verbal View
 struct VerbalView: View {
     @EnvironmentObject private var settings: PasswordSettings
+    @Environment(\.managedObjectContext) var managedObjectContext: NSManagedObjectContext
+    
+    
+    @FetchRequest(fetchRequest: Word.fetchRequest) private var words: FetchedResults<Word>
 }
 
 // MARK:- Body
 extension VerbalView {
     var body: some View {
         HStack(content: {
-            WordEditView(title: "Added Words", words: self.$settings.addedWords, completion: { word in
-                self.settings.excludedWords.remove(word)
-            })
+            WordEditView(
+                title: "Added Words",
+                words: words.addedWords,
+                didAdd: { Word.create($0, isAdded: true, in: self.managedObjectContext) },
+                didDelete: { Word.delete($0, from: self.managedObjectContext) }
+            )
             
-            WordEditView(title: "Excluded Words", words: self.$settings.excludedWords, completion: { word in
-                self.settings.addedWords.remove(word)
-            })
+            WordEditView(
+                title: "Excluded Words",
+                words: words.excludedWords,
+                didAdd: { Word.create($0, isAdded: false, in: self.managedObjectContext) },
+                didDelete: { Word.delete($0, from: self.managedObjectContext) }
+            )
         })
     }
 }
 
 // MARK:- Preview
 struct VerbalView_Previews: PreviewProvider {
-    private static let settings: PasswordSettings = {
-        let settings: PasswordSettings = .init()
-        
-        settings.addedWords = .init(PasswordSettings.Words.words3Characters.prefix(10))
-        settings.excludedWords = .init(PasswordSettings.Words.words4Characters.prefix(10))
-        
-        return settings
-    }()
-    
     static var previews: some View {
         VerbalView()
-            .environmentObject(settings)
+            .environment(\.managedObjectContext, (NSApp.delegate as! AppDelegate).managedObjectContext)
+            .environmentObject(PasswordSettings())
         
             .frame(width: MainView.Layout.view.width)
     }

@@ -28,6 +28,7 @@
 		873415F324FA921A00B6DB46 /* RandomizedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873415F224FA921A00B6DB46 /* RandomizedView.swift */; };
 		873415F524FAA7AF00B6DB46 /* RandomPasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873415F424FAA7AF00B6DB46 /* RandomPasswordGenerator.swift */; };
 		879E6CC924FCCD6A0052A661 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879E6CC824FCCD6A0052A661 /* Array.swift */; };
+		879E6CCE24FCDDDD0052A661 /* Vakho_s_Password_Generator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 879E6CCC24FCDDDD0052A661 /* Vakho_s_Password_Generator.xcdatamodeld */; };
 		879ED84024FAD376000C4856 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED83F24FAD376000C4856 /* String.swift */; };
 		879ED84224FAD37C000C4856 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84124FAD37C000C4856 /* Character.swift */; };
 		879ED84424FAD9CC000C4856 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84324FAD9CC000C4856 /* Int.swift */; };
@@ -48,6 +49,7 @@
 		879ED86B24FC296D000C4856 /* Words8Characters.json in Resources */ = {isa = PBXBuildFile; fileRef = 879ED85D24FC031E000C4856 /* Words8Characters.json */; };
 		879ED87024FC2E0D000C4856 /* VerbalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED86F24FC2E0D000C4856 /* VerbalView.swift */; };
 		879ED87224FC2F62000C4856 /* VerbalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED87124FC2F62000C4856 /* VerbalLayout.swift */; };
+		87F2369A24FCED6B00B28E11 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2369624FCED6B00B28E11 /* Word.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +77,7 @@
 		873415F224FA921A00B6DB46 /* RandomizedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomizedView.swift; sourceTree = "<group>"; };
 		873415F424FAA7AF00B6DB46 /* RandomPasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RandomPasswordGenerator.swift; path = "Vakho's Password Generator/Services/RandomPasswordGenerator.swift"; sourceTree = SOURCE_ROOT; };
 		879E6CC824FCCD6A0052A661 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		879E6CCD24FCDDDD0052A661 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		879ED83F24FAD376000C4856 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		879ED84124FAD37C000C4856 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		879ED84324FAD9CC000C4856 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
@@ -95,6 +98,7 @@
 		879ED86524FC27C8000C4856 /* Words.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Words.swift; sourceTree = "<group>"; };
 		879ED86F24FC2E0D000C4856 /* VerbalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerbalView.swift; sourceTree = "<group>"; };
 		879ED87124FC2F62000C4856 /* VerbalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerbalLayout.swift; sourceTree = "<group>"; };
+		87F2369624FCED6B00B28E11 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,12 +154,8 @@
 		870DFD3C24FA5A1000FFA87F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				870DFD5624FA5CFC00FFA87F /* PasswordType.swift */,
-				870DFD3D24FA5A1000FFA87F /* Characters.swift */,
-				870DFD5824FA5D9900FFA87F /* AdditionalSetting.swift */,
-				870DFD5A24FA5ED300FFA87F /* Readability.swift */,
-				870DFD6424FA74A900FFA87F /* Separator.swift */,
-				879ED86524FC27C8000C4856 /* Words.swift */,
+				879E6CCB24FCDDBE0052A661 /* Persistent */,
+				879E6CCA24FCDDB30052A661 /* Runtime */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -232,6 +232,28 @@
 				879ED85424FBE304000C4856 /* Collection.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		879E6CCA24FCDDB30052A661 /* Runtime */ = {
+			isa = PBXGroup;
+			children = (
+				870DFD5624FA5CFC00FFA87F /* PasswordType.swift */,
+				870DFD3D24FA5A1000FFA87F /* Characters.swift */,
+				870DFD5824FA5D9900FFA87F /* AdditionalSetting.swift */,
+				870DFD5A24FA5ED300FFA87F /* Readability.swift */,
+				870DFD6424FA74A900FFA87F /* Separator.swift */,
+				879ED86524FC27C8000C4856 /* Words.swift */,
+			);
+			path = Runtime;
+			sourceTree = "<group>";
+		};
+		879E6CCB24FCDDBE0052A661 /* Persistent */ = {
+			isa = PBXGroup;
+			children = (
+				879E6CCC24FCDDDD0052A661 /* Vakho_s_Password_Generator.xcdatamodeld */,
+				87F2369624FCED6B00B28E11 /* Word.swift */,
+			);
+			path = Persistent;
 			sourceTree = "<group>";
 		};
 		879ED83E24FABC39000C4856 /* Services */ = {
@@ -393,8 +415,10 @@
 				879ED84624FAE889000C4856 /* NumberPickerView.swift in Sources */,
 				879ED85124FBE02F000C4856 /* ResultsView.swift in Sources */,
 				879ED84824FB8FAD000C4856 /* LogarithmicSliderView.swift in Sources */,
+				87F2369A24FCED6B00B28E11 /* Word.swift in Sources */,
 				873415F524FAA7AF00B6DB46 /* RandomPasswordGenerator.swift in Sources */,
 				879ED85524FBE304000C4856 /* Collection.swift in Sources */,
+				879E6CCE24FCDDDD0052A661 /* Vakho_s_Password_Generator.xcdatamodeld in Sources */,
 				879ED87224FC2F62000C4856 /* VerbalLayout.swift in Sources */,
 				870DFD6524FA74A900FFA87F /* Separator.swift in Sources */,
 				870DFD5924FA5D9900FFA87F /* AdditionalSetting.swift in Sources */,
@@ -590,6 +614,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		879E6CCC24FCDDDD0052A661 /* Vakho_s_Password_Generator.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				879E6CCD24FCDDDD0052A661 /* Model.xcdatamodel */,
+			);
+			currentVersion = 879E6CCD24FCDDDD0052A661 /* Model.xcdatamodel */;
+			path = Vakho_s_Password_Generator.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 870DFD1D24FA59D300FFA87F /* Project object */;
 }

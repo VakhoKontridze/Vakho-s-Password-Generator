@@ -6,7 +6,7 @@
 //  Copyright © 2020 Vakhtang Kontridze. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 // MARK:- Verbal Password Generator
 final class VerbalPasswordGenerator {
@@ -22,16 +22,16 @@ final class VerbalPasswordGenerator {
     private let excludedWordsGrouped: [Int: [String]]
     
     // MARK: Initializers
-    init(settings: PasswordSettings) {
+    init(settings: PasswordSettings, managedObjectContext: NSManagedObjectContext) {
         self.passwordsLeftToGenerate = settings.quantity
         
         self.length = settings.length
         
-        self.addedWords = settings.addedWords
-        self.excludedWords = settings.excludedWords
-        
-        self.addedWordsGroped = .init(grouping: settings.addedWords, by: { $0.count })
-        self.excludedWordsGrouped = .init(grouping: settings.excludedWords, by: { $0.count })
+        self.addedWords = Word.fetch(from: managedObjectContext).addedWords
+        self.excludedWords = Word.fetch(from: managedObjectContext).excludedWords
+
+        self.addedWordsGroped = .init(grouping: addedWords, by: { $0.count })
+        self.excludedWordsGrouped = .init(grouping: excludedWords, by: { $0.count })
     }
 }
 
