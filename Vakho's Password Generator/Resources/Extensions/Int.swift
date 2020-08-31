@@ -9,8 +9,8 @@
 import Foundation
 
 extension Int {
-    func times(_ task: () -> Void) {
+    func times(_ block: () -> Void) {
         guard self > 0 else { return }
-        for _ in 0..<self { task() }
+        for _ in 0..<self { block() }
     }
 }

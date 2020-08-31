@@ -18,7 +18,7 @@ struct ResultsView: View {
     private var progress: String {
         let ratio: Double = Double(passwords.count) / Double(settings.quantity)
         let percentage: Double = ratio * 100
-        let percentageRounded: Int = .init(percentage.rounded())
+        let percentageRounded: String = .init(format: "%.1f", percentage)
         
         let progress: String = "\(passwords.count)/\(settings.quantity) (\(percentageRounded)%)"
         
@@ -119,7 +119,7 @@ extension ResultsView {
                 .foregroundColor(.formBackground)
             
             VStack(alignment: .leading, spacing: 3, content: {
-                ForEach(Array(password).chunked(into: 55), id: \.self, content: { chunk in
+                ForEach(Array(password).chunked(into: 50), id: \.self, content: { chunk in
                     Text(String(chunk))
                 })
             })

@@ -27,7 +27,6 @@
 		8723360E24FC3335004F868D /* WorldEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8723360D24FC3335004F868D /* WorldEditView.swift */; };
 		873415F324FA921A00B6DB46 /* RandomizedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873415F224FA921A00B6DB46 /* RandomizedView.swift */; };
 		873415F524FAA7AF00B6DB46 /* RandomPasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873415F424FAA7AF00B6DB46 /* RandomPasswordGenerator.swift */; };
-		873415FC24FAB7D200B6DB46 /* RandomSinglePasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873415FB24FAB7D200B6DB46 /* RandomSinglePasswordGenerator.swift */; };
 		879E6CC924FCCD6A0052A661 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879E6CC824FCCD6A0052A661 /* Array.swift */; };
 		879ED84024FAD376000C4856 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED83F24FAD376000C4856 /* String.swift */; };
 		879ED84224FAD37C000C4856 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84124FAD37C000C4856 /* Character.swift */; };
@@ -74,8 +73,7 @@
 		870DFD6824FA76A600FFA87F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8723360D24FC3335004F868D /* WorldEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldEditView.swift; sourceTree = "<group>"; };
 		873415F224FA921A00B6DB46 /* RandomizedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomizedView.swift; sourceTree = "<group>"; };
-		873415F424FAA7AF00B6DB46 /* RandomPasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RandomPasswordGenerator.swift; path = "Vakho's Password Generator/Services/Randomized/RandomPasswordGenerator.swift"; sourceTree = SOURCE_ROOT; };
-		873415FB24FAB7D200B6DB46 /* RandomSinglePasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomSinglePasswordGenerator.swift; sourceTree = "<group>"; };
+		873415F424FAA7AF00B6DB46 /* RandomPasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RandomPasswordGenerator.swift; path = "Vakho's Password Generator/Services/RandomPasswordGenerator.swift"; sourceTree = SOURCE_ROOT; };
 		879E6CC824FCCD6A0052A661 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		879ED83F24FAD376000C4856 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		879ED84124FAD37C000C4856 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
@@ -240,8 +238,8 @@
 			isa = PBXGroup;
 			children = (
 				879ED84924FBC1F8000C4856 /* PasswordGenerator.swift */,
-				879ED85F24FC21D1000C4856 /* Randomized */,
-				879ED86024FC21F3000C4856 /* Verbal */,
+				873415F424FAA7AF00B6DB46 /* RandomPasswordGenerator.swift */,
+				879ED86124FC21FF000C4856 /* VerbalPasswordGenerator.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -285,23 +283,6 @@
 				879ED85D24FC031E000C4856 /* Words8Characters.json */,
 			);
 			path = Words;
-			sourceTree = "<group>";
-		};
-		879ED85F24FC21D1000C4856 /* Randomized */ = {
-			isa = PBXGroup;
-			children = (
-				873415F424FAA7AF00B6DB46 /* RandomPasswordGenerator.swift */,
-				873415FB24FAB7D200B6DB46 /* RandomSinglePasswordGenerator.swift */,
-			);
-			path = Randomized;
-			sourceTree = "<group>";
-		};
-		879ED86024FC21F3000C4856 /* Verbal */ = {
-			isa = PBXGroup;
-			children = (
-				879ED86124FC21FF000C4856 /* VerbalPasswordGenerator.swift */,
-			);
-			path = Verbal;
 			sourceTree = "<group>";
 		};
 		879ED86E24FC2DFF000C4856 /* Verbal */ = {
@@ -418,7 +399,6 @@
 				870DFD6524FA74A900FFA87F /* Separator.swift in Sources */,
 				870DFD5924FA5D9900FFA87F /* AdditionalSetting.swift in Sources */,
 				870DFD5B24FA5ED300FFA87F /* Readability.swift in Sources */,
-				873415FC24FAB7D200B6DB46 /* RandomSinglePasswordGenerator.swift in Sources */,
 				879ED84E24FBDDE8000C4856 /* RandomizedLayout.swift in Sources */,
 				879ED84424FAD9CC000C4856 /* Int.swift in Sources */,
 				870DFD6724FA756600FFA87F /* SectionView.swift in Sources */,

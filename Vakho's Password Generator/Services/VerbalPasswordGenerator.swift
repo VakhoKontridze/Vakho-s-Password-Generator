@@ -40,8 +40,13 @@ extension VerbalPasswordGenerator {
     func generate(completion: (String) -> Bool) -> Void {
         guard safeguard() else { return }
         
+        var passwords: Set<String> = []
+        
         while passwordsLeftToGenerate > 0 {
             guard let password = generate() else { continue }
+            guard !passwords.contains(password) else { continue }
+            
+            passwords.insert(password)
             passwordsLeftToGenerate -= 1
 
             let shouldContinue: Bool = completion(password)
@@ -49,31 +54,17 @@ extension VerbalPasswordGenerator {
         }
     }
     
-    private func generate() -> String? {
+    func generate() -> String? {
         let wordLengths: [Int] = retrieveWordLengths()
         
         var password: String = ""
-        
         for length in wordLengths {
             guard let word = retrieveWord(length: length) else { return nil }
+            guard !password.contains(word) else { return nil }
             password += word
         }
         
         return password
-    }
-    
-    private func retrieveWord(length: Int) -> String? {
-        var loopsLeft: Int = 1000
-        
-        while true {
-            guard loopsLeft > 0 else { return nil }
-            loopsLeft -= 1
-            
-            guard let word = PasswordSettings.Words.retrieveWord(length: length, union: addedWords) else { continue }
-            guard !excludedWords.contains(word) else { continue }
-            
-            return word
-        }
     }
 }
 
@@ -120,5 +111,19 @@ private extension VerbalPasswordGenerator {
         }
         
         return worldLengths.shuffled()
+    }
+}
+
+// MARK: Retreive
+private extension VerbalPasswordGenerator {
+    func retrieveWord(length: Int) -> String? {
+        for _ in 1...10 {
+            guard let word = PasswordSettings.Words.retrieveWord(length: length, union: addedWords) else { continue }
+            guard !excludedWords.contains(word) else { continue }
+            
+            return word
+        }
+        
+        return nil
     }
 }
