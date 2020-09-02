@@ -11,7 +11,7 @@ import SwiftUI
 // MARK:- Results View
 struct ResultsView: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject private var settings: PasswordSettings
+    @EnvironmentObject private var settings: SettingsViewModel
     
     @State private var passwords: [String] = []
     
@@ -138,13 +138,13 @@ extension ResultsView {
 // MARK:- Fetch
 private extension ResultsView {
     func fetch() {
-        PasswordGenerator.shared.generate(completion: { password in
+        PasswordGeneratorController.shared.generate(completion: { password in
             DispatchQueue.main.async(execute: { self.passwords.append(password) })
         })
     }
     
     func cancellFetch() {
-        PasswordGenerator.shared.shouldContinue = false
+        PasswordGeneratorController.shared.shouldContinue = false
     }
 }
 
@@ -165,6 +165,6 @@ private extension ResultsView {
 struct ResultsView_Previews: PreviewProvider {
     static var previews: some View {
         ResultsView()
-            .environmentObject(PasswordSettings())
+            .environmentObject(SettingsViewModel())
     }
 }

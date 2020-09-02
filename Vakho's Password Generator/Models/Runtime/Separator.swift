@@ -9,28 +9,23 @@
 import Foundation
 
 // MARK:- Separator
-extension PasswordSettings {
-    struct Separator {
-        // MARK: Properties
-        var isEnabled: Bool = false
-        
-        var characterChunkQunatity = 4
-        static let range: ClosedRange<Int> = 4...64
-        
-        static let separator: String = "-"
-        
-        // MARK: Methods
-        func length(characterLength: Int) -> Int {
-            // 9    **** **** *
-            // 10   **** **** **
-            // 11   **** **** ***
-            // 12   **** **** ****
-            guard isEnabled else { return 0 }
-            
-            let fullChunks: Int = characterLength / characterChunkQunatity
-            let halfChunk: Int = (characterLength - fullChunks * characterChunkQunatity) > 0 ? 1 : 0
-            
-            return fullChunks + halfChunk - 1
-        }
+struct Separator {
+    // MARK: Properties
+    var isEnabled: Bool = false
+    
+    var characterChunkQuantity = 4
+    static let range: ClosedRange<Int> = 4...64
+    
+    static let separator: String = "-"
+}
+
+// MARK: Length
+extension Separator {
+    func length(from characterLength: Int) -> Int {
+        isEnabled ? Array(1...characterLength).chunked(into: characterChunkQuantity).count - 1 : 0
+    }
+    
+    func totalLength(with characterLength: Int) -> Int {
+        characterLength + length(from: characterLength)
     }
 }

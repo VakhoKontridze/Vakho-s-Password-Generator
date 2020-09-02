@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK:- Verbal View
 struct VerbalView: View {
-    @EnvironmentObject private var settings: PasswordSettings
+    @EnvironmentObject private var settings: SettingsViewModel
     @Environment(\.managedObjectContext) var managedObjectContext: NSManagedObjectContext
     
     
@@ -43,7 +43,7 @@ struct VerbalView_Previews: PreviewProvider {
     static var previews: some View {
         VerbalView()
             .environment(\.managedObjectContext, (NSApp.delegate as! AppDelegate).managedObjectContext)
-            .environmentObject(PasswordSettings())
+            .environmentObject(SettingsViewModel())
         
             .frame(width: MainView.Layout.view.width)
     }

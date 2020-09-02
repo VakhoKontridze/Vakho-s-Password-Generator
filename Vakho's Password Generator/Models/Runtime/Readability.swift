@@ -9,8 +9,8 @@
 import Foundation
 
 // MARK:- Readability
-extension PasswordSettings {
-    enum Readability: CaseIterable {
-        case low, medium, high
-    }
+enum Readability: CaseIterable {
+    case low, medium, high, custom
+    
+    static var defaultCase: Readability { .high }
 }

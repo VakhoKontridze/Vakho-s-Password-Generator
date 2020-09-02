@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK:- Main View
 struct MainView: View {
-    @EnvironmentObject private var settings: PasswordSettings
+    @EnvironmentObject private var settings: SettingsViewModel
     
     @State private var passwordsAreBeingGenerated: Bool = false
 }
@@ -46,7 +46,7 @@ extension MainView {
         SectionView(content: {
             VStack(alignment: .leading, content: {
                 self.length
-                self.qunatity
+                self.quantity
                 self.type
             })
         })
@@ -57,31 +57,27 @@ extension MainView {
         HStack(spacing: 3, content: {
             Text("Length: ")
                 .frame(width: Layout.header.width, alignment: .leading)
-            
-            LogarithmicSliderView(value: $settings.length, range: PasswordSettings.lengthRange)
+
+            LogarithmicSliderView(value: $settings.length, range: SettingsViewModel.lengthRange)
                 .frame(width: Layout.slider.width)
                 .padding(.trailing, 5)
-            
-            NumberPickerView(value: settings.length, range: PasswordSettings.lengthRange, completion: {
-                self.settings.length = $0
-            })
-            
-            if settings.separator.isEnabled {
-                Text("+ \(settings.separator.length(characterLength: settings.lengthWithSeparator)) separators")
+
+            NumberPickerView(value: $settings.length, range: SettingsViewModel.lengthRange)
+
+            if settings.random.separator.isEnabled {
+                Text("+ \(settings.random.separator.length(from: settings.length)) separators")
                     .padding(.leading, 10)
                     .foregroundColor(.secondary)
             }
         })
     }
     
-    private var qunatity: some View {
+    private var quantity: some View {
         HStack(spacing: 3, content: {
             Text("Quantity: ")
                 .frame(width: Layout.header.width, alignment: .leading)
             
-            NumberPickerView(value: settings.quantity, range: PasswordSettings.qunatityRange, completion: {
-                self.settings.quantity = $0
-            })
+            NumberPickerView(value: $settings.quantity, range: SettingsViewModel.quantityRange)
         })
     }
     
@@ -89,9 +85,9 @@ extension MainView {
         HStack(spacing: 3, content: {
             Text("Type: ")
                 .frame(width: Layout.header.width, alignment: .leading)
-            
+
             Picker(selection: self.$settings.type, label: EmptyView(), content: {
-                ForEach(PasswordSettings.PasswordType.allCases, id: \.self, content: { type in
+                ForEach(PasswordType.allCases, id: \.self, content: { type in
                     Text(type.title)
                 })
             })
@@ -111,7 +107,7 @@ extension MainView {
     
     private var generate: some View {
         Button(action: { self.passwordsAreBeingGenerated = true }, label: { Text("Generate") })
-            .disabled(settings.characters.allTypes.filter { $0.isIncluded }.isEmpty)
+            .disabled(settings.random.allTypes.filter { $0.isIncluded }.isEmpty)
     }
 }
 
@@ -119,6 +115,6 @@ extension MainView {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
-            .environmentObject(PasswordSettings())
+            .environmentObject(SettingsViewModel())
     }
 }

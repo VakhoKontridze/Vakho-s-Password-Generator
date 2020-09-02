@@ -25,11 +25,11 @@ struct CheckBoxView: View {
         self.init(isOn: isOn, title: title, details: nil)
     }
     
-    init(isOn: Binding<Bool>, characters: PasswordSettings.CharacterSet) {
+    init(isOn: Binding<Bool>, characters: CharacterSet) {
         self.init(isOn: isOn, title: characters.title, details: characters.details)
     }
     
-    init(isOn: Binding<Bool>, setting: PasswordSettings.AdditionalSetting) {
+    init(isOn: Binding<Bool>, setting: AdditionalSetting) {
         self.init(isOn: isOn, title: setting.title, details: setting.details)
     }
     

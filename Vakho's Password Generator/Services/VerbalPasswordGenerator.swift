@@ -11,9 +11,8 @@ import Cocoa
 // MARK:- Verbal Password Generator
 final class VerbalPasswordGenerator {
     // MARK: Properties
-    private var passwordsLeftToGenerate: Int
-    
     private let length: Int
+    private var passwordsLeftToGenerate: Int
     
     private let addedWords: Set<String>
     private let excludedWords: Set<String>
@@ -22,13 +21,15 @@ final class VerbalPasswordGenerator {
     private let excludedWordsGrouped: [Int: [String]]
     
     // MARK: Initializers
-    init(settings: PasswordSettings, managedObjectContext: NSManagedObjectContext) {
-        self.passwordsLeftToGenerate = settings.quantity
+    init(
+        length: Int, quantity: Int,
+        words: [Word]
+    ) {
+        self.length = length
+        self.passwordsLeftToGenerate = quantity
         
-        self.length = settings.length
-        
-        self.addedWords = Word.fetch(from: managedObjectContext).addedWords
-        self.excludedWords = Word.fetch(from: managedObjectContext).excludedWords
+        self.addedWords = words.addedWords
+        self.excludedWords = words.excludedWords
 
         self.addedWordsGroped = .init(grouping: addedWords, by: { $0.count })
         self.excludedWordsGrouped = .init(grouping: excludedWords, by: { $0.count })
@@ -36,7 +37,7 @@ final class VerbalPasswordGenerator {
 }
 
 // MARK:- Generate
-extension VerbalPasswordGenerator {
+extension VerbalPasswordGenerator: PasswordGenerator {
     func generate(completion: (String) -> Bool) -> Void {
         guard safeguard() else { return }
         
@@ -71,12 +72,12 @@ extension VerbalPasswordGenerator {
 // MARK:- Safeguard
 private extension VerbalPasswordGenerator {
     func safeguard() -> Bool {
-        !PasswordSettings.Words.words3Characters.isEmpty &&
-        !PasswordSettings.Words.words4Characters.isEmpty &&
-        !PasswordSettings.Words.words5Characters.isEmpty &&
-        !PasswordSettings.Words.words6Characters.isEmpty &&
-        !PasswordSettings.Words.words7Characters.isEmpty &&
-        !PasswordSettings.Words.words8Characters.isEmpty
+        !Words.words3CharacterPool.isEmpty &&
+        !Words.words4CharacterPool.isEmpty &&
+        !Words.words5CharacterPool.isEmpty &&
+        !Words.words6CharacterPool.isEmpty &&
+        !Words.words7CharacterPool.isEmpty &&
+        !Words.words8CharacterPool.isEmpty
     }
 }
 
@@ -118,7 +119,7 @@ private extension VerbalPasswordGenerator {
 private extension VerbalPasswordGenerator {
     func retrieveWord(length: Int) -> String? {
         for _ in 1...10 {
-            guard let word = PasswordSettings.Words.retrieveWord(length: length, union: addedWords) else { continue }
+            guard let word = Words.retrieveWord(length: length, union: addedWords) else { continue }
             guard !excludedWords.contains(word) else { continue }
             
             return word

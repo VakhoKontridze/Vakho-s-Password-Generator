@@ -21,7 +21,7 @@ final class MainFactory {
 
 // MARK:- Window
 extension MainFactory {
-    func createWindow(managedObjectContext: NSManagedObjectContext, settings: PasswordSettings) {
+    func createWindow(managedObjectContext: NSManagedObjectContext, settings: SettingsViewModel) {
         // If window exists, brings to front
         guard window == nil else {
             window.makeKeyAndOrderFront(nil)

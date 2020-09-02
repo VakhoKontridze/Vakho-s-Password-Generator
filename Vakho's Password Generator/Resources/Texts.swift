@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK:- Password Type
-extension PasswordSettings.PasswordType {
+extension PasswordType {
     var title: String {
         switch self {
         case .randomized: return "Randomized"
@@ -18,8 +18,8 @@ extension PasswordSettings.PasswordType {
     }
 }
 
-// MARK:- Characters
-extension PasswordSettings.CharacterSet {
+// MARK:- CharacterPool
+extension CharacterSet {
     var title: String {
         switch self {
         case .lowercase: return "Lowercase letters"
@@ -42,33 +42,34 @@ extension PasswordSettings.CharacterSet {
 }
 
 // MARK:- Additional Setting
-extension PasswordSettings.AdditionalSetting {
+extension AdditionalSetting {
     var title: String {
         switch self {
         case .startsWithLetter: return "Starts with a letter"
-        case .similarCharacters: return "Similar-looking characters"
-        case .consecutiveCharacters: return "Consecutive characters"
-        case .pairedDuplicateCharacters: return "Paired duplicate characters"
+        case .similarCharacterPool: return "Similar-looking characters"
+        case .consecutiveCharacterPool: return "Consecutive characters"
+        case .pairedDuplicateCharacterPool: return "Paired duplicate characters"
         }
     }
     
     var details: String {
         switch self {
         case .startsWithLetter: return "Password always starts with a letter"
-        case .similarCharacters: return "Password includes simiar looking characters, such as \"0\" and \"O\""
-        case .consecutiveCharacters: return "Password contains guessable sequences, such as \"qwerty\""
-        case .pairedDuplicateCharacters: return "Password includes predictabe sequences, such as \"aaaa\""
+        case .similarCharacterPool: return "Password includes simiar looking characters, such as \"0\" and \"O\""
+        case .consecutiveCharacterPool: return "Password contains guessable sequences, such as \"qwerty\""
+        case .pairedDuplicateCharacterPool: return "Password includes predictabe sequences, such as \"aaaa\""
         }
     }
 }
 
 // MARK:- Readability
-extension PasswordSettings.Readability {
+extension Readability {
     var title: String {
         switch self {
         case .low: return "Low"
         case .medium: return "Medium"
         case .high: return "High"
+        case .custom: return "Custom"
         }
     }
 }

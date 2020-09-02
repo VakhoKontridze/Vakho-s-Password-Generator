@@ -9,12 +9,12 @@
 import Foundation
 
 extension Character {
-    var type: PasswordSettings.CharacterSet? {
-        if PasswordSettings.CharacterSet.lowercase.characters.contains(self) { return .lowercase }
-        if PasswordSettings.CharacterSet.uppercase.characters.contains(self) { return .uppercase }
-        if PasswordSettings.CharacterSet.digits.characters.contains(self) { return .digits }
-        if PasswordSettings.CharacterSet.symbols.characters.contains(self) { return .symbols }
-        if PasswordSettings.CharacterSet.ambiguous.characters.contains(self) { return .ambiguous }
+    var type: CharacterSet? {
+        if CharacterSet.lowercase.characters().contains(self) { return .lowercase }
+        if CharacterSet.uppercase.characters().contains(self) { return .uppercase }
+        if CharacterSet.digits.characters().contains(self) { return .digits }
+        if CharacterSet.symbols.characters().contains(self) { return .symbols }
+        if CharacterSet.ambiguous.characters().contains(self) { return .ambiguous }
         return nil
     }
 }

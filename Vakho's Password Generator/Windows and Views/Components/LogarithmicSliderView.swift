@@ -104,6 +104,6 @@ private extension ClosedRange where Bound == Double {
 // MARK: Preview
 struct LogarithmicSliderView_Previews: PreviewProvider {
     static var previews: some View {
-        LogarithmicSliderView(value: .constant(16), range: PasswordSettings.lengthRange)
+        LogarithmicSliderView(value: .constant(16), range: SettingsViewModel.lengthRange)
     }
 }

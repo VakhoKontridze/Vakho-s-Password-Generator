@@ -11,7 +11,7 @@ import SwiftUI
 
 // MARK: App Delegate
 /*@NSApplicationMain*/ class AppDelegate: NSObject {
-    private let passwordSettings: PasswordSettings = .init()
+    private let passwordSettings: SettingsViewModel = .init()
     
     lazy var persistentContainer: NSPersistentContainer = {
         let container: NSPersistentContainer = .init(name: "Vakho_s_Password_Generator")
@@ -34,8 +34,8 @@ import SwiftUI
 // MARK:- App Delegate
 extension AppDelegate: NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        PasswordGenerator.shared.settings = passwordSettings
-        PasswordGenerator.shared.managedObjectContext = managedObjectContext
+        PasswordGeneratorController.shared.settings = passwordSettings
+        PasswordGeneratorController.shared.managedObjectContext = managedObjectContext
         
         MainFactory.shared.createWindow(managedObjectContext: managedObjectContext, settings: passwordSettings)
     }

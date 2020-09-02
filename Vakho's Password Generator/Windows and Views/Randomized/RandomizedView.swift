@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK:- Randomized View
 struct RandomizedView: View {
-    @EnvironmentObject private var settings: PasswordSettings
+    @EnvironmentObject private var settings: SettingsViewModel
 }
 
 
@@ -26,39 +26,62 @@ extension RandomizedView {
     
     private var characters: some View {
         SectionView(content: {
-            ForEach(self.settings.characters.allTypes, id: \.self, content: { type in
-                HStack(content: {
-                    CheckBoxView(
-                        isOn: .init(
-                            get: { type.isIncluded },
-                            set: { isChecked in
-                                self.settings.characters.setCheck(to: isChecked, for: type.characters)
-                                
-                                if !self.settings.characters.lowercase.isIncluded && !self.settings.characters.uppercase.isIncluded {
-                                    self.settings.additionalSettings.remove(.startsWithLetter)
-                                }
-                            }
-                        ),
-                        
-                        characters: type.characters
-                    )
-                    
-                    Spacer()
-                })
+            HStack(content: {
+                CheckBoxView(isOn: self.$settings.random.lowercase.isIncluded.onChange(self.settings.random.syncFirstChar), characters: .lowercase)
+                Spacer()
+                NumberPickerView(value: self.$settings.random.lowercase.weight.onChange(self.settings.random.syncWeights), useSlider: true, range: Characters.weightRange)
+                    .frame(width: Layout.weightsSection.width)
+                    .disabled(!self.settings.random.lowercase.isIncluded)
             })
             
+            HStack(content: {
+                CheckBoxView(isOn: self.$settings.random.uppercase.isIncluded.onChange(self.settings.random.syncFirstChar), characters: .uppercase)
+                Spacer()
+                NumberPickerView(value: self.$settings.random.uppercase.weight.onChange(self.settings.random.syncWeights), useSlider: true, range: Characters.weightRange)
+                    .frame(width: Layout.weightsSection.width)
+                    .disabled(!self.settings.random.uppercase.isIncluded)
+            })
+            
+            HStack(content: {
+                CheckBoxView(isOn: self.$settings.random.digits.isIncluded, characters: .digits)
+                Spacer()
+                NumberPickerView(value: self.$settings.random.digits.weight.onChange(self.settings.random.syncWeights), useSlider: true, range: Characters.weightRange)
+                    .frame(width: Layout.weightsSection.width)
+                    .disabled(!self.settings.random.digits.isIncluded)
+            })
+            
+            HStack(content: {
+                CheckBoxView(isOn: self.$settings.random.symbols.isIncluded, characters: .symbols)
+                Spacer()
+                NumberPickerView(value: self.$settings.random.symbols.weight.onChange(self.settings.random.syncWeights), useSlider: true, range: Characters.weightRange)
+                    .frame(width: Layout.weightsSection.width)
+                    .disabled(!self.settings.random.symbols.isIncluded)
+            })
+            
+            HStack(content: {
+                CheckBoxView(isOn: self.$settings.random.ambiguous.isIncluded, characters: .ambiguous)
+                Spacer()
+                NumberPickerView(value: self.$settings.random.ambiguous.weight.onChange(self.settings.random.syncWeights), useSlider: true, range: Characters.weightRange)
+                    .frame(width: Layout.weightsSection.width)
+                    .disabled(!self.settings.random.ambiguous.isIncluded)
+            })
+
             Spacer()
                 .frame(height: 20)
-            
+
             HStack(spacing: 3, content: {
                 Text("Readability: ")
                     .frame(width: Layout.header.width)
-                
-                Picker(selection: self.$settings.readability, label: EmptyView(), content: {
-                    ForEach(PasswordSettings.Readability.allCases, id: \.self, content: { readability in
-                        Text(readability.title)
-                    })
-                })
+
+                Picker(
+                    selection: self.$settings.random.readability.onChange(self.settings.random.syncReadability),
+                    label: EmptyView(),
+                    content: {
+                        ForEach(Readability.allCases, id: \.self, content: { readability in
+                            Text(readability.title)
+                        })
+                    }
+                )
                     .frame(width: Layout.readabilityPicker.width)
             })
         })
@@ -66,28 +89,11 @@ extension RandomizedView {
     
     private var additionalSettings: some View {
         SectionView(content: {
-            ForEach(PasswordSettings.AdditionalSetting.allCases, content: { setting in
+            ForEach(AdditionalSetting.allCases, content: { setting in
                 CheckBoxView(
                     isOn: .init(
-                        get: {
-                            self.settings.additionalSettings.contains(setting)
-                        },
-                        set: { isOn in
-                            if
-                                !self.settings.additionalSettings.contains(.startsWithLetter) &&
-                                setting == .startsWithLetter &&
-                                isOn &&
-                                (!self.settings.characters.lowercase.isIncluded && !self.settings.characters.uppercase.isIncluded)
-                            {
-                                self.settings.characters.lowercase.isIncluded = true
-                                self.settings.characters.uppercase.isIncluded = true
-                            }
-                            
-                            switch isOn {
-                            case false: self.settings.additionalSettings.remove(setting)
-                            case true: self.settings.additionalSettings.insert(setting)
-                            }
-                        }
+                        get: { self.settings.random.additionalSettings.contains(setting) },
+                        set: { self.settings.random.setAndSyncAdditionalSettings(setting, to: $0) }
                     ),
                     
                     setting: setting
@@ -99,18 +105,16 @@ extension RandomizedView {
     private var separator: some View {
         SectionView(title: nil, content: {
             HStack(spacing: 3, content: {
-                CheckBoxView(isOn: self.$settings.separator.isEnabled, title: "Add a separator every ")
+                CheckBoxView(isOn: self.$settings.random.separator.isEnabled, title: "Add a separator every ")
                 
                 HStack(spacing: 3, content: {
-                    NumberPickerView(value: self.settings.separator.characterChunkQunatity, range: PasswordSettings.Separator.range, completion: {
-                        self.settings.separator.characterChunkQunatity = $0
-                    })
+                    NumberPickerView(value: self.$settings.random.separator.characterChunkQuantity, range: Separator.range)
                     
                     Text(" characters")
                 })
-                    .disabled(!self.settings.separator.isEnabled)
+                    .disabled(!self.settings.random.separator.isEnabled)
             })
-                .foregroundColor(self.settings.separator.isEnabled ? .primary : .secondary)
+                .foregroundColor(self.settings.random.separator.isEnabled ? .primary : .secondary)
         })
     }
 }
@@ -119,7 +123,7 @@ extension RandomizedView {
 struct RandomizedView_Previews: PreviewProvider {
     static var previews: some View {
         RandomizedView()
-            .environmentObject(PasswordSettings())
+            .environmentObject(SettingsViewModel())
         
             .frame(width: MainView.Layout.view.width)
     }

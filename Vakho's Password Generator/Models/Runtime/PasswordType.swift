@@ -9,8 +9,6 @@
 import Foundation
 
 // MARK:- Password Type
-extension PasswordSettings {
-    enum PasswordType: Int, CaseIterable {
-        case randomized, verbal
-    }
+enum PasswordType: Int, CaseIterable {
+    case randomized, verbal
 }

@@ -9,13 +9,11 @@
 import Foundation
 
 // MARK:- Additional Setting
-extension PasswordSettings {
-    enum AdditionalSetting: Int, CaseIterable, Identifiable {
-        case startsWithLetter
-        case similarCharacters
-        case consecutiveCharacters
-        case pairedDuplicateCharacters
-        
-        var id: Int { rawValue }
-    }
+enum AdditionalSetting: Int, CaseIterable, Identifiable {
+    case startsWithLetter
+    case similarCharacterPool
+    case consecutiveCharacterPool
+    case pairedDuplicateCharacterPool
+    
+    var id: Int { rawValue }
 }
