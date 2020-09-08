@@ -13,7 +13,6 @@ struct RandomizedView: View {
     @EnvironmentObject private var settings: SettingsViewModel
 }
 
-
 // MARK:- Body
 extension RandomizedView {
     var body: some View {
@@ -65,7 +64,7 @@ extension RandomizedView {
                     .frame(width: Layout.weightsSection.width)
                     .disabled(!self.settings.random.ambiguous.isIncluded)
             })
-
+            
             Spacer()
                 .frame(height: 20)
 

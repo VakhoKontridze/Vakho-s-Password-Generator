@@ -22,7 +22,7 @@ final class MainFactory {
 // MARK:- Window
 extension MainFactory {
     func createWindow(managedObjectContext: NSManagedObjectContext, settings: SettingsViewModel) {
-        // If window exists, brings to front
+        // If window exists, brings it to front
         guard window == nil else {
             window.makeKeyAndOrderFront(nil)
             return
@@ -50,7 +50,7 @@ extension MainFactory {
         window.standardWindowButton(.zoomButton)?.isHidden = true
         window.standardWindowButton(.zoomButton)?.isEnabled = false
         
-        // Places view
+        // Creates view
         window.contentView = NSHostingView(rootView:
             MainView()
                 .environment(\.managedObjectContext, managedObjectContext)

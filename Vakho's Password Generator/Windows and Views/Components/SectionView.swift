@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-// MARK:- Form View
+// MARK:- Section View
 struct SectionView<Content>: View where Content: View {
     // MARK: Properties
     private let title: String?

@@ -41,7 +41,7 @@ final class RandomPasswordGenerator {
 // MARK:- Generate
 extension RandomPasswordGenerator: PasswordGenerator {
     func generate(completion: (String) -> Bool) {
-        retrieveCharacterQuantities()
+        guard retrieveCharacterQuantities() else { return }
         
         var passwords: Set<String> = []
         
@@ -58,7 +58,7 @@ extension RandomPasswordGenerator: PasswordGenerator {
     }
     
     func generate() -> String? {
-        var characters = self.characters
+        var characters = self.characters    // Duplicates characters to prevent pernament chaning to the original model
         
         var password: String = ""
         
@@ -72,45 +72,47 @@ extension RandomPasswordGenerator: PasswordGenerator {
 
 // MARK:- Character Quantitiess
 private extension RandomPasswordGenerator {
-    func retrieveCharacterQuantities() {
-        retreiveRawQuantities()
+    func retrieveCharacterQuantities() -> Bool {
+        guard retreiveRawQuantities() else { return false }
         retreiveQuantities()
+        return true
     }
     
-    func retreiveRawQuantities() {
+    func retreiveRawQuantities() -> Bool {
+        let totalWeight: Int = characters.filter { $0.isIncluded && $0.weight > 0 }.map { $0.weight }.reduce(0, +)
+        guard totalWeight > 0 else { return false }
+        
         for (i, type) in characters.enumerated() {
             characters[i].quantity = {
-                guard type.isIncluded else { return 0 }
-                
-                let totalWeight: Int = characters.filter { $0.isIncluded }.map { $0.weight }.reduce(0, +)
+                guard type.isIncluded && type.weight > 0 else { return 0 }
                 
                 let ratio: Double = Double(type.weight) / Double(totalWeight)
                 let quantity: Double = Double(length) * ratio
+                let weight: Int = .init(quantity.rounded())
 
-                return .init(quantity.rounded())
+                return weight
             }()
         }
+        
+        return true
     }
     
     func retreiveQuantities() {
         var totalLength: Int { characters.map { $0.quantity }.reduce(0, +) }
         
         while totalLength != length {
-            var difference: Int = length - totalLength
-            var differenceExists: Bool { difference != 0 }
-            let increment: Int = difference > 0 ? 1 : -1
+            var differenceExists: Bool { (length - totalLength) != 0 }
+            var increment: Int { (length - totalLength) > 0 ? 1 : -1 }
             
             for (i, type) in characters.enumerated() {
-                if differenceExists && type.isIncluded && type.quantity > 0 {
+                if differenceExists && (type.isIncluded && type.weight > 0 ) && type.quantity > 1 {  // Cannot be dropped to 0
                     characters[i].quantity += increment
-                    difference -= increment
                 }
             }
             
-            for (i, type) in characters.filter({ $0.isIncluded }).enumerated() {
+            for (i, type) in characters.filter({ $0.isIncluded && $0.weight > 0 }).enumerated() {
                 if type.quantity == 0 {
                     characters[i].quantity += 1
-                    difference += increment
                 }
             }
         }
@@ -121,7 +123,12 @@ private extension RandomPasswordGenerator {
 private extension RandomPasswordGenerator {
     func retrieveFirstCharacter(from characters: inout [Characters], writeIn password: inout String) {
         guard additionalSettings.contains(.startsWithLetter) else { return }
-        guard characters.lowercase.isIncluded || characters.uppercase.isIncluded else { return }
+        guard
+            (characters.lowercase.isIncluded && characters.lowercase.weight > 0) ||
+            (characters.uppercase.isIncluded && characters.uppercase.weight > 0)
+        else {
+            return
+        }
         
         guard let Characters: CharacterSet = [.lowercase, .uppercase].randomElement() else { return }
         guard let character = Characters.characters(includesSimilar: additionalSettings.contains(.similarCharacterPool)).randomElement() else { return }
@@ -129,8 +136,8 @@ private extension RandomPasswordGenerator {
         password.append(character)
         
         switch Characters {
-        case .lowercase: characters[0].quantity -= 1
-        case .uppercase: characters[1].quantity -= 1
+        case .lowercase: characters.lowercase.quantity -= 1
+        case .uppercase: characters.uppercase.quantity -= 1
         default: break
         }
     }
@@ -139,7 +146,7 @@ private extension RandomPasswordGenerator {
         password += {
             var pool: String = ""
             
-            for type in characters.filter({ $0.isIncluded }) {
+            for type in characters.filter({ $0.isIncluded && $0.weight > 0 }) {
                 type.quantity.times { pool.append(self.retrieveRandomCharacter(from: type.set)) }
             }
 
@@ -232,9 +239,28 @@ private extension RandomPasswordGenerator {
 
 // MARK:- Convenience
 private extension Array where Element == Characters {
-    var lowercase: Characters { self[0] }
-    var uppercase: Characters { self[1] }
-    var digits: Characters { self[2] }
-    var symbols: Characters { self[3] }
-    var ambiguous: Characters { self[4] }
+    var lowercase: Characters {
+        get { self[0] }
+        set { self[0] = newValue }
+    }
+    
+    var uppercase: Characters {
+        get { self[1] }
+        set { self[1] = newValue }
+    }
+    
+    var digits: Characters {
+        get { self[2] }
+        set { self[2] = newValue }
+    }
+    
+    var symbols: Characters {
+        get { self[3] }
+        set { self[3] = newValue }
+    }
+    
+    var ambiguous: Characters {
+        get { self[4] }
+        set { self[4] = newValue }
+    }
 }

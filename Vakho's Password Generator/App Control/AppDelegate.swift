@@ -10,7 +10,7 @@ import Cocoa
 import SwiftUI
 
 // MARK: App Delegate
-/*@NSApplicationMain*/ class AppDelegate: NSObject {
+/*@NSApplicationMain*/ final class AppDelegate: NSObject {
     private let passwordSettings: SettingsViewModel = .init()
     
     lazy var persistentContainer: NSPersistentContainer = {

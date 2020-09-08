@@ -13,7 +13,6 @@ struct VerbalView: View {
     @EnvironmentObject private var settings: SettingsViewModel
     @Environment(\.managedObjectContext) var managedObjectContext: NSManagedObjectContext
     
-    
     @FetchRequest(fetchRequest: Word.fetchRequest) private var words: FetchedResults<Word>
 }
 

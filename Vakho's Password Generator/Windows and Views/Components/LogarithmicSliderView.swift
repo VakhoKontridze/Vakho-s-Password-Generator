@@ -35,7 +35,6 @@ extension LogarithmicSliderView {
                 get: { Double(self.value.normalized(on: self.range)) },
                 set: { self.value = $0.denormalized(on: self.range) }
             ),
-            
             in: range.normalized
         )
     }

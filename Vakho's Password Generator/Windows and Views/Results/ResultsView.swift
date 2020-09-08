@@ -11,6 +11,7 @@ import SwiftUI
 // MARK:- Results View
 struct ResultsView: View {
     @Environment(\.presentationMode) var presentationMode
+    
     @EnvironmentObject private var settings: SettingsViewModel
     
     @State private var passwords: [String] = []
@@ -53,14 +54,14 @@ extension ResultsView {
             
             .background(Color.listBackground)   // Override on NSTableView is done in Colors.swift
             
-            .onAppear(perform: fetch)
+            .onAppear(perform: generate)
     }
     
     private var header: some View {
         HStack(content: {
             Group(content: {
                 Button(action: {
-                    self.cancellFetch()
+                    self.cancellGeneration()
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: { Text("Back") })
             })
@@ -131,26 +132,26 @@ extension ResultsView {
                 .multilineTextAlignment(.leading)
                 .truncationMode(.tail)
         })
-            .onTapGesture(count: 2, perform: { self.copy(at: i) })
+            .onTapGesture(count: 2, perform: { self.copyToClipboard(from: i) })
     }
 }
 
-// MARK:- Fetch
+// MARK:- Generate
 private extension ResultsView {
-    func fetch() {
+    func generate() {
         PasswordGeneratorController.shared.generate(completion: { password in
             DispatchQueue.main.async(execute: { self.passwords.append(password) })
         })
     }
     
-    func cancellFetch() {
+    func cancellGeneration() {
         PasswordGeneratorController.shared.shouldContinue = false
     }
 }
 
 // MARK:- Copy
 private extension ResultsView {
-    func copy(at index: Int) {
+    func copyToClipboard(from index: Int) {
         let pasteboard: NSPasteboard = .general
         pasteboard.declareTypes([.string], owner: nil)
 

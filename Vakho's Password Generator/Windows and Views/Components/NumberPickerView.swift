@@ -13,7 +13,7 @@ struct NumberPickerView: View {
     // MARK: Properties
     @Binding private var value: Int
     
-    @State private var valueStr: String = ""                    // Used as placeholder ofr TextField until changes are commited
+    @State private var valueStr: String = ""                    // Used as placeholder for TextField until changes are commited
     @State private var textFieldIsBeingModified: Bool = false   // Since TextField depends on value, it will flicker if user types number outside range. So, this state variable conditionally stops retreivieng actuall value
     
     private let useSlider: Bool
@@ -44,7 +44,6 @@ extension NumberPickerView {
                 get: { .init(self.value) },
                 set: { self.value = .init($0) }
             ),
-            
             in: range.asDouble
         )
             .padding(.trailing, 7)
@@ -53,14 +52,11 @@ extension NumberPickerView {
     private var textField: some View {
         TextField(
             "",
-            
             text: Binding<String>(
-                get: { self.textFieldIsBeingModified ?  self.valueStr : .init(self.value) },
+                get: { self.textFieldIsBeingModified ? self.valueStr : .init(self.value) },
                 set: { newValue in self.valueStr = newValue }
             )
-                .onChange({ self.textFieldIsBeingModified = true })
-            ,
-            
+                .onChange({ self.textFieldIsBeingModified = true }),
             onCommit: {
                 self.textFieldIsBeingModified = false
                 
@@ -86,12 +82,10 @@ extension NumberPickerView {
     private var stepper: some View {
         Stepper(
             "",
-            
             value: .init(
                 get: { self.value },
                 set: { newValue in self.value = newValue }
             ),
-            
             in: range
         )
     }

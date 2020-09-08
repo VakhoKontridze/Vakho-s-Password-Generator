@@ -10,33 +10,31 @@ import Foundation
 import SwiftUI
 
 // MARK:- Word Edit View
-extension VerbalView {
-    struct WordEditView: View {
-        // MARK: Properties
-        private let title: String
+struct WordEditView: View {
+    // MARK: Properties
+    private let title: String
+    
+    @State private var word: String = ""
+    private var words: Set<String>
+    
+    private let addHandler: ((String) -> Void)?
+    private let deleteHandler: ((String) -> Void)?
+    
+    // MARK: Initializers
+    init(
+        title: String, words: Set<String>,
+        didAdd addHandler: ((String) -> Void)? = nil, didDelete deleteHandler: ((String) -> Void)? = nil
+    ) {
+        self.title = title
+        self.words = words
         
-        @State private var word: String = ""
-        private var words: Set<String>
-        
-        private let addHandler: ((String) -> Void)?
-        private let deleteHandler: ((String) -> Void)?
-        
-        // MARK: Initializers
-        init(
-            title: String, words: Set<String>,
-            didAdd addHandler: ((String) -> Void)? = nil, didDelete deleteHandler: ((String) -> Void)? = nil
-        ) {
-            self.title = title
-            self.words = words
-            
-            self.addHandler = addHandler
-            self.deleteHandler = deleteHandler
-        }
+        self.addHandler = addHandler
+        self.deleteHandler = deleteHandler
     }
 }
 
 // MARK:- Body
-extension VerbalView.WordEditView {
+extension WordEditView {
     var body: some View {
         SectionView(title: title, content: {
             self.addField
@@ -91,7 +89,7 @@ extension VerbalView.WordEditView {
 }
 
 // MARK:- Modification
-private extension VerbalView.WordEditView {
+private extension WordEditView {
     func add() {
         guard !word.isEmpty else { return }
         guard word.count >= 3 else { return }
@@ -105,7 +103,7 @@ private extension VerbalView.WordEditView {
 // MARK:- Preview
 struct WordEditView_Previews: PreviewProvider {
     static var previews: some View {
-        VerbalView.WordEditView(title: "Added Words", words: ["Abc", "Def", "Ghi"])
+        WordEditView(title: "Added Words", words: ["Abc", "Def", "Ghi"])
             .frame(width: MainView.Layout.view.width / 2)
     }
 }
