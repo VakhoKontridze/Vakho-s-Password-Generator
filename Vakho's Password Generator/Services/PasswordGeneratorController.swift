@@ -9,11 +9,6 @@
 import Foundation
 import CoreData
 
-// MARK:- Password Generator
-protocol PasswordGenerator: class {
-    func generate(completion: (String) -> Bool)
-}
-
 // MARK:- Password Generator Controller
 final class PasswordGeneratorController {
     // MARK: Properties
@@ -30,7 +25,7 @@ final class PasswordGeneratorController {
 
 // MARK:- Generate
 extension PasswordGeneratorController {
-    func generate(completion: @escaping (String) -> Void) {
+    func generate(completion: @escaping (PasswordResult) -> Void) {
         shouldContinue = true
         
         DispatchQueue.global(qos: .userInteractive).async(execute: { [weak self] in
@@ -58,10 +53,42 @@ extension PasswordGeneratorController {
                 }
             }()
             
-            generator.generate(completion: { [weak self] password in
-                completion(password)
+            generator.generate(completion: { [weak self] result in
+                completion(result)
                 return self?.shouldContinue ?? false
             })
         })
+    }
+}
+
+// MARK:- Password Generator
+protocol PasswordGenerator: class {
+    func generate(completion: (PasswordResult) -> Bool)
+}
+
+// MARK:- Result Type
+typealias PasswordResult = Result<String, PasswordError>
+
+// MARK:- Password Error
+enum PasswordError: Error, LocalizedError {
+    case invalidConfiguration
+    case couldntLoadWords
+    
+    case couldntGenerate
+    
+    var localizedDescription: String {
+        switch self {
+        case .invalidConfiguration: return "Invalid Password Configuration"
+        case .couldntLoadWords: return "Database Is Corrupt"
+        case .couldntGenerate: return ""
+        }
+    }
+    
+    var detalizedDescription: String {
+        switch self {
+        case .invalidConfiguration: return "Passwords couldn't be generated. Please change setting and try again."
+        case .couldntLoadWords: return "Databae of words couln't be loaded. Please consider re-installing the app."
+        case .couldntGenerate: return ""
+        }
     }
 }

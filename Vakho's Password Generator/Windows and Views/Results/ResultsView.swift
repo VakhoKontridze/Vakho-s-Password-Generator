@@ -14,8 +14,10 @@ struct ResultsView: View {
     
     @EnvironmentObject private var settings: SettingsViewModel
     
-    @State private var passwords: [String] = []
+    @State private var errorMessageIsShowing: Bool = false
+    @State private var error: PasswordError?
     
+    @State private var passwords: [String] = []
     private var progress: String {
         let ratio: Double = Double(passwords.count) / Double(settings.quantity)
         let percentage: Double = ratio * 100
@@ -55,6 +57,14 @@ extension ResultsView {
             .background(Color.listBackground)   // Override on NSTableView is done in Colors.swift
             
             .onAppear(perform: generate)
+        
+            .alert(isPresented: $errorMessageIsShowing, content: {
+                Alert(
+                    title: .init(self.error?.localizedDescription ?? ""),
+                    message: .init(self.error?.detalizedDescription ?? ""),
+                    dismissButton: .cancel({ self.presentationMode.wrappedValue.dismiss() })
+                )
+            })
     }
     
     private var header: some View {
@@ -139,8 +149,23 @@ extension ResultsView {
 // MARK:- Generate
 private extension ResultsView {
     func generate() {
-        PasswordGeneratorController.shared.generate(completion: { password in
-            DispatchQueue.main.async(execute: { self.passwords.append(password) })
+        PasswordGeneratorController.shared.generate(completion: { result in
+            DispatchQueue.main.async(execute: {
+                switch result {
+                case .success(let password):
+                    self.passwords.append(password)
+                
+                case .failure(let error):
+                    switch error {
+                    case .invalidConfiguration, .couldntLoadWords:
+                        self.error = error
+                        self.errorMessageIsShowing = true
+                    
+                    case .couldntGenerate:
+                        break
+                    }
+                }
+            })
         })
     }
     

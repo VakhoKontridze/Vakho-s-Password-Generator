@@ -38,19 +38,28 @@ final class VerbalPasswordGenerator {
 
 // MARK:- Generate
 extension VerbalPasswordGenerator: PasswordGenerator {
-    func generate(completion: (String) -> Bool) -> Void {
-        guard safeguard() else { return }
+    func generate(completion: (PasswordResult) -> Bool) -> Void {
+        guard safeguard() else {
+            _ = completion(.failure(.couldntLoadWords))
+            return
+        }
         
         var passwords: Set<String> = []
-        
         while passwordsLeftToGenerate > 0 {
-            guard let password = generate() else { continue }
-            guard !passwords.contains(password) else { continue }
+            guard
+                let password = generate(),
+                !passwords.contains(password)
+            else {
+                let shouldContinue: Bool = completion(.failure(.couldntGenerate))
+                
+                guard shouldContinue else { return }
+                continue
+            }
             
             passwords.insert(password)
             passwordsLeftToGenerate -= 1
-
-            let shouldContinue: Bool = completion(password)
+            let shouldContinue: Bool = completion(.success(password))
+            
             guard shouldContinue else { return }
         }
     }

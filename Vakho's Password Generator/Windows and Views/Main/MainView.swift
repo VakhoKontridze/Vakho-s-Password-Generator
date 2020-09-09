@@ -107,7 +107,7 @@ extension MainView {
     
     private var generate: some View {
         Button(action: { self.passwordsAreBeingGenerated = true }, label: { Text("Generate") })
-            .disabled(settings.random.allTypes.filter { $0.isIncluded }.isEmpty)
+            .disabled(settings.random.allTypes.filter { $0.isIncluded && $0.weight > 0 }.isEmpty)
     }
 }
 
