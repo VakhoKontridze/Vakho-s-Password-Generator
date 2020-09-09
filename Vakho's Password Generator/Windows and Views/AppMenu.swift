@@ -59,7 +59,7 @@ private extension AppMenu {
             
             .init(title: "Hide \(AppDelegate.appName)", action: #selector(NSApplication.hide(_:)), keyEquivalent: "h"),
             .init(title: "Hide Others", key: "h", modifier: [.command, .option], action: #selector(NSApplication.hideOtherApplications(_:))),
-//            .init(title: "Show All", action: #selector(NSApplication.unhideAllApplications(_:)), keyEquivalent: ""),
+//            .init(title: "Show All", action: #selector(NSApplication.unhideAllApplications(_:))),
             
             .separator(),
             
@@ -132,7 +132,7 @@ private extension AppMenu {
         menu.submenu = .init(title: "Window")
         menu.submenu?.items = [
             //.init(title: "Minmize", action: #selector(NSWindow.miniaturize(_:)), keyEquivalent: "m"),
-            //.init(title: "Zoom", action: #selector(NSWindow.performZoom(_:)), keyEquivalent: ""),
+//            .init(title: "Zoom", action: #selector(NSWindow.performZoom(_:))),
             
             //.separator(),
             
@@ -176,11 +176,11 @@ private extension NSMenuItem {
     convenience init(
         title: String,
         key: String? = nil,
-        modifier: NSEvent.ModifierFlags? = nil,
+        modifier: NSEvent.ModifierFlags,
         action selector: Selector?
     ) {
         self.init(title: title, action: selector, keyEquivalent: key ?? "")
-        self.keyEquivalentModifierMask = modifier ?? []
+        self.keyEquivalentModifierMask = modifier
     }
     
     convenience init(
@@ -190,7 +190,7 @@ private extension NSMenuItem {
         modifier: NSEvent.ModifierFlags? = nil,
         action selector: Selector?
     ) {
-        self.init(title: title, key: key, modifier: modifier, action: selector)
+        self.init(title: title, key: key, modifier: modifier ?? [], action: selector)
         self.target = target
     }
     
@@ -200,7 +200,7 @@ private extension NSMenuItem {
         modifier: NSEvent.ModifierFlags? = nil,
         subItems: [NSMenuItem]
     ) {
-        self.init(title: "\(title)...", key: key, modifier: modifier, action: nil)
+        self.init(title: "\(title)...", key: key, modifier: modifier ?? [], action: nil)
         submenu = {
             let subMenu: NSMenu = .init()
             subMenu.items.append(contentsOf: subItems)
