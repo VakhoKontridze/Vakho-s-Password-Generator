@@ -12,3 +12,13 @@ import Foundation
 enum PasswordType: Int, CaseIterable {
     case randomized, verbal
 }
+
+// MARK:- Next Case
+extension PasswordType {
+    mutating func nextCase() {
+        switch self {
+        case .randomized: self = .verbal
+        case .verbal: self = .randomized
+        }
+    }
+}

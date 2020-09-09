@@ -42,7 +42,7 @@ extension MainFactory {
         // Customizes title bar
         window.titlebarAppearsTransparent = true
 
-        window.title = AppDelegate.appName ?? "Password Generator"
+        window.title = AppDelegate.appName
 
         window.standardWindowButton(.miniaturizeButton)?.isHidden = true
         window.standardWindowButton(.miniaturizeButton)?.isEnabled = false

@@ -11,6 +11,8 @@ import Combine
 
 // MARK:- Settings View Model
 final class SettingsViewModel: ObservableObject {
+    @Published var passwordsAreBeingGenerated: Bool = false
+    
     @Published var quantity: Int = 10
     static let quantityRange: ClosedRange<Int> = 1...100
     

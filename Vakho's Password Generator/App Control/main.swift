@@ -8,6 +8,10 @@
 
 import Cocoa
 
-let delegate: AppDelegate = .init()
-NSApplication.shared.delegate = delegate
+private let appDelegate: AppDelegate = .init()
+NSApplication.shared.delegate = appDelegate
+
+private let menuBar: NSMenu = AppMenu(settings: appDelegate.passwordSettings)
+NSApplication.shared.mainMenu = menuBar
+
 _ = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)

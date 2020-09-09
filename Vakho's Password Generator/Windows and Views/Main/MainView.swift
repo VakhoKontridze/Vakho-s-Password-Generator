@@ -11,8 +11,6 @@ import SwiftUI
 // MARK:- Main View
 struct MainView: View {
     @EnvironmentObject private var settings: SettingsViewModel
-    
-    @State private var passwordsAreBeingGenerated: Bool = false
 }
 
 // MARK:- Body
@@ -36,7 +34,7 @@ extension MainView {
             )
             .padding(10)
         
-            .sheet(isPresented: $passwordsAreBeingGenerated, content: {
+            .sheet(isPresented: $settings.passwordsAreBeingGenerated, content: {
                 ResultsView()
                     .environmentObject(self.settings)
             })
@@ -106,7 +104,7 @@ extension MainView {
     }
     
     private var generate: some View {
-        Button(action: { self.passwordsAreBeingGenerated = true }, label: { Text("Generate") })
+        Button(action: { self.settings.passwordsAreBeingGenerated = true }, label: { Text("Generate") })
             .disabled(settings.random.allTypes.filter { $0.isIncluded && $0.weight > 0 }.isEmpty)
     }
 }

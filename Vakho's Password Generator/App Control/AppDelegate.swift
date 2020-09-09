@@ -11,7 +11,7 @@ import SwiftUI
 
 // MARK: App Delegate
 /*@NSApplicationMain*/ final class AppDelegate: NSObject {
-    private let passwordSettings: SettingsViewModel = .init()
+    let passwordSettings: SettingsViewModel = .init()
     
     lazy var persistentContainer: NSPersistentContainer = {
         let container: NSPersistentContainer = .init(name: "Vakho_s_Password_Generator")
@@ -47,8 +47,8 @@ extension AppDelegate: NSApplicationDelegate {
 
 // MARK: App Name
 extension AppDelegate {
-    static var appName: String? {
-        Bundle.main.infoDictionary?["CFBundleName"] as? String
+    static var appName: String {
+        ProcessInfo.processInfo.processName
     }
 }
 
