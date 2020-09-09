@@ -148,6 +148,8 @@ private extension AppMenu {
         menu.submenu = .init(title: "Help")
         menu.submenu?.items = [
             // Search
+            
+            .init(in: self, title: "Contact Developer", action: #selector(contactDeveloper))
         ]
         
         return menu
@@ -157,10 +159,16 @@ private extension AppMenu {
 // MARK:- Selectors
 private extension AppMenu {
     @objc func generate() { passwordSettings.passwordsAreBeingGenerated = true }
-    
     @objc func changePasswordType() { passwordSettings.type.nextCase() }
     @objc func changePasswordTypeToRandomized() { passwordSettings.type = .randomized }
     @objc func changePasswordTypeToVerbal() { passwordSettings.type = .verbal }
+    
+    @objc func contactDeveloper() {
+        guard let service = NSSharingService(named: NSSharingService.Name.composeEmail) else { return }
+        service.recipients = ["vakho.kontridze@gmail.com"]
+        service.subject = ""
+        service.perform(withItems: [])
+    }
 }
 
 // MARK:- Helpers
