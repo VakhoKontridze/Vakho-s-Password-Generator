@@ -1,5 +1,4 @@
-# Project Name
-Vakho's Password Generator
+# Vakho's Password Generator
 
 ## Table of contents
 - [Description](#description)
