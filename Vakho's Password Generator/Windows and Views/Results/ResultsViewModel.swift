@@ -1,5 +1,5 @@
 //
-//  ResultsLayout.swift
+//  ResultsViewModel.swift
 //  Vakho's Password Generator
 //
 //  Created by Vakhtang Kontridze on 8/30/20.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-// MARK:- Results Layout
+// MARK:- Results ViewModel
 extension ResultsView {
-    struct Layout {
+    struct ViewModel {
         // MARK: Properties
-        static let window: CGSize = .init(width: MainView.Layout.window.width - 40, height: MainView.Layout.window.height - 20)
+        static let window: CGSize = .init(width: MainView.ViewModel.window.width - 40, height: MainView.ViewModel.window.height - 20)
         
         static let headerCornerItem: CGSize = .init(width: 150, height: -1)
         

@@ -35,8 +35,8 @@ final class AppMenu: NSMenu {
             createMainMenu(),
             createGenerateMenu(),
             createEditMenu(),
-            createViewMenu(),
-            createWindowMenu(),
+//            createViewMenu(),
+//            createWindowMenu(),
             createHelpMenu()
         ]
     }

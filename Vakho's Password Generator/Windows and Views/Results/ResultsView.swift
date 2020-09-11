@@ -51,7 +51,7 @@ extension ResultsView {
             header
             passwordsList
         })
-            .frame(width: Layout.window.width, height: Layout.window.height)
+            .frame(width: ViewModel.window.width, height: ViewModel.window.height)
             .padding(10)
             
             .background(Color.listBackground)   // Override on NSTableView is done in Colors.swift
@@ -75,7 +75,7 @@ extension ResultsView {
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: { Text("Back") })
             })
-                .frame(width: Layout.headerCornerItem.width, alignment: .leading)
+                .frame(width: ViewModel.headerCornerItem.width, alignment: .leading)
             
             Spacer()
             
@@ -86,7 +86,7 @@ extension ResultsView {
             Spacer()
             
             Text(progress)
-                .frame(width: Layout.headerCornerItem.width, alignment: .trailing)
+                .frame(width: ViewModel.headerCornerItem.width, alignment: .trailing)
                 .font(.system(.caption, design: .monospaced))
                 .foregroundColor(.secondary)
         })
@@ -114,12 +114,12 @@ extension ResultsView {
                 .foregroundColor(.formBackground)
             
             Text(String(i + 1))
-                .frame(width: Layout.numbering.width)
+                .frame(width: ViewModel.numbering.width)
                 .padding(5)
                 .font(.footnote)
                 .foregroundColor(.secondary)
         })
-            .frame(height: Layout.row.height)
+            .frame(height: ViewModel.row.height)
             .fixedSize(horizontal: true, vertical: false)
     }
     

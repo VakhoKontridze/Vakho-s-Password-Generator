@@ -84,7 +84,7 @@ extension WordEditView {
             })
                 .padding(.horizontal, 20)
         })
-            .frame(height: VerbalView.Layout.row.height)
+            .frame(height: VerbalView.ViewModel.row.height)
     }
 }
 
@@ -104,6 +104,6 @@ private extension WordEditView {
 struct WordEditView_Previews: PreviewProvider {
     static var previews: some View {
         WordEditView(title: "Added Words", words: ["Abc", "Def", "Ghi"])
-            .frame(width: MainView.Layout.view.width / 2)
+            .frame(width: MainView.ViewModel.view.width / 2)
     }
 }

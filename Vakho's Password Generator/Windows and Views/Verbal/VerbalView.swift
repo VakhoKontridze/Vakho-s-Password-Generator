@@ -44,6 +44,6 @@ struct VerbalView_Previews: PreviewProvider {
             .environment(\.managedObjectContext, (NSApp.delegate as! AppDelegate).managedObjectContext)
             .environmentObject(SettingsViewModel())
         
-            .frame(width: MainView.Layout.view.width)
+            .frame(width: MainView.ViewModel.view.width)
     }
 }

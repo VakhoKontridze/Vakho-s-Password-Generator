@@ -30,7 +30,7 @@ extension MainFactory {
 
         // Creates window
         window = .init(
-            contentRect: .init(origin: .zero, size: MainView.Layout.window),
+            contentRect: .init(origin: .zero, size: MainView.ViewModel.window),
             styleMask: [.titled, .closable, .miniaturizable, .resizable],
             backing: .buffered,
             defer: false

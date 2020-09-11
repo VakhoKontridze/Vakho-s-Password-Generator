@@ -12,7 +12,7 @@
 		870DFD4824FA5A1000FFA87F /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD3D24FA5A1000FFA87F /* Characters.swift */; };
 		870DFD4924FA5A1000FFA87F /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD4024FA5A1000FFA87F /* CheckBoxView.swift */; };
 		870DFD4A24FA5A1000FFA87F /* MainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD4224FA5A1000FFA87F /* MainFactory.swift */; };
-		870DFD4B24FA5A1000FFA87F /* MainLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD4324FA5A1000FFA87F /* MainLayout.swift */; };
+		870DFD4B24FA5A1000FFA87F /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD4324FA5A1000FFA87F /* MainViewModel.swift */; };
 		870DFD4C24FA5A1000FFA87F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD4424FA5A1000FFA87F /* MainView.swift */; };
 		870DFD4D24FA5A1000FFA87F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD4624FA5A1000FFA87F /* AppDelegate.swift */; };
 		870DFD4E24FA5A1000FFA87F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFD4724FA5A1000FFA87F /* main.swift */; };
@@ -38,9 +38,9 @@
 		879ED84624FAE889000C4856 /* NumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84524FAE889000C4856 /* NumberPickerView.swift */; };
 		879ED84824FB8FAD000C4856 /* LogarithmicSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84724FB8FAD000C4856 /* LogarithmicSliderView.swift */; };
 		879ED84A24FBC1F8000C4856 /* PasswordGeneratorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84924FBC1F8000C4856 /* PasswordGeneratorController.swift */; };
-		879ED84E24FBDDE8000C4856 /* RandomizedLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84D24FBDDE8000C4856 /* RandomizedLayout.swift */; };
+		879ED84E24FBDDE8000C4856 /* RandomizedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED84D24FBDDE8000C4856 /* RandomizedViewModel.swift */; };
 		879ED85124FBE02F000C4856 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED85024FBE02F000C4856 /* ResultsView.swift */; };
-		879ED85324FBE0BC000C4856 /* ResultsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED85224FBE0BC000C4856 /* ResultsLayout.swift */; };
+		879ED85324FBE0BC000C4856 /* ResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED85224FBE0BC000C4856 /* ResultsViewModel.swift */; };
 		879ED85524FBE304000C4856 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED85424FBE304000C4856 /* Collection.swift */; };
 		879ED85824FC02D9000C4856 /* Words7Characters.json in Resources */ = {isa = PBXBuildFile; fileRef = 879ED85724FC02D9000C4856 /* Words7Characters.json */; };
 		879ED86224FC21FF000C4856 /* VerbalPasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED86124FC21FF000C4856 /* VerbalPasswordGenerator.swift */; };
@@ -51,7 +51,7 @@
 		879ED86A24FC296D000C4856 /* Words6Characters.json in Resources */ = {isa = PBXBuildFile; fileRef = 879ED85C24FC02E9000C4856 /* Words6Characters.json */; };
 		879ED86B24FC296D000C4856 /* Words8Characters.json in Resources */ = {isa = PBXBuildFile; fileRef = 879ED85D24FC031E000C4856 /* Words8Characters.json */; };
 		879ED87024FC2E0D000C4856 /* VerbalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED86F24FC2E0D000C4856 /* VerbalView.swift */; };
-		879ED87224FC2F62000C4856 /* VerbalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED87124FC2F62000C4856 /* VerbalLayout.swift */; };
+		879ED87224FC2F62000C4856 /* VerbalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879ED87124FC2F62000C4856 /* VerbalViewModel.swift */; };
 		87F2369A24FCED6B00B28E11 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2369624FCED6B00B28E11 /* Word.swift */; };
 		87F236D524FD762800B28E11 /* RandomSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F236D424FD762800B28E11 /* RandomSettingsViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -65,7 +65,7 @@
 		870DFD3D24FA5A1000FFA87F /* Characters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
 		870DFD4024FA5A1000FFA87F /* CheckBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
 		870DFD4224FA5A1000FFA87F /* MainFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFactory.swift; sourceTree = "<group>"; };
-		870DFD4324FA5A1000FFA87F /* MainLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainLayout.swift; sourceTree = "<group>"; };
+		870DFD4324FA5A1000FFA87F /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		870DFD4424FA5A1000FFA87F /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		870DFD4624FA5A1000FFA87F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		870DFD4724FA5A1000FFA87F /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -91,9 +91,9 @@
 		879ED84524FAE889000C4856 /* NumberPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerView.swift; sourceTree = "<group>"; };
 		879ED84724FB8FAD000C4856 /* LogarithmicSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogarithmicSliderView.swift; sourceTree = "<group>"; };
 		879ED84924FBC1F8000C4856 /* PasswordGeneratorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorController.swift; sourceTree = "<group>"; };
-		879ED84D24FBDDE8000C4856 /* RandomizedLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomizedLayout.swift; sourceTree = "<group>"; };
+		879ED84D24FBDDE8000C4856 /* RandomizedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomizedViewModel.swift; sourceTree = "<group>"; };
 		879ED85024FBE02F000C4856 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
-		879ED85224FBE0BC000C4856 /* ResultsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsLayout.swift; sourceTree = "<group>"; };
+		879ED85224FBE0BC000C4856 /* ResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewModel.swift; sourceTree = "<group>"; };
 		879ED85424FBE304000C4856 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		879ED85724FC02D9000C4856 /* Words7Characters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Words7Characters.json; sourceTree = "<group>"; };
 		879ED85924FC02E5000C4856 /* Words3Characters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Words3Characters.json; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 		879ED86124FC21FF000C4856 /* VerbalPasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerbalPasswordGenerator.swift; sourceTree = "<group>"; };
 		879ED86524FC27C8000C4856 /* Words.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Words.swift; sourceTree = "<group>"; };
 		879ED86F24FC2E0D000C4856 /* VerbalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerbalView.swift; sourceTree = "<group>"; };
-		879ED87124FC2F62000C4856 /* VerbalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerbalLayout.swift; sourceTree = "<group>"; };
+		879ED87124FC2F62000C4856 /* VerbalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerbalViewModel.swift; sourceTree = "<group>"; };
 		87F2369624FCED6B00B28E11 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		87F236D424FD762800B28E11 /* RandomSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomSettingsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -282,7 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				870DFD4424FA5A1000FFA87F /* MainView.swift */,
-				870DFD4324FA5A1000FFA87F /* MainLayout.swift */,
+				870DFD4324FA5A1000FFA87F /* MainViewModel.swift */,
 				870DFD4224FA5A1000FFA87F /* MainFactory.swift */,
 			);
 			path = Main;
@@ -292,7 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				873415F224FA921A00B6DB46 /* RandomizedView.swift */,
-				879ED84D24FBDDE8000C4856 /* RandomizedLayout.swift */,
+				879ED84D24FBDDE8000C4856 /* RandomizedViewModel.swift */,
 			);
 			path = Randomized;
 			sourceTree = "<group>";
@@ -301,7 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				879ED85024FBE02F000C4856 /* ResultsView.swift */,
-				879ED85224FBE0BC000C4856 /* ResultsLayout.swift */,
+				879ED85224FBE0BC000C4856 /* ResultsViewModel.swift */,
 			);
 			path = Results;
 			sourceTree = "<group>";
@@ -323,7 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				879ED86F24FC2E0D000C4856 /* VerbalView.swift */,
-				879ED87124FC2F62000C4856 /* VerbalLayout.swift */,
+				879ED87124FC2F62000C4856 /* VerbalViewModel.swift */,
 			);
 			path = Verbal;
 			sourceTree = "<group>";
@@ -423,7 +423,7 @@
 				870DFD4924FA5A1000FFA87F /* CheckBoxView.swift in Sources */,
 				870DFD4C24FA5A1000FFA87F /* MainView.swift in Sources */,
 				876DECD924FE624700462D6E /* ClosedRange.swift in Sources */,
-				879ED85324FBE0BC000C4856 /* ResultsLayout.swift in Sources */,
+				879ED85324FBE0BC000C4856 /* ResultsViewModel.swift in Sources */,
 				870DFD5224FA5A6C00FFA87F /* Texts.swift in Sources */,
 				870DFD5724FA5CFC00FFA87F /* PasswordType.swift in Sources */,
 				879ED84224FAD37C000C4856 /* Character.swift in Sources */,
@@ -435,14 +435,14 @@
 				879ED85524FBE304000C4856 /* Collection.swift in Sources */,
 				879E6CCE24FCDDDD0052A661 /* Vakho_s_Password_Generator.xcdatamodeld in Sources */,
 				878061B724FE6F950036177D /* Binding.swift in Sources */,
-				879ED87224FC2F62000C4856 /* VerbalLayout.swift in Sources */,
+				879ED87224FC2F62000C4856 /* VerbalViewModel.swift in Sources */,
 				870DFD6524FA74A900FFA87F /* Separator.swift in Sources */,
 				870DFD5924FA5D9900FFA87F /* AdditionalSetting.swift in Sources */,
 				870DFD5B24FA5ED300FFA87F /* Readability.swift in Sources */,
-				879ED84E24FBDDE8000C4856 /* RandomizedLayout.swift in Sources */,
+				879ED84E24FBDDE8000C4856 /* RandomizedViewModel.swift in Sources */,
 				879ED84424FAD9CC000C4856 /* Int.swift in Sources */,
 				870DFD6724FA756600FFA87F /* SectionView.swift in Sources */,
-				870DFD4B24FA5A1000FFA87F /* MainLayout.swift in Sources */,
+				870DFD4B24FA5A1000FFA87F /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

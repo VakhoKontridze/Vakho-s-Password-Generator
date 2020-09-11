@@ -22,13 +22,13 @@ extension MainView {
             generate
         })
             .frame(
-                minWidth: Layout.view.width,
-                idealWidth: Layout.view.width,
-                maxWidth: Layout.view.width,
+                minWidth: ViewModel.view.width,
+                idealWidth: ViewModel.view.width,
+                maxWidth: ViewModel.view.width,
                 
-                minHeight: Layout.view.height,
-                idealHeight: Layout.view.height,
-                maxHeight: Layout.view.height,
+                minHeight: ViewModel.view.height,
+                idealHeight: ViewModel.view.height,
+                maxHeight: ViewModel.view.height,
                 
                 alignment: .top
             )
@@ -54,10 +54,10 @@ extension MainView {
     private var length: some View {
         HStack(spacing: 3, content: {
             Text("Length: ")
-                .frame(width: Layout.header.width, alignment: .leading)
+                .frame(width: ViewModel.header.width, alignment: .leading)
 
             LogarithmicSliderView(value: $settings.length, range: SettingsViewModel.lengthRange)
-                .frame(width: Layout.slider.width)
+                .frame(width: ViewModel.slider.width)
                 .padding(.trailing, 5)
 
             NumberPickerView(value: $settings.length, range: SettingsViewModel.lengthRange)
@@ -73,7 +73,7 @@ extension MainView {
     private var quantity: some View {
         HStack(spacing: 3, content: {
             Text("Quantity: ")
-                .frame(width: Layout.header.width, alignment: .leading)
+                .frame(width: ViewModel.header.width, alignment: .leading)
             
             NumberPickerView(value: $settings.quantity, range: SettingsViewModel.quantityRange)
         })
@@ -82,14 +82,14 @@ extension MainView {
     private var type: some View {
         HStack(spacing: 3, content: {
             Text("Type: ")
-                .frame(width: Layout.header.width, alignment: .leading)
+                .frame(width: ViewModel.header.width, alignment: .leading)
 
             Picker(selection: self.$settings.type, label: EmptyView(), content: {
                 ForEach(PasswordType.allCases, id: \.self, content: { type in
                     Text(type.title)
                 })
             })
-                .frame(width: Layout.typePicker.width)
+                .frame(width: ViewModel.typePicker.width)
         })
     }
     

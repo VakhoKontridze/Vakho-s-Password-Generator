@@ -1,5 +1,5 @@
 //
-//  MainLayout.swift
+//  MainViewModel.swift
 //  Vakho's Password Generator
 //
 //  Created by Vakhtang Kontridze on 8/29/20.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-// MARK:- Main Layout
+// MARK:- Main ViewModel
 extension MainView {
-    struct Layout {
+    struct ViewModel {
         // MARK: Properties
         static let window: CGSize = .init(width: view.width, height: view.height + titleBar.height)
         static let titleBar: CGSize = .init(width: -1, height: 22)
         
-        static let view: CGSize = .init(width: 650, height: 734 - 20)   // -20 comes from padding applied in the view
+        static let view: CGSize = .init(width: 650, height: 734 - 20)   // -20 comes from padding applied to the view
         
         static let header: CGSize = .init(width: 75, height: -1)
         static let slider: CGSize = .init(width: 200, height: -1)

@@ -1,5 +1,5 @@
 //
-//  RandomizedLayout.swift
+//  RandomizedViewModel.swift
 //  Vakho's Password Generator
 //
 //  Created by Vakhtang Kontridze on 8/30/20.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-// MARK: Randomized Layout
+// MARK: Randomized ViewModel
 extension RandomizedView {
-    struct Layout {
+    struct ViewModel {
         // MARK: Properties
-        static let header: CGSize = MainView.Layout.header
+        static let header: CGSize = MainView.ViewModel.header
         static let weightsSection: CGSize = .init(width: 300, height: -1)
         static let readabilityPicker: CGSize = .init(width: 100, height: -1)
         

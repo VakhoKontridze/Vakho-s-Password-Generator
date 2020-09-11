@@ -29,7 +29,7 @@ extension RandomizedView {
                 CheckBoxView(isOn: self.$settings.random.lowercase.isIncluded.onChange(self.settings.random.syncFirstChar), characters: .lowercase)
                 Spacer()
                 NumberPickerView(value: self.$settings.random.lowercase.weight.onChange(self.settings.random.syncWeights), useSlider: true, range: Characters.weightRange)
-                    .frame(width: Layout.weightsSection.width)
+                    .frame(width: ViewModel.weightsSection.width)
                     .disabled(!self.settings.random.lowercase.isIncluded)
             })
             
@@ -37,7 +37,7 @@ extension RandomizedView {
                 CheckBoxView(isOn: self.$settings.random.uppercase.isIncluded.onChange(self.settings.random.syncFirstChar), characters: .uppercase)
                 Spacer()
                 NumberPickerView(value: self.$settings.random.uppercase.weight.onChange(self.settings.random.syncWeights), useSlider: true, range: Characters.weightRange)
-                    .frame(width: Layout.weightsSection.width)
+                    .frame(width: ViewModel.weightsSection.width)
                     .disabled(!self.settings.random.uppercase.isIncluded)
             })
             
@@ -45,7 +45,7 @@ extension RandomizedView {
                 CheckBoxView(isOn: self.$settings.random.digits.isIncluded, characters: .digits)
                 Spacer()
                 NumberPickerView(value: self.$settings.random.digits.weight.onChange(self.settings.random.syncWeights), useSlider: true, range: Characters.weightRange)
-                    .frame(width: Layout.weightsSection.width)
+                    .frame(width: ViewModel.weightsSection.width)
                     .disabled(!self.settings.random.digits.isIncluded)
             })
             
@@ -53,7 +53,7 @@ extension RandomizedView {
                 CheckBoxView(isOn: self.$settings.random.symbols.isIncluded, characters: .symbols)
                 Spacer()
                 NumberPickerView(value: self.$settings.random.symbols.weight.onChange(self.settings.random.syncWeights), useSlider: true, range: Characters.weightRange)
-                    .frame(width: Layout.weightsSection.width)
+                    .frame(width: ViewModel.weightsSection.width)
                     .disabled(!self.settings.random.symbols.isIncluded)
             })
             
@@ -61,7 +61,7 @@ extension RandomizedView {
                 CheckBoxView(isOn: self.$settings.random.ambiguous.isIncluded, characters: .ambiguous)
                 Spacer()
                 NumberPickerView(value: self.$settings.random.ambiguous.weight.onChange(self.settings.random.syncWeights), useSlider: true, range: Characters.weightRange)
-                    .frame(width: Layout.weightsSection.width)
+                    .frame(width: ViewModel.weightsSection.width)
                     .disabled(!self.settings.random.ambiguous.isIncluded)
             })
             
@@ -70,7 +70,7 @@ extension RandomizedView {
 
             HStack(spacing: 3, content: {
                 Text("Readability: ")
-                    .frame(width: Layout.header.width)
+                    .frame(width: ViewModel.header.width)
 
                 Picker(
                     selection: self.$settings.random.readability.onChange(self.settings.random.syncReadability),
@@ -81,7 +81,7 @@ extension RandomizedView {
                         })
                     }
                 )
-                    .frame(width: Layout.readabilityPicker.width)
+                    .frame(width: ViewModel.readabilityPicker.width)
             })
         })
     }
@@ -124,6 +124,6 @@ struct RandomizedView_Previews: PreviewProvider {
         RandomizedView()
             .environmentObject(SettingsViewModel())
         
-            .frame(width: MainView.Layout.view.width)
+            .frame(width: MainView.ViewModel.view.width)
     }
 }
