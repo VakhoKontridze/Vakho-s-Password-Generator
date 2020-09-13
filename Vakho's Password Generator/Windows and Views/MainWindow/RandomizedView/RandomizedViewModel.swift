@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: Randomized ViewModel
+// MARK: Randomized View Model
 extension RandomizedView {
     struct ViewModel {
         // MARK: Properties

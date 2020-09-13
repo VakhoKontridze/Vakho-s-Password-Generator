@@ -139,12 +139,13 @@
 		870DFD2724FA59D400FFA87F /* Vakho's Password Generator */ = {
 			isa = PBXGroup;
 			children = (
-				870DFD5E24FA68AA00FFA87F /* Supporting FIles */,
+				870DFD5E24FA68AA00FFA87F /* App Info */,
 				870DFD4524FA5A1000FFA87F /* App Control */,
 				870DFD3E24FA5A1000FFA87F /* Windows and Views */,
 				870DFD5324FA5B4500FFA87F /* View Models */,
 				879ED83E24FABC39000C4856 /* Services */,
 				870DFD3C24FA5A1000FFA87F /* Models */,
+				873415F824FAAB6A00B6DB46 /* Extensions */,
 				870DFD4F24FA5A5B00FFA87F /* Resources */,
 				870DFD2E24FA59D600FFA87F /* Preview Content */,
 			);
@@ -171,11 +172,8 @@
 		870DFD3E24FA5A1000FFA87F /* Windows and Views */ = {
 			isa = PBXGroup;
 			children = (
-				87731FA72508A94500CBCCBF /* AppMenu.swift */,
-				879ED84B24FBDA5C000C4856 /* Main */,
-				879ED84C24FBDA61000C4856 /* Randomized */,
-				879ED86E24FC2DFF000C4856 /* Verbal */,
-				879ED84F24FBE021000C4856 /* Results */,
+				87529F3A250CBCEC0056C74A /* AppMenu */,
+				87529F3B250CC5390056C74A /* MainWindow */,
 				870DFD3F24FA5A1000FFA87F /* Components */,
 			);
 			path = "Windows and Views";
@@ -207,9 +205,7 @@
 			children = (
 				870DFD2C24FA59D600FFA87F /* Assets.xcassets */,
 				870DFD5124FA5A6C00FFA87F /* Texts.swift */,
-				870DFD6824FA76A600FFA87F /* Colors.swift */,
 				879ED85624FC02B9000C4856 /* Words */,
-				873415F824FAAB6A00B6DB46 /* Extensions */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -223,13 +219,13 @@
 			path = "View Models";
 			sourceTree = "<group>";
 		};
-		870DFD5E24FA68AA00FFA87F /* Supporting FIles */ = {
+		870DFD5E24FA68AA00FFA87F /* App Info */ = {
 			isa = PBXGroup;
 			children = (
 				870DFD3424FA59D600FFA87F /* Info.plist */,
 				870DFD3524FA59D600FFA87F /* Vakho_s_Password_Generator.entitlements */,
 			);
-			name = "Supporting FIles";
+			name = "App Info";
 			sourceTree = "<group>";
 		};
 		873415F824FAAB6A00B6DB46 /* Extensions */ = {
@@ -242,8 +238,28 @@
 				879ED85424FBE304000C4856 /* Collection.swift */,
 				876DECD824FE624700462D6E /* ClosedRange.swift */,
 				878061B624FE6F950036177D /* Binding.swift */,
+				870DFD6824FA76A600FFA87F /* Colors.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		87529F3A250CBCEC0056C74A /* AppMenu */ = {
+			isa = PBXGroup;
+			children = (
+				87731FA72508A94500CBCCBF /* AppMenu.swift */,
+			);
+			path = AppMenu;
+			sourceTree = "<group>";
+		};
+		87529F3B250CC5390056C74A /* MainWindow */ = {
+			isa = PBXGroup;
+			children = (
+				879ED84B24FBDA5C000C4856 /* MainView */,
+				879ED84C24FBDA61000C4856 /* RandomizedView */,
+				879ED86E24FC2DFF000C4856 /* VerbalView */,
+				879ED84F24FBE021000C4856 /* ResultsView */,
+			);
+			path = MainWindow;
 			sourceTree = "<group>";
 		};
 		879E6CCA24FCDDB30052A661 /* Runtime */ = {
@@ -278,32 +294,32 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		879ED84B24FBDA5C000C4856 /* Main */ = {
+		879ED84B24FBDA5C000C4856 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
 				870DFD4424FA5A1000FFA87F /* MainView.swift */,
 				870DFD4324FA5A1000FFA87F /* MainViewModel.swift */,
 				870DFD4224FA5A1000FFA87F /* MainFactory.swift */,
 			);
-			path = Main;
+			path = MainView;
 			sourceTree = "<group>";
 		};
-		879ED84C24FBDA61000C4856 /* Randomized */ = {
+		879ED84C24FBDA61000C4856 /* RandomizedView */ = {
 			isa = PBXGroup;
 			children = (
 				873415F224FA921A00B6DB46 /* RandomizedView.swift */,
 				879ED84D24FBDDE8000C4856 /* RandomizedViewModel.swift */,
 			);
-			path = Randomized;
+			path = RandomizedView;
 			sourceTree = "<group>";
 		};
-		879ED84F24FBE021000C4856 /* Results */ = {
+		879ED84F24FBE021000C4856 /* ResultsView */ = {
 			isa = PBXGroup;
 			children = (
 				879ED85024FBE02F000C4856 /* ResultsView.swift */,
 				879ED85224FBE0BC000C4856 /* ResultsViewModel.swift */,
 			);
-			path = Results;
+			path = ResultsView;
 			sourceTree = "<group>";
 		};
 		879ED85624FC02B9000C4856 /* Words */ = {
@@ -319,13 +335,13 @@
 			path = Words;
 			sourceTree = "<group>";
 		};
-		879ED86E24FC2DFF000C4856 /* Verbal */ = {
+		879ED86E24FC2DFF000C4856 /* VerbalView */ = {
 			isa = PBXGroup;
 			children = (
 				879ED86F24FC2E0D000C4856 /* VerbalView.swift */,
 				879ED87124FC2F62000C4856 /* VerbalViewModel.swift */,
 			);
-			path = Verbal;
+			path = VerbalView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -570,6 +586,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Vakho's Password Generator/Preview Content\"";
 				DEVELOPMENT_TEAM = XRWP42VX24;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -580,6 +597,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vakhtang-kontridze.Vakho-s-Password-Generator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -595,6 +613,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Vakho's Password Generator/Preview Content\"";
 				DEVELOPMENT_TEAM = XRWP42VX24;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -605,6 +624,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vakhtang-kontridze.Vakho-s-Password-Generator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

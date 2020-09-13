@@ -44,6 +44,10 @@ Verbal password:
 ![Example screenshot](./img/Verbal.jpg)
 
 ## Version History
+Version 1.1(2) (2020 Sep 13)
+- Revamped App Menu
+- Bug fixes and performance enhancements
+
 Version 1.0(1) (2020 Sep 11)
 - Generate randomized and verbal passwords
 - Mutliple options

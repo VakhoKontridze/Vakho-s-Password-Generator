@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK:- Verbal ViewModel
+// MARK:- Verbal View Model
 extension VerbalView {
     struct ViewModel {
         // MARK: Properties

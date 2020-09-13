@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK:- Results ViewModel
+// MARK:- Results View Model
 extension ResultsView {
     struct ViewModel {
         // MARK: Properties
