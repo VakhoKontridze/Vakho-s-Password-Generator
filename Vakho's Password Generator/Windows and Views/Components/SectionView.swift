@@ -35,7 +35,7 @@ extension SectionView {
                 .frame(maxWidth: .infinity, alignment: .leading)
         })
             .padding(20)
-            .frame(maxHeight: .infinity, alignment: .top)
+            .frame(alignment: .top)
             
             .background(background)
     }

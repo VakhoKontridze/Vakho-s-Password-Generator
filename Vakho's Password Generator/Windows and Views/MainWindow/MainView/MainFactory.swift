@@ -9,14 +9,17 @@
 import SwiftUI
 
 // MARK:- Main Factory
-final class MainFactory {
+final class MainFactory: NSObject {
     // MARK: Properties
     static let shared: MainFactory = .init()
     
-    private(set) var window: NSWindow!
+    private var window: NSWindow!
+    private var controller: NSWindowController!
 
     // MARK: Initializers
-    private init() {}
+    private override init() {
+        super.init()
+    }
 }
 
 // MARK:- Window
@@ -56,5 +59,21 @@ extension MainFactory {
                 .environment(\.managedObjectContext, managedObjectContext)
                 .environmentObject(settings)
         )
+        
+        // Creates window controller
+        controller = .init(window: window)
+        
+        // Sets delegate
+        window.delegate = self
+    }
+}
+
+// MARK:- Delegate
+extension MainFactory: NSWindowDelegate {
+    func windowWillClose(_ notification: Notification) {
+        guard notification.object as? NSWindow == window else { return }
+        
+        self.window = nil
+        self.controller = nil
     }
 }

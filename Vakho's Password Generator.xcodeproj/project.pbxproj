@@ -174,6 +174,7 @@
 			children = (
 				87529F3A250CBCEC0056C74A /* AppMenu */,
 				87529F3B250CC5390056C74A /* MainWindow */,
+				879ED84F24FBE021000C4856 /* ResultsWindow */,
 				870DFD3F24FA5A1000FFA87F /* Components */,
 			);
 			path = "Windows and Views";
@@ -257,9 +258,17 @@
 				879ED84B24FBDA5C000C4856 /* MainView */,
 				879ED84C24FBDA61000C4856 /* RandomizedView */,
 				879ED86E24FC2DFF000C4856 /* VerbalView */,
-				879ED84F24FBE021000C4856 /* ResultsView */,
 			);
 			path = MainWindow;
+			sourceTree = "<group>";
+		};
+		87529F58250E1B690056C74A /* ResultsView */ = {
+			isa = PBXGroup;
+			children = (
+				879ED85024FBE02F000C4856 /* ResultsView.swift */,
+				879ED85224FBE0BC000C4856 /* ResultsViewModel.swift */,
+			);
+			path = ResultsView;
 			sourceTree = "<group>";
 		};
 		879E6CCA24FCDDB30052A661 /* Runtime */ = {
@@ -313,13 +322,12 @@
 			path = RandomizedView;
 			sourceTree = "<group>";
 		};
-		879ED84F24FBE021000C4856 /* ResultsView */ = {
+		879ED84F24FBE021000C4856 /* ResultsWindow */ = {
 			isa = PBXGroup;
 			children = (
-				879ED85024FBE02F000C4856 /* ResultsView.swift */,
-				879ED85224FBE0BC000C4856 /* ResultsViewModel.swift */,
+				87529F58250E1B690056C74A /* ResultsView */,
 			);
-			path = ResultsView;
+			path = ResultsWindow;
 			sourceTree = "<group>";
 		};
 		879ED85624FC02B9000C4856 /* Words */ = {
@@ -586,7 +594,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Vakho's Password Generator/Preview Content\"";
 				DEVELOPMENT_TEAM = XRWP42VX24;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -597,7 +605,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vakhtang-kontridze.Vakho-s-Password-Generator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -613,7 +621,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Vakho's Password Generator/Preview Content\"";
 				DEVELOPMENT_TEAM = XRWP42VX24;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -624,7 +632,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vakhtang-kontridze.Vakho-s-Password-Generator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
