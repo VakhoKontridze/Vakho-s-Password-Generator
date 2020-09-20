@@ -51,7 +51,7 @@ extension SectionView {
 // MARK:- Preview
 struct SectionView_Previews: PreviewProvider {
     static var previews: some View {
-        SectionView(title: "Title", content: {
+        SectionView(title: "Characters", content: {
             ForEach(CharacterSet.allCases, content: { characters in
                 CheckBoxView(isOn: .constant(true), characters: characters)
             })

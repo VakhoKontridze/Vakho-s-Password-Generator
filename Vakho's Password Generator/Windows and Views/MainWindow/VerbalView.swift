@@ -37,6 +37,18 @@ extension VerbalView {
     }
 }
 
+// MARK:- View Model
+extension VerbalView {
+    struct ViewModel {
+        // MARK: Properties
+        static let row: CGSize = .init(width: -1, height: 30)
+        
+        // MARK: Initializers
+        private init() {}
+    }
+}
+
+
 // MARK:- Preview
 struct VerbalView_Previews: PreviewProvider {
     static var previews: some View {

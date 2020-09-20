@@ -51,8 +51,8 @@ extension ResultsView {
             header
             passwordsList
         })
-            .frame(width: ViewModel.window.width, height: ViewModel.window.height)
             .padding(10)
+            .frame(size: ViewModel.view)
             
             .background(Color.listBackground)   // Override on NSTableView is done in Colors.swift
             
@@ -184,6 +184,22 @@ private extension ResultsView {
         
         clipboardMessageIsShowing = true
         NSSound(named: "Tink")?.play()
+    }
+}
+
+// MARK:- View Model
+extension ResultsView {
+    struct ViewModel {
+        // MARK: Properties
+        static let view: CGSize = .init(width: MainView.ViewModel.window.width - 40, height: MainView.ViewModel.window.height - 20)
+        
+        static let headerCornerItem: CGSize = .init(width: 150, height: -1)
+        
+        static let numbering: CGSize = .init(width: 25, height: -1)
+        static let row: CGSize = .init(width: -1, height: 35)
+        
+        // MARK: Initializers
+        private init() {}
     }
 }
 

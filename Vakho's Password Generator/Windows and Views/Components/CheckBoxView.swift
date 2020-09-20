@@ -17,26 +17,30 @@ struct CheckBoxView: View {
     private let details: String?
     
     // MARK: Initializers
-    private init(isOn: Binding<Bool>, title: String?, details: String?) {
+    private init(_ isOn: Binding<Bool>, title: String?, details: String?) {
         self._isOn = isOn
         self.title = title
         self.details = details
     }
     
     init(isOn: Binding<Bool>) {
-        self.init(isOn: isOn, title: nil, details: nil)
+        self.init(isOn, title: nil, details: nil)
     }
     
     init(isOn: Binding<Bool>, title: String) {
-        self.init(isOn: isOn, title: title, details: nil)
+        self.init(isOn, title: title, details: nil)
+    }
+    
+    init(isOn: Binding<Bool>, title: String, details: String) {
+        self.init(isOn, title: title, details: details)
     }
     
     init(isOn: Binding<Bool>, characters: CharacterSet) {
-        self.init(isOn: isOn, title: characters.title, details: characters.details)
+        self.init(isOn, title: characters.title, details: characters.details)
     }
     
     init(isOn: Binding<Bool>, setting: AdditionalSetting) {
-        self.init(isOn: isOn, title: setting.title, details: setting.details)
+        self.init(isOn, title: setting.title, details: setting.details)
     }
 }
 

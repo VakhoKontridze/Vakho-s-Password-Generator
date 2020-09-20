@@ -21,18 +21,8 @@ extension MainView {
             contextualSettings
             generate
         })
-            .frame(
-                minWidth: ViewModel.view.width,
-                idealWidth: ViewModel.view.width,
-                maxWidth: ViewModel.view.width,
-                
-                minHeight: ViewModel.view.height,
-                idealHeight: ViewModel.view.height,
-                maxHeight: ViewModel.view.height,
-                
-                alignment: .top
-            )
             .padding(10)
+            .frame(size: ViewModel.view, alignment: .top)
         
             .sheet(isPresented: $settings.passwordsAreBeingGenerated, content: {
                 ResultsView()
@@ -106,6 +96,24 @@ extension MainView {
     private var generate: some View {
         Button(action: { self.settings.passwordsAreBeingGenerated = true }, label: { Text("Generate") })
             .disabled(settings.random.allTypes.filter { $0.isIncluded && $0.weight > 0 }.isEmpty)
+    }
+}
+
+// MARK:- View Model
+extension MainView {
+    struct ViewModel {
+        // MARK: Properties
+        static let window: CGSize = .init(width: view.width, height: view.height + titleBar.height)
+        static let titleBar: CGSize = .init(width: -1, height: 22)
+        
+        static let view: CGSize = .init(width: 650, height: 732.5)
+        
+        static let header: CGSize = .init(width: 75, height: -1)
+        static let slider: CGSize = .init(width: 200, height: -1)
+        static let typePicker: CGSize = .init(width: 120, height: -1)
+
+        // MARK: Initializers
+        private init() {}
     }
 }
 

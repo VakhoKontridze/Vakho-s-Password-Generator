@@ -11,7 +11,7 @@ import SwiftUI
 
 // MARK: App Delegate
 /*@NSApplicationMain*/ final class AppDelegate: NSObject {
-    let passwordSettings: SettingsViewModel = .init()
+    let settings: SettingsViewModel = .init()
     
     lazy var persistentContainer: NSPersistentContainer = {
         let container: NSPersistentContainer = .init(name: "Vakho_s_Password_Generator")
@@ -34,10 +34,10 @@ import SwiftUI
 // MARK:- App Delegate
 extension AppDelegate: NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        PasswordGeneratorController.shared.settings = passwordSettings
+        PasswordGeneratorController.shared.settings = settings
         PasswordGeneratorController.shared.managedObjectContext = managedObjectContext
         
-        MainFactory.shared.createWindow(managedObjectContext: managedObjectContext, settings: passwordSettings)
+        MainWindow.shared.createWindow()
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
@@ -65,4 +65,11 @@ extension AppDelegate {
     }
 
     func windowWillReturnUndoManager(window: NSWindow) -> UndoManager? { managedObjectContext.undoManager }
+}
+
+// MARK:- Terminate
+extension AppDelegate {
+    static func terminateApp() {
+        exit(0)
+    }
 }

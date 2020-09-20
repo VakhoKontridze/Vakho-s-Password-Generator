@@ -108,15 +108,30 @@ extension RandomizedView {
                 
                 HStack(spacing: 3, content: {
                     NumberPickerView(value: self.$settings.random.separator.characterChunkQuantity, range: Separator.range)
+                        .disabled(!self.settings.random.separator.isEnabled)
                     
                     Text(" characters")
+                        .onTapGesture(perform: { self.settings.random.separator.isEnabled.toggle() })
                 })
-                    .disabled(!self.settings.random.separator.isEnabled)
             })
                 .foregroundColor(self.settings.random.separator.isEnabled ? .primary : .secondary)
         })
     }
 }
+
+// MARK: View Model
+extension RandomizedView {
+    struct ViewModel {
+        // MARK: Properties
+        static let header: CGSize = MainView.ViewModel.header
+        static let weightsSection: CGSize = .init(width: 300, height: -1)
+        static let readabilityPicker: CGSize = .init(width: 100, height: -1)
+        
+        // MARK: Initializers
+        private init() {}
+    }
+}
+
 
 // MARK:- Preview
 struct RandomizedView_Previews: PreviewProvider {

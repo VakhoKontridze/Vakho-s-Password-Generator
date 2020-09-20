@@ -11,8 +11,7 @@ import Cocoa
 // MARK:- App Menu
 final class AppMenu: NSMenu {
     // MARK: Properties
-    private var passwordSettings: SettingsViewModel!
-    
+    private var settings: SettingsViewModel!
     
     // MARK: Initializers
     override init(title: String) {
@@ -27,7 +26,7 @@ final class AppMenu: NSMenu {
     
     convenience init(settings: SettingsViewModel) {
         self.init(title: "Default")
-        self.passwordSettings = settings
+        self.settings = settings
     }
     
     private func commonInit() {
@@ -78,10 +77,10 @@ private extension AppMenu {
             .separator(),
 
             .init(title: "Password Type", hotkey: nil, subItems: [
-                .init(in: self, title: "Randomized", hotkey: nil, action: #selector(changePasswordTypeToRandomized)),
-                .init(in: self, title: "Verbal", hotkey: nil, action: #selector(changePasswordTypeToVerbal))
+                .init(in: self, title: "Randomized", hotkey: .init(.command, "1"), action: #selector(changePasswordTypeToRandomized)),
+                .init(in: self, title: "Verbal", hotkey: .init(.command, "2"), action: #selector(changePasswordTypeToVerbal))
             ]),
-            .init(in: self, title: "Change Password Type", hotkey: nil, action: #selector(changePasswordType))
+            .init(in: self, title: "Change Password Type", hotkey: .init(.command, "0"), action: #selector(changePasswordType))
         ]
 
         return menu
@@ -151,10 +150,12 @@ private extension AppMenu {
 
 // MARK:- Selectors
 private extension AppMenu {
-    @objc func generate() { passwordSettings.passwordsAreBeingGenerated = true }
-    @objc func changePasswordType() { passwordSettings.type.nextCase() }
-    @objc func changePasswordTypeToRandomized() { passwordSettings.type = .randomized }
-    @objc func changePasswordTypeToVerbal() { passwordSettings.type = .verbal }
+    @objc func generate() { settings.passwordsAreBeingGenerated = true }
+    
+    @objc func changePasswordTypeToRandomized() { settings.type = .randomized }
+    @objc func changePasswordTypeToVerbal() { settings.type = .verbal }
+    
+    @objc func changePasswordType() { settings.type.nextCase() }
     
     @objc func contactDeveloper() {
         guard let service = NSSharingService(named: NSSharingService.Name.composeEmail) else { return }

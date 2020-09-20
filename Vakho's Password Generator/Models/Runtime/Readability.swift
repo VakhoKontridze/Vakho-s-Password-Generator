@@ -9,8 +9,10 @@
 import Foundation
 
 // MARK:- Readability
-enum Readability: CaseIterable {
+enum Readability: Int, CaseIterable, Identifiable {
     case low, medium, high, custom
     
     static var defaultCase: Readability { .high }
+    
+    var id: Int { rawValue }
 }

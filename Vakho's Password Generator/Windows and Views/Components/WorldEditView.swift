@@ -43,8 +43,8 @@ extension WordEditView {
                 ForEach(self.words.sorted(), id: \.self, content: { word in
                     self.row(word: word)
                 })
+                    .mask(Rectangle().cornerRadius(10))
             })
-                .mask(Rectangle().cornerRadius(10))
         })
     }
     

@@ -37,13 +37,16 @@ You can simply clone the project and build the app from XCode.
 ## Examples
 Randomized password:
 
-![Example screenshot](./img/Randomized.jpg)
+![Randomized](./img/Randomized.jpg)
 
 Verbal password:
 
-![Example screenshot](./img/Verbal.jpg)
+![Verbal](./img/Verbal.jpg)
 
 ## Version History
+Version 1.2(3) (2020 Sep 20)
+- Bug fixes and performance enhancements
+
 Version 1.1(2) (2020 Sep 13)
 - Revamped App Menu
 - Bug fixes and performance enhancements
