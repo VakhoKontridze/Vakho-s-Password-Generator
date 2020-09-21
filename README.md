@@ -5,7 +5,6 @@
 - [Technologies](#technologies)
 - [Setup](#setup)
 - [Examples](#examples)
-- [Version History](#version-history)
 - [Contact](#contact)
 - [Copyright](#copyright)
 
@@ -42,18 +41,6 @@ Randomized password:
 Verbal password:
 
 ![Verbal](./img/Verbal.jpg)
-
-## Version History
-Version 1.2(3) (2020 Sep 21)
-- Bug fixes and performance enhancements
-
-Version 1.1(2) (2020 Sep 13)
-- Revamped App Menu
-- Bug fixes and performance enhancements
-
-Version 1.0(1) (2020 Sep 11)
-- Generate randomized and verbal passwords
-- Mutliple options
 
 ## Contact
 e-mail: [vakho.kontridze@gmail.com](mailto:vakho.kontridze@gmail.com)
