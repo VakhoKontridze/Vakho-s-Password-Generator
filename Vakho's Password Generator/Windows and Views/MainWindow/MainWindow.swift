@@ -15,7 +15,7 @@ final class MainWindow: WindowFactory, WindowFactoryable {
     
     var rootView: some View {
         MainView()
-            .environment(\.managedObjectContext, appDelegate.managedObjectContext)
+            .environment(\.managedObjectContext, appDelegate.moc)
             .environmentObject(appDelegate.settings)
     }
     

@@ -15,7 +15,6 @@ final class PasswordGeneratorController {
     static let shared: PasswordGeneratorController = .init()
     
     var settings: SettingsViewModel!
-    var managedObjectContext: NSManagedObjectContext!
     
     var shouldContinue: Bool = false    // Since DispatchQueue doesn't suspend process, manual flag is used
     
@@ -48,7 +47,7 @@ extension PasswordGeneratorController {
                     return VerbalPasswordGenerator(
                         length: self.settings.length,
                         quantity: self.settings.quantity,
-                        words: Word.fetch(from: self.managedObjectContext)
+                        words: Word.fetch()
                     )
                 }
             }()

@@ -160,7 +160,12 @@
 			isa = PBXGroup;
 			children = (
 				879E6CCB24FCDDBE0052A661 /* Persistent */,
-				879E6CCA24FCDDB30052A661 /* Runtime */,
+				870DFD5624FA5CFC00FFA87F /* PasswordType.swift */,
+				870DFD3D24FA5A1000FFA87F /* Characters.swift */,
+				870DFD5824FA5D9900FFA87F /* AdditionalSetting.swift */,
+				870DFD5A24FA5ED300FFA87F /* Readability.swift */,
+				870DFD6424FA74A900FFA87F /* Separator.swift */,
+				879ED86524FC27C8000C4856 /* Words.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -270,19 +275,6 @@
 			path = Generators;
 			sourceTree = "<group>";
 		};
-		879E6CCA24FCDDB30052A661 /* Runtime */ = {
-			isa = PBXGroup;
-			children = (
-				870DFD5624FA5CFC00FFA87F /* PasswordType.swift */,
-				870DFD3D24FA5A1000FFA87F /* Characters.swift */,
-				870DFD5824FA5D9900FFA87F /* AdditionalSetting.swift */,
-				870DFD5A24FA5ED300FFA87F /* Readability.swift */,
-				870DFD6424FA74A900FFA87F /* Separator.swift */,
-				879ED86524FC27C8000C4856 /* Words.swift */,
-			);
-			path = Runtime;
-			sourceTree = "<group>";
-		};
 		879E6CCB24FCDDBE0052A661 /* Persistent */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,7 +341,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Vakhtang Kontridze";
 				TargetAttributes = {
 					870DFD2424FA59D400FFA87F = {
@@ -467,6 +459,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -527,6 +520,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

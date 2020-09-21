@@ -11,7 +11,7 @@ import SwiftUI
 // MARK:- Verbal View
 struct VerbalView: View {
     @EnvironmentObject private var settings: SettingsViewModel
-    @Environment(\.managedObjectContext) var managedObjectContext: NSManagedObjectContext
+    @Environment(\.managedObjectContext) var moc: NSManagedObjectContext
     
     @FetchRequest(fetchRequest: Word.fetchRequest) private var words: FetchedResults<Word>
 }
@@ -23,15 +23,15 @@ extension VerbalView {
             WordEditView(
                 title: "Added Words",
                 words: words.addedWords,
-                didAdd: { Word.create($0, isAdded: true, in: self.managedObjectContext) },
-                didDelete: { Word.delete($0, from: self.managedObjectContext) }
+                didAdd: { Word.create($0, isAdded: true) },
+                didDelete: { Word.delete($0) }
             )
             
             WordEditView(
                 title: "Excluded Words",
                 words: words.excludedWords,
-                didAdd: { Word.create($0, isAdded: false, in: self.managedObjectContext) },
-                didDelete: { Word.delete($0, from: self.managedObjectContext) }
+                didAdd: { Word.create($0, isAdded: false) },
+                didDelete: { Word.delete($0) }
             )
         })
     }
@@ -58,7 +58,7 @@ extension VerbalView.ViewModel {
 struct VerbalView_Previews: PreviewProvider {
     static var previews: some View {
         VerbalView()
-            .environment(\.managedObjectContext, (NSApp.delegate as! AppDelegate).managedObjectContext)
+            .environment(\.managedObjectContext, appDelegate.moc)
             .environmentObject(SettingsViewModel())
         
             .frame(width: MainView.ViewModel.Layout.view.width)
