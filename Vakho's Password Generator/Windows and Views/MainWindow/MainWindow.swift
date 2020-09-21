@@ -13,9 +13,11 @@ final class MainWindow: WindowFactory, WindowFactoryable {
     // MARK: Properties
     static let shared: MainWindow = .init()
     
-    let rootView: some View = MainView()
-        .environment(\.managedObjectContext, appDelegate.managedObjectContext)
-        .environmentObject(appDelegate.settings)
+    var rootView: some View {
+        MainView()
+            .environment(\.managedObjectContext, appDelegate.managedObjectContext)
+            .environmentObject(appDelegate.settings)
+    }
     
     let rect: WindowRectParameters = .init(
         savesOrigin: false,

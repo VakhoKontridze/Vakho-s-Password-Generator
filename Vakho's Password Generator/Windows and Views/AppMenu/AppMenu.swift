@@ -118,9 +118,9 @@ private extension AppMenu {
 
         menu.submenu = .init(title: "Window")
         menu.submenu?.items = [
-//            .init(title: "Minimize", hotkey: .init(.command, "m"), action: #selector(NSWindow.miniaturize(_:))),
-//            .init(title: "Zoom", hotkey: nil, action: #selector(NSWindow.performZoom(_:))),
-//            .init(title: "Enter/Exit Full Screen", hotkey: .init(.optionCommand, "f"), action: #selector(NSWindow.toggleFullScreen(_:))),
+//            Minimize
+//            Zoom
+//            Fullscreen
 
             //.separator(),
 
