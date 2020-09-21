@@ -6,6 +6,7 @@
 //  Copyright © 2020 Vakhtang Kontridze. All rights reserved.
 //
 
+import Foundation
 import SwiftUI
 
 // MARK:- Window Factory

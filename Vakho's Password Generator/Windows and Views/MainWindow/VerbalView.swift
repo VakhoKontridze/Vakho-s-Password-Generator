@@ -40,6 +40,12 @@ extension VerbalView {
 // MARK:- View Model
 extension VerbalView {
     struct ViewModel {
+        private init() {}
+    }
+}
+
+extension VerbalView.ViewModel {
+    struct Layout {
         // MARK: Properties
         static let row: CGSize = .init(width: -1, height: 30)
         
@@ -48,7 +54,6 @@ extension VerbalView {
     }
 }
 
-
 // MARK:- Preview
 struct VerbalView_Previews: PreviewProvider {
     static var previews: some View {
@@ -56,6 +61,6 @@ struct VerbalView_Previews: PreviewProvider {
             .environment(\.managedObjectContext, (NSApp.delegate as! AppDelegate).managedObjectContext)
             .environmentObject(SettingsViewModel())
         
-            .frame(width: MainView.ViewModel.view.width)
+            .frame(width: MainView.ViewModel.Layout.view.width)
     }
 }

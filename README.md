@@ -44,7 +44,7 @@ Verbal password:
 ![Verbal](./img/Verbal.jpg)
 
 ## Version History
-Version 1.2(3) (2020 Sep 20)
+Version 1.2(3) (2020 Sep 21)
 - Bug fixes and performance enhancements
 
 Version 1.1(2) (2020 Sep 13)

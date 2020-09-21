@@ -52,7 +52,7 @@ extension ResultsView {
             passwordsList
         })
             .padding(10)
-            .frame(size: ViewModel.view)
+            .frame(size: ViewModel.Layout.view)
             
             .background(Color.listBackground)   // Override on NSTableView is done in Colors.swift
             
@@ -70,12 +70,12 @@ extension ResultsView {
     private var header: some View {
         HStack(content: {
             Group(content: {
-                Button(action: {
+                Button("Back", action: {
                     self.cancellGeneration()
                     self.presentationMode.wrappedValue.dismiss()
-                }, label: { Text("Back") })
+                })
             })
-                .frame(width: ViewModel.headerCornerItem.width, alignment: .leading)
+                .frame(width: ViewModel.Layout.headerCornerItem.width, alignment: .leading)
             
             Spacer()
             
@@ -86,7 +86,7 @@ extension ResultsView {
             Spacer()
             
             Text(progress)
-                .frame(width: ViewModel.headerCornerItem.width, alignment: .trailing)
+                .frame(width: ViewModel.Layout.headerCornerItem.width, alignment: .trailing)
                 .font(.system(.caption, design: .monospaced))
                 .foregroundColor(.secondary)
         })
@@ -114,12 +114,12 @@ extension ResultsView {
                 .foregroundColor(.formBackground)
             
             Text(String(i + 1))
-                .frame(width: ViewModel.numbering.width)
+                .frame(width: ViewModel.Layout.numbering.width)
                 .padding(5)
                 .font(.footnote)
                 .foregroundColor(.secondary)
         })
-            .frame(height: ViewModel.row.height)
+            .frame(height: ViewModel.Layout.row.height)
             .fixedSize(horizontal: true, vertical: false)
     }
     
@@ -190,8 +190,14 @@ private extension ResultsView {
 // MARK:- View Model
 extension ResultsView {
     struct ViewModel {
+        private init() {}
+    }
+}
+
+extension ResultsView.ViewModel {
+    struct Layout {
         // MARK: Properties
-        static let view: CGSize = .init(width: MainView.ViewModel.window.width - 40, height: MainView.ViewModel.window.height - 20)
+        static let view: CGSize = .init(width: MainView.ViewModel.Layout.window.width - 40, height: MainView.ViewModel.Layout.window.height - 20)
         
         static let headerCornerItem: CGSize = .init(width: 150, height: -1)
         

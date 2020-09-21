@@ -123,7 +123,7 @@ extension RandomizedView {
 extension RandomizedView {
     struct ViewModel {
         // MARK: Properties
-        static let header: CGSize = MainView.ViewModel.header
+        static let header: CGSize = MainView.ViewModel.Layout.header
         static let weightsSection: CGSize = .init(width: 300, height: -1)
         static let readabilityPicker: CGSize = .init(width: 100, height: -1)
         
@@ -139,6 +139,6 @@ struct RandomizedView_Previews: PreviewProvider {
         RandomizedView()
             .environmentObject(SettingsViewModel())
         
-            .frame(width: MainView.ViewModel.view.width)
+            .frame(width: MainView.ViewModel.Layout.view.width)
     }
 }

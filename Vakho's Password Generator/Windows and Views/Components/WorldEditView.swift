@@ -53,7 +53,7 @@ extension WordEditView {
             TextField("", text: self.$word)
                 .mask(Rectangle().cornerRadius(7))
             
-            Button(action: { self.add() }, label: { Text("Add") })
+            Button("Add", action: { self.add() })
                 .disabled(word.count < 3)
                 
                 .buttonStyle(PlainButtonStyle())
@@ -76,7 +76,7 @@ extension WordEditView {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.subheadline)
                 
-                Button(action: { self.deleteHandler?(word) }, label: { Text("Remove") } )
+                Button("Remove", action: { self.deleteHandler?(word) })
                     .buttonStyle(PlainButtonStyle())
                 
                     .font(.caption)
@@ -84,7 +84,7 @@ extension WordEditView {
             })
                 .padding(.horizontal, 20)
         })
-            .frame(height: VerbalView.ViewModel.row.height)
+            .frame(height: VerbalView.ViewModel.Layout.row.height)
     }
 }
 
@@ -104,6 +104,6 @@ private extension WordEditView {
 struct WordEditView_Previews: PreviewProvider {
     static var previews: some View {
         WordEditView(title: "Added Words", words: ["Abc", "Def", "Ghi"])
-            .frame(width: MainView.ViewModel.view.width / 2)
+            .frame(width: MainView.ViewModel.Layout.view.width / 2)
     }
 }

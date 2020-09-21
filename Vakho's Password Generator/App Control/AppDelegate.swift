@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import SwiftUI
 
 // MARK: App Delegate
 /*@NSApplicationMain*/ final class AppDelegate: NSObject {
