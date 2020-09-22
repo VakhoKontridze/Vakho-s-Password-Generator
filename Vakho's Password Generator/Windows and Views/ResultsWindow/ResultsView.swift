@@ -37,7 +37,7 @@ struct ResultsView: View {
             clipboardMessageTimer = nil
             
             clipboardMessageTimer = .scheduledTimer(withTimeInterval: 3, repeats: false, block: { _ in
-                self.clipboardMessageIsShowing = false
+                clipboardMessageIsShowing = false
             })
         }
     }
@@ -60,9 +60,9 @@ extension ResultsView {
         
             .alert(isPresented: $errorMessageIsShowing, content: {
                 Alert(
-                    title: .init(self.error?.localizedDescription ?? ""),
-                    message: .init(self.error?.detalizedDescription ?? ""),
-                    dismissButton: .cancel({ self.presentationMode.wrappedValue.dismiss() })
+                    title: .init(error?.localizedDescription ?? ""),
+                    message: .init(error?.detalizedDescription ?? ""),
+                    dismissButton: .cancel({ presentationMode.wrappedValue.dismiss() })
                 )
             })
     }
@@ -71,8 +71,8 @@ extension ResultsView {
         HStack(content: {
             Group(content: {
                 Button("Back", action: {
-                    self.cancellGeneration()
-                    self.presentationMode.wrappedValue.dismiss()
+                    cancellGeneration()
+                    presentationMode.wrappedValue.dismiss()
                 })
             })
                 .frame(width: ViewModel.Layout.headerCornerItem.width, alignment: .leading)
@@ -95,15 +95,15 @@ extension ResultsView {
     private var passwordsList: some View {
         List(content: {
             ForEach(passwords.enumeratedArray(), id: \.offset, content: { (i, password) in
-                self.row(i: i, password: password)
+                row(i: i, pass: password)
             })
         })
     }
     
-    private func row(i: Int, password: String) -> some View {
+    private func row(i: Int, pass: String) -> some View {
         HStack(content: {
-            self.number(i)
-            self.password(i: i, password: password)
+            number(i)
+            password(i, password: pass)
         })
             .padding(.trailing, 7)
     }
@@ -123,7 +123,7 @@ extension ResultsView {
             .fixedSize(horizontal: true, vertical: false)
     }
     
-    private func password(i: Int, password: String) -> some View {
+    private func password(_ i: Int, password: String) -> some View {
         ZStack(alignment: .leading, content: {
             Rectangle()
                 .cornerRadius(10)
@@ -142,7 +142,7 @@ extension ResultsView {
                 .multilineTextAlignment(.leading)
                 .truncationMode(.tail)
         })
-            .onTapGesture(count: 2, perform: { self.copyToClipboard(from: i) })
+            .onTapGesture(count: 2, perform: { copyToClipboard(from: i) })
     }
 }
 
@@ -153,13 +153,13 @@ private extension ResultsView {
             DispatchQueue.main.async(execute: {
                 switch result {
                 case .success(let password):
-                    self.passwords.append(password)
+                    passwords.append(password)
                 
                 case .failure(let error):
                     switch error {
                     case .invalidConfiguration, .couldntLoadWords:
                         self.error = error
-                        self.errorMessageIsShowing = true
+                        errorMessageIsShowing = true
                     
                     case .couldntGenerate:
                         break

@@ -41,8 +41,8 @@ extension NumberPickerView {
     private var slider: some View {
         Slider(
             value: .init(
-                get: { .init(self.value) },
-                set: { self.value = .init($0) }
+                get: { .init(value) },
+                set: { value = .init($0) }
             ),
             in: range.asDouble
         )
@@ -53,24 +53,24 @@ extension NumberPickerView {
         TextField(
             "",
             text: Binding<String>(
-                get: { self.textFieldIsBeingModified ? self.valueStr : .init(self.value) },
-                set: { newValue in self.valueStr = newValue }
+                get: { textFieldIsBeingModified ? valueStr : .init(value) },
+                set: { newValue in valueStr = newValue }
             )
-                .onChange({ self.textFieldIsBeingModified = true }),
+                .onChange({ textFieldIsBeingModified = true }),
             onCommit: {
-                self.textFieldIsBeingModified = false
+                textFieldIsBeingModified = false
                 
-                guard let rawValue = Int(self.valueStr) else { return }
+                guard let rawValue = Int(valueStr) else { return }
                 
                 let newValue: Int = {
                     switch rawValue {
-                    case self.range: return rawValue
-                    case ..<self.range.lowerBound: return self.range.lowerBound
-                    default: return self.range.upperBound // self.range.upperBound>..
+                    case range: return rawValue
+                    case ..<range.lowerBound: return range.lowerBound
+                    default: return range.upperBound // range.upperBound>..
                     }
                 }()
                 
-                self.value = newValue
+                value = newValue
             }
         )
             .frame(width: 40)
@@ -83,8 +83,8 @@ extension NumberPickerView {
         Stepper(
             "",
             value: .init(
-                get: { self.value },
-                set: { newValue in self.value = newValue }
+                get: { value },
+                set: { newValue in value = newValue }
             ),
             in: range
         )

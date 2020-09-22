@@ -26,16 +26,16 @@ extension MainView {
         
             .sheet(isPresented: $settings.passwordsAreBeingGenerated, content: {
                 ResultsView()
-                    .environmentObject(self.settings)
+                    .environmentObject(settings)
             })
     }
     
     private var basic: some View {
         SectionView(content: {
             VStack(alignment: .leading, content: {
-                self.length
-                self.quantity
-                self.type
+                length
+                quantity
+                type
             })
         })
             .fixedSize(horizontal: false, vertical: true)
@@ -74,7 +74,7 @@ extension MainView {
             Text("Type: ")
                 .frame(width: ViewModel.Layout.header.width, alignment: .leading)
 
-            Picker(selection: self.$settings.type, label: EmptyView(), content: {
+            Picker(selection: $settings.type, label: EmptyView(), content: {
                 ForEach(PasswordType.allCases, id: \.self, content: { type in
                     Text(type.title)
                 })
@@ -85,7 +85,7 @@ extension MainView {
     
     private var contextualSettings: some View {
         Group(content: {
-            if self.settings.type == .randomized {
+            if settings.type == .randomized {
                 RandomizedView()
             } else {
                 VerbalView()
@@ -94,7 +94,7 @@ extension MainView {
     }
     
     private var generate: some View {
-        Button("Generate", action: { self.settings.passwordsAreBeingGenerated = true })
+        Button("Generate", action: { settings.passwordsAreBeingGenerated = true })
             .disabled(settings.random.allTypes.filter { $0.isIncluded && $0.weight > 0 }.isEmpty)
     }
 }

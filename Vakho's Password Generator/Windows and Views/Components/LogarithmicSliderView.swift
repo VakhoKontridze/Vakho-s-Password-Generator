@@ -32,8 +32,8 @@ extension LogarithmicSliderView {
     var slider: some View {
         Slider(
             value: .init(
-                get: { Double(self.value.normalized(on: self.range)) },
-                set: { self.value = $0.denormalized(on: self.range) }
+                get: { Double(value.normalized(on: range)) },
+                set: { value = $0.denormalized(on: range) }
             ),
             in: range.normalized
         )
@@ -43,7 +43,7 @@ extension LogarithmicSliderView {
         HStack(spacing: 0, content: {
             ForEach(range.normalized.asSliderRange, content: { section in
                 HStack(spacing: 0, content: {
-                    self.tickMark(Double(section).denormalized(on: self.range))
+                    tickMark(Double(section).denormalized(on: range))
                     Spacer()
                 })
             })

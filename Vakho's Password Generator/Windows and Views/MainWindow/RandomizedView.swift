@@ -26,43 +26,43 @@ extension RandomizedView {
     private var characters: some View {
         SectionView(content: {
             HStack(content: {
-                CheckBoxView(isOn: self.$settings.random.lowercase.isIncluded.onChange(self.settings.random.syncFirstChar), characters: .lowercase)
+                CheckBoxView(isOn: $settings.random.lowercase.isIncluded.onChange(settings.random.syncFirstChar), characters: .lowercase)
                 Spacer()
-                NumberPickerView(value: self.$settings.random.lowercase.weight.onChange(self.settings.random.syncWeights), useSlider: true, range: Characters.weightRange)
+                NumberPickerView(value: $settings.random.lowercase.weight.onChange(settings.random.syncWeights), useSlider: true, range: Characters.weightRange)
                     .frame(width: ViewModel.weightsSection.width)
-                    .disabled(!self.settings.random.lowercase.isIncluded)
+                    .disabled(!settings.random.lowercase.isIncluded)
             })
             
             HStack(content: {
-                CheckBoxView(isOn: self.$settings.random.uppercase.isIncluded.onChange(self.settings.random.syncFirstChar), characters: .uppercase)
+                CheckBoxView(isOn: $settings.random.uppercase.isIncluded.onChange(settings.random.syncFirstChar), characters: .uppercase)
                 Spacer()
-                NumberPickerView(value: self.$settings.random.uppercase.weight.onChange(self.settings.random.syncWeights), useSlider: true, range: Characters.weightRange)
+                NumberPickerView(value: $settings.random.uppercase.weight.onChange(settings.random.syncWeights), useSlider: true, range: Characters.weightRange)
                     .frame(width: ViewModel.weightsSection.width)
-                    .disabled(!self.settings.random.uppercase.isIncluded)
+                    .disabled(!settings.random.uppercase.isIncluded)
             })
             
             HStack(content: {
-                CheckBoxView(isOn: self.$settings.random.digits.isIncluded, characters: .digits)
+                CheckBoxView(isOn: $settings.random.digits.isIncluded, characters: .digits)
                 Spacer()
-                NumberPickerView(value: self.$settings.random.digits.weight.onChange(self.settings.random.syncWeights), useSlider: true, range: Characters.weightRange)
+                NumberPickerView(value: $settings.random.digits.weight.onChange(settings.random.syncWeights), useSlider: true, range: Characters.weightRange)
                     .frame(width: ViewModel.weightsSection.width)
-                    .disabled(!self.settings.random.digits.isIncluded)
+                    .disabled(!settings.random.digits.isIncluded)
             })
             
             HStack(content: {
-                CheckBoxView(isOn: self.$settings.random.symbols.isIncluded, characters: .symbols)
+                CheckBoxView(isOn: $settings.random.symbols.isIncluded, characters: .symbols)
                 Spacer()
-                NumberPickerView(value: self.$settings.random.symbols.weight.onChange(self.settings.random.syncWeights), useSlider: true, range: Characters.weightRange)
+                NumberPickerView(value: $settings.random.symbols.weight.onChange(settings.random.syncWeights), useSlider: true, range: Characters.weightRange)
                     .frame(width: ViewModel.weightsSection.width)
-                    .disabled(!self.settings.random.symbols.isIncluded)
+                    .disabled(!settings.random.symbols.isIncluded)
             })
             
             HStack(content: {
-                CheckBoxView(isOn: self.$settings.random.ambiguous.isIncluded, characters: .ambiguous)
+                CheckBoxView(isOn: $settings.random.ambiguous.isIncluded, characters: .ambiguous)
                 Spacer()
-                NumberPickerView(value: self.$settings.random.ambiguous.weight.onChange(self.settings.random.syncWeights), useSlider: true, range: Characters.weightRange)
+                NumberPickerView(value: $settings.random.ambiguous.weight.onChange(settings.random.syncWeights), useSlider: true, range: Characters.weightRange)
                     .frame(width: ViewModel.weightsSection.width)
-                    .disabled(!self.settings.random.ambiguous.isIncluded)
+                    .disabled(!settings.random.ambiguous.isIncluded)
             })
             
             Spacer()
@@ -73,7 +73,7 @@ extension RandomizedView {
                     .frame(width: ViewModel.header.width)
 
                 Picker(
-                    selection: self.$settings.random.readability.onChange(self.settings.random.syncReadability),
+                    selection: $settings.random.readability.onChange(settings.random.syncReadability),
                     label: EmptyView(),
                     content: {
                         ForEach(Readability.allCases, id: \.self, content: { readability in
@@ -91,8 +91,8 @@ extension RandomizedView {
             ForEach(AdditionalSetting.allCases, content: { setting in
                 CheckBoxView(
                     isOn: .init(
-                        get: { self.settings.random.additionalSettings.contains(setting) },
-                        set: { self.settings.random.setAndSyncAdditionalSettings(setting, to: $0) }
+                        get: { settings.random.additionalSettings.contains(setting) },
+                        set: { settings.random.setAndSyncAdditionalSettings(setting, to: $0) }
                     ),
                     
                     setting: setting
@@ -104,17 +104,17 @@ extension RandomizedView {
     private var separator: some View {
         SectionView(title: nil, content: {
             HStack(spacing: 3, content: {
-                CheckBoxView(isOn: self.$settings.random.separator.isEnabled, title: "Add a separator every ")
+                CheckBoxView(isOn: $settings.random.separator.isEnabled, title: "Add a separator every ")
                 
                 HStack(spacing: 3, content: {
-                    NumberPickerView(value: self.$settings.random.separator.characterChunkQuantity, range: Separator.range)
-                        .disabled(!self.settings.random.separator.isEnabled)
+                    NumberPickerView(value: $settings.random.separator.characterChunkQuantity, range: Separator.range)
+                        .disabled(!settings.random.separator.isEnabled)
                     
                     Text(" characters")
-                        .onTapGesture(perform: { self.settings.random.separator.isEnabled.toggle() })
+                        .onTapGesture(perform: { settings.random.separator.isEnabled.toggle() })
                 })
             })
-                .foregroundColor(self.settings.random.separator.isEnabled ? .primary : .secondary)
+                .foregroundColor(settings.random.separator.isEnabled ? .primary : .secondary)
         })
     }
 }

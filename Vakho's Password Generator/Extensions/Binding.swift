@@ -14,11 +14,11 @@ extension Binding {
     func onChange(_ handler: @escaping () -> Void) -> Binding<Value> {
         Binding(
             get: {
-                self.wrappedValue
+                wrappedValue
             },
             
             set: { value in
-                self.wrappedValue = value
+                wrappedValue = value
                 handler()
             }
         )
@@ -27,11 +27,11 @@ extension Binding {
     func onChange(_ handler: @escaping (Value) -> Void) -> Binding<Value> {
         Binding(
             get: {
-                self.wrappedValue
+                wrappedValue
             },
             
             set: { value in
-                self.wrappedValue = value
+                wrappedValue = value
                 handler(value)
             }
         )
