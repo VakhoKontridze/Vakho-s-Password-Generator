@@ -37,14 +37,8 @@ extension VerbalView {
     }
 }
 
-// MARK:- View Model
+// MARK:- Layout
 extension VerbalView {
-    struct ViewModel {
-        private init() {}
-    }
-}
-
-extension VerbalView.ViewModel {
     struct Layout {
         // MARK: Properties
         static let row: CGSize = .init(width: -1, height: 30)
@@ -61,6 +55,6 @@ struct VerbalView_Previews: PreviewProvider {
             .environment(\.managedObjectContext, appDelegate.moc)
             .environmentObject(SettingsViewModel())
         
-            .frame(width: MainView.ViewModel.Layout.view.width)
+            .frame(width: MainView.Layout.view.width)
     }
 }

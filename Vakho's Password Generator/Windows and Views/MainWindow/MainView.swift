@@ -22,7 +22,7 @@ extension MainView {
             generate
         })
             .padding(10)
-        .frame(size: ViewModel.Layout.view, alignment: .top)
+        .frame(size: Layout.view, alignment: .top)
         
             .sheet(isPresented: $settings.passwordsAreBeingGenerated, content: {
                 ResultsView()
@@ -44,10 +44,10 @@ extension MainView {
     private var length: some View {
         HStack(spacing: 3, content: {
             Text("Length: ")
-                .frame(width: ViewModel.Layout.header.width, alignment: .leading)
+                .frame(width: Layout.header.width, alignment: .leading)
 
             LogarithmicSliderView(value: $settings.length, range: SettingsViewModel.lengthRange)
-                .frame(width: ViewModel.Layout.slider.width)
+                .frame(width: Layout.slider.width)
                 .padding(.trailing, 5)
 
             NumberPickerView(value: $settings.length, range: SettingsViewModel.lengthRange)
@@ -63,7 +63,7 @@ extension MainView {
     private var quantity: some View {
         HStack(spacing: 3, content: {
             Text("Quantity: ")
-                .frame(width: ViewModel.Layout.header.width, alignment: .leading)
+                .frame(width: Layout.header.width, alignment: .leading)
             
             NumberPickerView(value: $settings.quantity, range: SettingsViewModel.quantityRange)
         })
@@ -72,14 +72,14 @@ extension MainView {
     private var type: some View {
         HStack(spacing: 3, content: {
             Text("Type: ")
-                .frame(width: ViewModel.Layout.header.width, alignment: .leading)
+                .frame(width: Layout.header.width, alignment: .leading)
 
             Picker(selection: $settings.type, label: EmptyView(), content: {
                 ForEach(PasswordType.allCases, id: \.self, content: { type in
                     Text(type.title)
                 })
             })
-            .frame(width: ViewModel.Layout.typePicker.width)
+            .frame(width: Layout.typePicker.width)
         })
     }
     
@@ -99,14 +99,8 @@ extension MainView {
     }
 }
 
-// MARK:- View Model
+// MARK:- Layout
 extension MainView {
-    struct ViewModel {
-        private init() {}
-    }
-}
-
-extension MainView.ViewModel {
     struct Layout {
         // MARK: Properties
         static let window: CGSize = .init(width: view.width, height: view.height + titleBar.height)

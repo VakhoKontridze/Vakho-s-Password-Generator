@@ -21,7 +21,7 @@ final class MainWindow: WindowFactory, WindowFactoryable {
     
     let rect: WindowRectParameters = .init(
         savesOrigin: false,
-        savesSize: false, defaultSize: MainView.ViewModel.Layout.window
+        savesSize: false, defaultSize: MainView.Layout.window
     )
     
     let titleBar: WindowFactoryTitleBarSettings = .init(

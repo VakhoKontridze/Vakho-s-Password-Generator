@@ -52,7 +52,7 @@ extension ResultsView {
             passwordsList
         })
             .padding(10)
-            .frame(size: ViewModel.Layout.view)
+            .frame(size: Layout.view)
             
             .background(Color.listBackground)   // Override on NSTableView is done in Colors.swift
             
@@ -75,7 +75,7 @@ extension ResultsView {
                     presentationMode.wrappedValue.dismiss()
                 })
             })
-                .frame(width: ViewModel.Layout.headerCornerItem.width, alignment: .leading)
+                .frame(width: Layout.headerCornerItem.width, alignment: .leading)
             
             Spacer()
             
@@ -86,7 +86,7 @@ extension ResultsView {
             Spacer()
             
             Text(progress)
-                .frame(width: ViewModel.Layout.headerCornerItem.width, alignment: .trailing)
+                .frame(width: Layout.headerCornerItem.width, alignment: .trailing)
                 .font(.system(.caption, design: .monospaced))
                 .foregroundColor(.secondary)
         })
@@ -114,12 +114,12 @@ extension ResultsView {
                 .foregroundColor(.formBackground)
             
             Text(String(i + 1))
-                .frame(width: ViewModel.Layout.numbering.width)
+                .frame(width: Layout.numbering.width)
                 .padding(5)
                 .font(.footnote)
                 .foregroundColor(.secondary)
         })
-            .frame(height: ViewModel.Layout.row.height)
+            .frame(height: Layout.row.height)
             .fixedSize(horizontal: true, vertical: false)
     }
     
@@ -187,17 +187,11 @@ private extension ResultsView {
     }
 }
 
-// MARK:- View Model
+// MARK:- Layout
 extension ResultsView {
-    struct ViewModel {
-        private init() {}
-    }
-}
-
-extension ResultsView.ViewModel {
     struct Layout {
         // MARK: Properties
-        static let view: CGSize = .init(width: MainView.ViewModel.Layout.window.width - 40, height: MainView.ViewModel.Layout.window.height - 20)
+        static let view: CGSize = .init(width: MainView.Layout.window.width - 40, height: MainView.Layout.window.height - 20)
         
         static let headerCornerItem: CGSize = .init(width: 150, height: -1)
         
