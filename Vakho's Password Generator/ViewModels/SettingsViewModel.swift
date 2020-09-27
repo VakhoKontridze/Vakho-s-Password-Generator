@@ -11,6 +11,7 @@ import Combine
 
 // MARK:- Settings View Model
 final class SettingsViewModel: ObservableObject {
+    // MARK: Properties
     @Published var passwordsAreBeingGenerated: Bool = false
     
     @Published var quantity: Int = 10

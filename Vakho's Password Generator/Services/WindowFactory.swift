@@ -1,5 +1,5 @@
 //
-//  Windowswift
+//  WindowFactory.wift
 //  Vakho's Password Converter
 //
 //  Created by Vakhtang Kontridze on 9/15/20.
