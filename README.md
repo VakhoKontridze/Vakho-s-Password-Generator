@@ -1,6 +1,6 @@
 # Vakho's Password Generator
 
-## Table of contents
+## Table of Contents
 - [Description](#description)
 - [Technologies](#technologies)
 - [Setup](#setup)
