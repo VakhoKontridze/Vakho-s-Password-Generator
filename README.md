@@ -42,4 +42,4 @@ Verbal password:
 ![Verbal](./img/Verbal.jpg)
 
 ## Contact
-e-mail: [vakho.kontridze@gmail.com](mailto:vakho.kontridze@gmail.com)
+e-mail: vakho.kontridze@gmail.com
